@@ -79,6 +79,9 @@ jobs:
             echo "=== related strings with file offsets ==="
             strings -a -t x "$MAIN" | grep -iE 'sys\.mainsys\.acc_read|sys\.acc\.on|persist\.st\.currentbacklight|currentbacklight|gpio11|gpio6|acc|suspend|backlight|brightness|shutDownSoc|power_shutdown' || true
             echo
+            echo "=== suspendCheck ARM literal pool (3ea50..3eaa8) ==="
+            arm-linux-gnueabihf-objdump -s -j .text --start-address=0x3ea50 --stop-address=0x3eaa8 "$MAIN"
+            echo
             echo "=== ELF sections ==="
             arm-linux-gnueabihf-readelf -S "$MAIN"
           } > "$OUT/mainsys-arm-analysis.txt"
