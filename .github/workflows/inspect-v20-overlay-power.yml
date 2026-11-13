@@ -1,0 +1,142 @@
+name: Inspect V20 persistent overlay and power settings
+
+on:
+  push:
+    branches:
+      - diagnostic/v17-squashfs-check
+    paths:
+      - .github/workflows/inspect-v20-overlay-power.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install filesystem inspection tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y squashfs-tools binutils file python3-venv
+
+      - name: Extract V17 rootfs and preserved JFFS2 overlay
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="v17_current_backup.bin"
+          EXPECTED_SHA="582c23df1f691734ae9a18513686eab4dd44d6b58307824a80e48a0be64fc002"
+          test "$(stat -c '%s' "$IMAGE")" -eq 16777216
+          ACTUAL_SHA="$(sha256sum "$IMAGE" | awk '{print $1}')"
+          echo "Baseline SHA-256: $ACTUAL_SHA"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+
+          ROOTFS="$RUNNER_TEMP/rootfs.squashfs"
+          OVERLAY="$RUNNER_TEMP/overlay.jffs2"
+          dd if="$IMAGE" of="$ROOTFS" bs=65536 skip=86 count=160 status=none
+          dd if="$IMAGE" of="$OVERLAY" bs=65536 skip=246 count=10 status=none
+
+          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/rootfs" "$ROOTFS"
+
+          python3 -m venv "$RUNNER_TEMP/jefferson-env"
+          "$RUNNER_TEMP/jefferson-env/bin/pip" install --disable-pip-version-check jefferson
+          "$RUNNER_TEMP/jefferson-env/bin/jefferson" "$OVERLAY" -d "$RUNNER_TEMP/jffs2-extracted"
+
+          echo "Rootfs and JFFS2 extraction complete."
+
+      - name: Inspect overlay paths, property files, and startup behavior
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - "$RUNNER_TEMP/rootfs" "$RUNNER_TEMP/jffs2-extracted" <<'PY'
+          import os, pathlib, re, subprocess, sys
+          root = pathlib.Path(sys.argv[1])
+          ov = pathlib.Path(sys.argv[2])
+
+          print("=== JFFS2 extracted tree (all paths) ===")
+          for p in sorted(ov.rglob("*"), key=lambda x: str(x.relative_to(ov))):
+              try:
+                  kind = "DIR" if p.is_dir() else "LINK" if p.is_symlink() else "FILE"
+                  size = p.stat().st_size if p.is_file() else 0
+              except OSError:
+                  kind, size = "UNREADABLE", 0
+              print(f"{kind:10} {size:9} {p.relative_to(ov)}")
+
+          print("\n=== Overlay candidates for paths masking rootfs files ===")
+          for rel in (
+              "upper/etc/default.prop", "upper/default.prop", "upper/etc/init.rc",
+              "upper/etc/forever.prop", "forever.prop", "upper/overlay/forever.prop",
+              "upper/usr/bin/reboot.sh", "upper/etc/init.d/rcS",
+              "upper/etc/config_jt.prop"
+          ):
+              p = ov / rel
+              if p.exists() or p.is_symlink():
+                  print(f"\n--- JFFS2/{rel} ---")
+                  if p.is_file() and p.stat().st_size < 256*1024:
+                      print(p.read_text(errors="replace"))
+                  else:
+                      print("present; not a small regular text file")
+
+          print("\n=== All overlay files containing relevant settings ===")
+          needles = re.compile(
+              rb"currentbacklight|max_backlight|persist\.st\.|persist\.suspend|"
+              rb"sys\.acc\.on|ignore\.acc|screenUiTime|forever\.prop|shutdown|reboot",
+              re.I
+          )
+          for p in sorted(ov.rglob("*")):
+              try:
+                  if not p.is_file() or p.is_symlink() or p.stat().st_size > 8*1024*1024:
+                      continue
+                  data = p.read_bytes()
+              except OSError:
+                  continue
+              ms = list(needles.finditer(data))
+              if ms:
+                  print(f"\n--- JFFS2/{p.relative_to(ov)} ({len(ms)} matches) ---")
+                  for m in ms[:80]:
+                      a,b=max(0,m.start()-90),min(len(data),m.end()+140)
+                      print(data[a:b].decode("utf-8","replace").replace("\x00"," ")[:500])
+
+          print("\n=== Rootfs exact startup/config files ===")
+          for rel in (
+              "etc/default.prop", "etc/init.rc", "etc/inittab",
+              "etc/init.d/rcS", "etc/init.d/rc.preboot", "etc/init.d/rc.final",
+              "usr/bin/reboot.sh", "usr/bin/log_catch.sh",
+              "etc/profile", "files/pseudo_init", "pseudo_init"
+          ):
+              p=root/rel
+              if p.is_symlink():
+                  print(f"\n--- {rel} -> {os.readlink(p)} ---")
+                  try: p=p.resolve()
+                  except OSError: continue
+              if p.is_file() and p.stat().st_size < 256*1024:
+                  print(f"\n--- ROOTFS/{rel} ---")
+                  print(p.read_text(errors="replace"))
+
+          print("\n=== Init and property path strings ===")
+          for rel in ("usr/bin/init","sbin/init","usr/bin/sysd","usr/bin/mainsys","usr/bin/pseudo_init","pseudo_init"):
+              p=root/rel
+              if p.is_symlink():
+                  try: p=p.resolve()
+                  except OSError: continue
+              if not p.is_file():
+                  continue
+              print(f"\n--- {rel} ---")
+              q=subprocess.run(["strings","-a","-n","4",str(p)],text=True,
+                               stdout=subprocess.PIPE,stderr=subprocess.STDOUT)
+              selected=[]
+              rx=re.compile(r"default\.prop|build\.prop|property|currentbacklight|max_backlight|"
+                            r"forever\.prop|suspend\.waitsec|acc\.on|shutdown|reboot",re.I)
+              for line in q.stdout.splitlines():
+                  if rx.search(line):
+                      selected.append(line[:300])
+              print("\n".join(selected[:220]))
+          PY
+
+      - name: Upload inspection report
+        if: always()
+        run: |
+          echo "Inspection completed; see preceding step output for the extracted overlay and property paths."
