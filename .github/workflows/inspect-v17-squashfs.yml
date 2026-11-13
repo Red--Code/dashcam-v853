@@ -248,6 +248,44 @@ jobs:
                           print(line)
                   except Exception as e:
                       print(f"symbol scan error: {e}")
+          print("\n=== UI brightness / display / sleep configuration scan ===")
+          import subprocess
+          pattern = re.compile(r"bright|backlight|screen|lcd|display|standby|timeout|sleep|acc\\.on|screenUiTime", re.I)
+          for rel in ("usr/bin/mainsys", "usr/bin/sysd", "usr/lib/libcarutils.so", "usr/lib/libdisp.so"):
+              p = root / rel
+              if not p.is_file():
+                  continue
+              print(f"\n--- strings in {rel} ---")
+              q = subprocess.run(["strings", "-a", "-n", "4", str(p)],
+                                 text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+              found = [line for line in q.stdout.splitlines() if pattern.search(line)]
+              for line in found[:180]:
+                  print(line[:300])
+              print(f"matches={len(found)}")
+              q = subprocess.run(["readelf", "-Ws", str(p)], text=True,
+                                 stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+              syms = [line for line in q.stdout.splitlines()
+                      if re.search(r"bright|backlight|screen|display", line, re.I)]
+              if syms:
+                  print("Display-related symbols:")
+                  print("\n".join(syms[:60]))
+          print("\n=== Config files with UI brightness/power-related settings ===")
+          for base, dirs, files in os.walk(root):
+              for name in files:
+                  p = pathlib.Path(base) / name
+                  if p.suffix.lower() not in (".prop", ".ini", ".conf", ".cfg", ".rc", ".json", ".xml"):
+                      continue
+                  try:
+                      if p.is_symlink() or p.stat().st_size > 2*1024*1024:
+                          continue
+                      lines = p.read_text(errors="replace").splitlines()
+                  except OSError:
+                      continue
+                  hits = [(i+1, line) for i, line in enumerate(lines) if pattern.search(line)]
+                  if hits:
+                      print(f"\n--- {p.relative_to(root)} ---")
+                      for n, line in hits[:80]:
+                          print(f"{n}: {line[:400]}")
           print("\n=== Every text reference to sys.sd.in ===")
           for base, dirs, files in os.walk(root):
               for name in files:
