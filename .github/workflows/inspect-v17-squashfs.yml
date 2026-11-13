@@ -208,6 +208,24 @@ jobs:
                       print(snippet.decode("utf-8", "replace").replace("\n", " ")[:420])
                   hits += len(found)
           print(f"\nTotal matching strings: {hits}")
+          print("\n=== Exact SD/log startup files ===")
+          for rel in ("usr/bin/log_catch.sh", "etc/init.rc", "etc/init.d/S80mmc", "etc/init.d/S79fat", "etc/init.d/rcS"):
+              p = root / rel
+              if p.is_file():
+                  print(f"\n--- {rel} ---")
+                  print(p.read_text(errors="replace"))
+          print("\n=== Every text reference to sys.sd.in ===")
+          for base, dirs, files in os.walk(root):
+              for name in files:
+                  p = pathlib.Path(base) / name
+                  try:
+                      if p.is_symlink() or not p.is_file() or p.stat().st_size > 16*1024*1024:
+                          continue
+                      data = p.read_bytes()
+                  except OSError:
+                      continue
+                  if b"sys.sd.in" in data:
+                      print(f"{p.relative_to(root)}")
           print("\n=== init.rc service and SD-related context ===")
           for p in sorted(root.rglob("*.rc")):
               try:
