@@ -1,0 +1,92 @@
+name: Inspect V17 ACC and backlight paths
+
+on:
+  push:
+    branches:
+      - diagnostic/v17-squashfs-check
+    paths:
+      - .github/workflows/inspect-v17-acc-path.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-v17:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact baseline
+        uses: actions/checkout@v4
+
+      - name: Install firmware tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y squashfs-tools xz-utils binutils
+
+      - name: Verify and extract exact V17 rootfs
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="v17_current_backup.bin"
+          EXPECTED_SHA="582c23df1f691734ae9a18513686eab4dd44d6b58307824a80e48a0be64fc002"
+          test "$(stat -c '%s' "$IMAGE")" -eq 16777216
+          ACTUAL_SHA="$(sha256sum "$IMAGE" | awk '{print $1}')"
+          echo "V17 baseline SHA-256: $ACTUAL_SHA"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          dd if="$IMAGE" of="$RUNNER_TEMP/v17-rootfs.squashfs" bs=65536 skip=86 count=160 status=none
+          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/v17-rootfs" "$RUNNER_TEMP/v17-rootfs.squashfs"
+
+      - name: Inspect ACC, suspend, and brightness configuration and binaries
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/v17-rootfs"
+          OUT="$GITHUB_WORKSPACE/v17-acc-inspection"
+          mkdir -p "$OUT"
+          cp "$ROOT/etc/init.rc" "$OUT/init.rc"
+          {
+            echo "V17 ACC / suspend / backlight static inspection"
+            echo "Baseline SHA-256: $(sha256sum v17_current_backup.bin | awk '{print $1}')"
+            echo
+            echo "=== init.rc service declarations ==="
+            grep -nE '^(service |on |    class |    disabled|    oneshot)' "$ROOT/etc/init.rc" || true
+            echo
+            echo "=== init.rc ACC / suspend / brightness references ==="
+            grep -niE 'acc|suspend|backlight|bright|mainsys|sdcard|logcatch|class_start' "$ROOT/etc/init.rc" || true
+            echo
+            echo "=== candidate binary files ==="
+            find "$ROOT" -type f \( -name '*main*' -o -name '*sdcard*' -o -name '*modem*' -o -name '*power*' -o -name '*bright*' -o -name '*disp*' \) -printf '%p %s bytes\n' | sort
+            echo
+            echo "=== executable files ==="
+            find "$ROOT" -type f -perm /111 -printf '%p %s bytes\n' | sort
+          } > "$OUT/inspection-summary.txt"
+
+          for name in mainsys sdcard; do
+            f="$(find "$ROOT" -type f -name "$name" -print -quit)"
+            if [ -n "$f" ]; then
+              strings -a -n 4 "$f" > "$OUT/$name.strings.txt"
+              {
+                echo "=== $name: ACC / suspend / backlight / sysfs / GPIO string matches ==="
+                grep -niE -C 3 'getAccState|postAccMsg|acccheck|sys\.acc\.on|ACC|ignition|suspendCheck|waitBeforeSuspend|shutDownSoc|backlight|brightness|currentbacklight|/sys/|gpio|switch-gpio|poweroff|power off' "$OUT/$name.strings.txt" || true
+                echo
+                echo "=== $name: ELF metadata ==="
+                readelf -h "$f" 2>&1 || true
+                readelf -Ws "$f" 2>&1 | grep -iE 'acc|gpio|property|backlight|brightness|suspend|power' || true
+              } > "$OUT/$name.relevant.txt"
+            else
+              echo "File named $name not found" > "$OUT/$name.relevant.txt"
+            fi
+          done
+
+          find "$ROOT/etc" "$ROOT/usr" "$ROOT/system" -type f -maxdepth 5 -print0 2>/dev/null |
+            xargs -0 grep -IinE 'sys\.acc\.on|currentbacklight|suspend.waitsec|acc_gpio|acc-gpio|ignition|backlight'             > "$OUT/text-config-matches.txt" || true
+          echo "Static inspection complete; no firmware bytes were modified."
+
+      - name: Upload static inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: v17-acc-backlight-static-inspection
+          path: v17-acc-inspection/
+          if-no-files-found: error
+          retention-days: 14
