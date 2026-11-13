@@ -37,6 +37,13 @@ jobs:
           cp rootfs/etc/init.rc report/ 2>/dev/null || true
           cp rootfs/usr/bin/reboot.sh report/ 2>/dev/null || true
           cp rootfs/usr/bin/mainsys report/mainsys
+          python3 - <<'PY'
+          from pathlib import Path
+          image = Path('v17_current_backup.bin').read_bytes()
+          Path('report/pre-rootfs-boot-kernel.bin').write_bytes(image[:0x560000])
+          PY
+          file report/pre-rootfs-boot-kernel.bin > report/boot-kernel-file.txt
+          strings -a report/pre-rootfs-boot-kernel.bin | grep -i -E 'watchdog|sunxi_wdt|wdt|reset reason|brown.?out|power.?fail|pmic|shutdown|reboot' > report/kernel-power-strings.txt || true
           strings -a -t x report/mainsys > report/mainsys.strings
           grep -in -C 12 'rebootCheck\|reboot\|power_shutdown\|sys.power.usb\|sys.acc.on\|shutDownSoc2' report/mainsys.strings > report/reboot-strings.txt || true
           readelf -h -A -s report/mainsys > report/mainsys.readelf.txt 2>&1 || true
