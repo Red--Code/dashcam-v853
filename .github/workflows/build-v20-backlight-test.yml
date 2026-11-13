@@ -1,0 +1,270 @@
+name: V20 backlight property diagnostic candidate
+
+on:
+  push:
+    branches:
+      - diagnostic/v17-squashfs-check
+    paths:
+      - .github/workflows/build-v20-backlight-test.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-v20:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Check out diagnostic branch
+        uses: actions/checkout@v4
+
+      - name: Install firmware tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y squashfs-tools xz-utils file
+
+      - name: Verify exact V17 baseline and extract rootfs
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="v17_current_backup.bin"
+          EXPECTED_SHA="582c23df1f691734ae9a18513686eab4dd44d6b58307824a80e48a0be64fc002"
+          test "$(stat -c '%s' "$IMAGE")" -eq 16777216
+          ACTUAL_SHA="$(sha256sum "$IMAGE" | awk '{print $1}')"
+          echo "V17 SHA-256: $ACTUAL_SHA"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          ROOTFS="$RUNNER_TEMP/v17-rootfs.squashfs"
+          dd if="$IMAGE" of="$ROOTFS" bs=65536 skip=86 count=160 status=none
+          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/rootfs" "$ROOTFS"
+          echo "V17 rootfs extracted successfully."
+
+      - name: Patch only brightness default and V19 logger
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo python3 - "$RUNNER_TEMP/rootfs" <<'PY'
+          import pathlib, subprocess, sys
+
+          root = pathlib.Path(sys.argv[1])
+
+          # The flash overlay already contains currentbacklight=120. Supply
+          # the corresponding system property before mainsys starts.
+          prop = root / "etc/default.prop"
+          lines = prop.read_text(errors="replace").splitlines()
+          key = "persist.st.currentbacklight="
+          matches = [i for i, line in enumerate(lines) if line.startswith(key)]
+          if matches:
+              if len(matches) != 1 or lines[matches[0]] != key + "120":
+                  raise SystemExit("Unexpected existing persist.st.currentbacklight; refusing to overwrite it")
+          else:
+              max_lines = [i for i, line in enumerate(lines) if line.strip() == "persist.st.max_backlight=255"]
+              if len(max_lines) != 1:
+                  raise SystemExit("Could not uniquely locate persist.st.max_backlight=255")
+              lines.insert(max_lines[0] + 1, key + "120")
+          prop.write_text("\n".join(lines) + "\n")
+          assert prop.read_text().splitlines().count(key + "120") == 1
+
+          log_script = """#!/bin/sh
+          # V20 diagnostic: record brightness properties and collect boot logs.
+          is_extsd_mounted() {
+              awk '$2 == "/mnt/extsd" { found=1 } END { exit !found }' /proc/mounts
+          }
+          is_overlay_mounted() {
+              awk '$2 == "/overlay" { found=1 } END { exit !found }' /proc/mounts
+          }
+          dump_brightness_props() {
+              echo "persist.st.currentbacklight=$(getprop persist.st.currentbacklight)"
+              echo "persist.st.max_backlight=$(getprop persist.st.max_backlight)"
+              echo "sys.acc.on=$(getprop sys.acc.on)"
+              echo "currentbacklight_config=120 (preserved JFFS2 value)"
+          }
+
+          waited=0
+          internal_log=""
+          if is_overlay_mounted; then
+              internal_log="/overlay/v20_backlight_diag.txt"
+              {
+                  echo "V20 logger started"
+                  date
+                  dump_brightness_props
+                  echo "sys.sd.in=$(getprop sys.sd.in)"
+                  echo "--- initial mounts ---"
+                  cat /proc/mounts
+              } > "$internal_log" 2>&1
+          fi
+
+          while ! is_extsd_mounted; do
+              sleep 1
+              waited=$((waited + 1))
+              if [ -n "$internal_log" ] && [ $((waited % 5)) -eq 0 ]; then
+                  {
+                      echo "--- waited_seconds=$waited ---"
+                      dump_brightness_props
+                      echo "sys.sd.in=$(getprop sys.sd.in)"
+                      cat /proc/mounts
+                      cat /proc/partitions
+                  } >> "$internal_log" 2>&1
+              fi
+          done
+
+          LOG_DIR="/mnt/extsd/log"
+          mkdir -p "$LOG_DIR" || exit 1
+          {
+              echo "V20 backlight property diagnostic"
+              date
+              echo "waited_seconds=$waited"
+              dump_brightness_props
+              echo "sys.sd.in=$(getprop sys.sd.in)"
+              echo "sys.sd.needformat=$(getprop sys.sd.needformat)"
+              echo "sys.sd.rw_err=$(getprop sys.sd.rw_err)"
+              echo "persist.debug.log.enable=$(getprop persist.debug.log.enable)"
+              echo "sys.mainsys.bootcount=$(getprop sys.mainsys.bootcount)"
+              echo "--- /proc/mounts ---"
+              cat /proc/mounts
+              echo "--- recent kernel messages ---"
+              dmesg | tail -n 160
+              if [ -n "$internal_log" ] && [ -f "$internal_log" ]; then
+                  echo "--- internal wait log ---"
+                  cat "$internal_log"
+              fi
+          } > "$LOG_DIR/v20_backlight_diag.txt" 2>&1
+
+          logcat -v threadtime -n 5 -f "$LOG_DIR/soc_log.txt" &
+          cat /proc/kmsg > "$LOG_DIR/ker_log.txt" &
+          while is_extsd_mounted; do
+              sleep 2
+          done
+          killall logcat
+          killall cat
+          sleep 5
+          """
+          script = root / "usr/bin/log_catch.sh"
+          script.write_text(log_script)
+          script.chmod(0o755)
+          if subprocess.run(["/bin/sh", "-n", str(script)]).returncode:
+              raise SystemExit("V20 logger shell syntax check failed")
+
+          rc = root / "etc/init.rc"
+          lines = rc.read_text(errors="replace").splitlines()
+          try:
+              i = lines.index("service logcatch /usr/bin/log_catch.sh")
+          except ValueError:
+              raise SystemExit("Could not find logcatch service declaration")
+          if lines[i:i+3] == [
+              "service logcatch /usr/bin/log_catch.sh",
+              "    class main",
+              "    disabled",
+          ]:
+              del lines[i+2]
+              try:
+                  trigger = lines.index("on property:persist.debug.log.enable=1", i+2)
+              except ValueError:
+                  raise SystemExit("Could not find old logcatch property trigger")
+              if lines[trigger+1:trigger+2] != ["    start logcatch"]:
+                  raise SystemExit("Unexpected old logcatch trigger body")
+              del lines[trigger:trigger+2]
+          elif lines[i:i+2] != [
+              "service logcatch /usr/bin/log_catch.sh",
+              "    class main",
+          ]:
+              raise SystemExit("Unexpected logcatch service declaration")
+          rc.write_text("\n".join(lines) + "\n")
+          print("V20 changes: etc/default.prop, usr/bin/log_catch.sh, etc/init.rc only.")
+          print("Added persist.st.currentbacklight=120; retained V19 SD logger behavior.")
+          PY
+
+      - name: Rebuild and validate CRC32 SquashFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC="$RUNNER_TEMP/rootfs"
+          NEW="$RUNNER_TEMP/v20-rootfs.squashfs"
+          sudo mksquashfs "$SRC" "$NEW" -noappend -comp xz -b 256K -Xdict-size 256K -processors 1 -no-progress
+          test "$(stat -c '%s' "$NEW")" -le 10485760
+          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/rootfs-check" "$NEW"
+          python3 - "$NEW" "$RUNNER_TEMP/rootfs-check" <<'PY'
+          import hashlib, lzma, pathlib, re, stat, struct, sys
+          image = pathlib.Path(sys.argv[1]).read_bytes()
+          assert image[:4] == b"hsqs", "Bad SquashFS magic"
+          magic = b"\xfd7zXZ\x00"
+          counts = {}
+          pos = 0
+          valid = 0
+          while True:
+              pos = image.find(magic, pos)
+              if pos < 0:
+                  break
+              dec = lzma.LZMADecompressor(format=lzma.FORMAT_XZ, memlimit=64*1024*1024)
+              try:
+                  dec.decompress(image[pos:])
+              except lzma.LZMAError:
+                  pos += 1
+                  continue
+              if dec.eof:
+                  check = image[pos+7] & 0x0f
+                  counts[check] = counts.get(check, 0) + 1
+                  valid += 1
+              pos += 1
+          print(f"Complete XZ streams={valid}; check IDs={counts} (0=none, 1=CRC32, 4=CRC64)")
+          if not valid or any(k not in (0, 1) for k in counts):
+              raise SystemExit("Unsupported or missing XZ streams")
+          root = pathlib.Path(sys.argv[2])
+          props = (root / "etc/default.prop").read_text(errors="replace").splitlines()
+          assert props.count("persist.st.currentbacklight=120") == 1
+          assert props.count("persist.st.max_backlight=255") == 1
+          logger = (root / "usr/bin/log_catch.sh").read_text()
+          assert "persist.st.currentbacklight=$(getprop persist.st.currentbacklight)" in logger
+          print("Extracted rebuilt rootfs contains exactly one current-backlight property and V20 logger.")
+          PY
+
+      - name: Rebuild 16 MiB image and verify untouched partitions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - "$GITHUB_WORKSPACE/v17_current_backup.bin" "$RUNNER_TEMP/v20-rootfs.squashfs" "$RUNNER_TEMP/v20-backlight-property-test.bin" "$RUNNER_TEMP/v20-report.txt" <<'PY'
+          import hashlib, pathlib, sys
+          base_path, sqfs_path, out_path, report_path = map(pathlib.Path, sys.argv[1:])
+          base = base_path.read_bytes()
+          sqfs = sqfs_path.read_bytes()
+          start, end = 0x560000, 0xF60000
+          assert len(base) == 0x1000000
+          assert len(sqfs) <= end - start
+          # Confirm the preserved JFFS2 overlay contains the existing saved value.
+          saved_value_present = b"currentbacklight=120" in base[end:]
+          if not saved_value_present:
+              raise SystemExit("Expected currentbacklight=120 was not found in preserved overlay")
+          candidate = bytearray(base)
+          candidate[start:end] = b"\xff" * (end - start)
+          candidate[start:start+len(sqfs)] = sqfs
+          assert candidate[:start] == base[:start]
+          assert candidate[end:] == base[end:]
+          out_path.write_bytes(candidate)
+          report = [
+              "V20 backlight property diagnostic candidate (NOT FLASHED)",
+              f"Baseline SHA-256: {hashlib.sha256(base).hexdigest()}",
+              f"Candidate SHA-256: {hashlib.sha256(candidate).hexdigest()}",
+              f"Candidate size: {len(candidate)}",
+              f"Rebuilt SquashFS size: {len(sqfs)}",
+              f"Rootfs partition: 0x{start:06x}..0x{end:06x}",
+              "Added property: persist.st.currentbacklight=120",
+              "Existing persist.st.max_backlight=255 retained",
+              f"Preserved JFFS2 currentbacklight=120 found: {'YES' if saved_value_present else 'NO'}",
+              "Bytes before rootfs unchanged: YES",
+              "Bytes after rootfs (including JFFS2 overlay) unchanged: YES",
+              "XZ checks validated as none/CRC32 only: YES",
+              "Kernel/boot partition changed: NO",
+          ]
+          report_path.write_text("\n".join(report) + "\n")
+          print("\n".join(report))
+          PY
+
+      - name: Upload V20 candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: v20-backlight-property-test
+          path: |
+            \${{ runner.temp }}/v20-backlight-property-test.bin
+            \${{ runner.temp }}/v20-report.txt
+          if-no-files-found: error
+          retention-days: 14
