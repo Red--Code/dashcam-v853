@@ -37,7 +37,7 @@ jobs:
           dd if="$IMAGE" of="$RUNNER_TEMP/v17-rootfs.squashfs" bs=65536 skip=86 count=160 status=none
           sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/v21-rootfs" "$RUNNER_TEMP/v17-rootfs.squashfs"
 
-      - name: Patch init ordering and install boot timeline logger
+      - name: Patch init ordering, enable logcatch at boot, and install boot timeline logger
         shell: bash
         run: |
           set -euo pipefail
@@ -64,6 +64,26 @@ jobs:
           if main_index == 0 or lines[main_index - 1] != "    class_start core":
               raise SystemExit("Unexpected on-boot service order; refusing to patch")
           lines.insert(main_index, command)
+          # V17 has logcatch disabled and gated by a property trigger.
+          # V19's working behavior is to start it automatically in class main.
+          try:
+              service_index = lines.index("service logcatch /usr/bin/log_catch.sh")
+          except ValueError:
+              raise SystemExit("Cannot find existing logcatch service declaration")
+          try:
+              class_index = lines.index("    class main", service_index)
+          except ValueError:
+              raise SystemExit("logcatch service has no class main declaration")
+          if class_index > service_index + 3:
+              raise SystemExit("Unexpected logcatch service stanza")
+          if "    disabled" in lines[service_index:service_index + 6]:
+              lines.remove("    disabled")
+          for i in range(len(lines) - 1):
+              if lines[i] == "on property:persist.debug.log.enable=1" and lines[i + 1] == "    start logcatch":
+                  del lines[i:i + 2]
+                  break
+          else:
+              raise SystemExit("Expected old logcatch property trigger not found")
           rc.write_text("\n".join(lines) + "\n")
 
           default_prop = (root / "etc/default.prop").read_text(errors="replace")
@@ -133,7 +153,8 @@ jobs:
           if subprocess.run(["/bin/sh", "-n", str(script)]).returncode:
               raise SystemExit("V21 logger shell syntax check failed")
 
-          print("V21 patches only /etc/init.rc and /usr/bin/log_catch.sh.")
+          print("V21 patches /etc/init.rc and /usr/bin/log_catch.sh.")
+          print("logcatch is enabled in class main and no longer gated by persist.debug.log.enable.")
           print("Verified setprop command is before class_start main.")
           print("V21 does not add currentbacklight to default.prop.")
           PY
@@ -174,6 +195,12 @@ jobs:
           rc = (root / "etc/init.rc").read_text(errors="replace")
           assert rc.count("setprop persist.st.currentbacklight 120") == 1
           assert rc.index("setprop persist.st.currentbacklight 120") < rc.index("class_start main")
+          svc_start = rc.index("service logcatch /usr/bin/log_catch.sh")
+          svc_end = rc.find("\nservice ", svc_start + 1)
+          service = rc[svc_start:svc_end if svc_end >= 0 else len(rc)]
+          assert "    class main" in service
+          assert "    disabled" not in service
+          assert "on property:persist.debug.log.enable=1" not in rc
           prop = (root / "etc/default.prop").read_text(errors="replace")
           assert "persist.st.currentbacklight=" not in prop
           log = (root / "usr/bin/log_catch.sh").read_text()
