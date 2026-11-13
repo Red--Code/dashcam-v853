@@ -335,7 +335,7 @@ jobs:
           NEW="$RUNNER_TEMP/v19-rootfs.squashfs"
           OUT="$RUNNER_TEMP/v19_crc32_rootfs_candidate.bin"
           REPORT="$RUNNER_TEMP/v19_report.txt"
-          python3 - "$SRC" <<'PY'
+          sudo python3 - "$SRC" <<'PY'
           import pathlib, subprocess, sys
           root = pathlib.Path(sys.argv[1])
 
@@ -370,7 +370,7 @@ jobs:
               waited=$((waited + 1))
               if [ -n "$internal_log" ] && [ $((waited % 5)) -eq 0 ]; then
                   {
-                      echo "--- waited \${waited}s ---"
+                      echo "--- waited_seconds=$waited ---"
                       echo "sys.sd.in=$(getprop sys.sd.in)"
                       echo "sys.sd.needformat=$(getprop sys.sd.needformat)"
                       echo "sys.sd.rw_err=$(getprop sys.sd.rw_err)"
