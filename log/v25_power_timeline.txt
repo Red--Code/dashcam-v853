@@ -1,0 +1,660 @@
+===== V25 sample 0 =====
+Thu Jan  1 08:00:11 +08 1970
+/proc/uptime=11.32 1.32 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1 08:00 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1 08:00 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=41720 
+/sys/class/thermal/thermal_zone1/temp=44730 
+/sys/class/thermal/thermal_zone2/temp=43680 
+===== V25 sample 1 =====
+Tue Sep  9 03:25:52 +08 2025
+/proc/uptime=13.01 1.32 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=42840 
+/sys/class/thermal/thermal_zone1/temp=44730 
+/sys/class/thermal/thermal_zone2/temp=44030 
+===== V25 sample 2 =====
+Tue Sep  9 03:25:55 +08 2025
+/proc/uptime=15.65 1.59 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=43680 
+/sys/class/thermal/thermal_zone1/temp=45570 
+/sys/class/thermal/thermal_zone2/temp=44450 
+===== V25 sample 3 =====
+Tue Sep  9 03:25:57 +08 2025
+/proc/uptime=17.73 2.30 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=43120 
+/sys/class/thermal/thermal_zone1/temp=45500 
+/sys/class/thermal/thermal_zone2/temp=44590 
+===== V25 sample 4 =====
+Tue Sep  9 03:25:59 +08 2025
+/proc/uptime=19.85 3.05 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=43750 
+/sys/class/thermal/thermal_zone1/temp=45220 
+/sys/class/thermal/thermal_zone2/temp=45080 
+===== V25 sample 5 =====
+Tue Sep  9 03:26:01 +08 2025
+/proc/uptime=21.96 3.73 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=43820 
+/sys/class/thermal/thermal_zone1/temp=45990 
+/sys/class/thermal/thermal_zone2/temp=45220 
+===== V25 sample 6 =====
+Tue Sep  9 03:26:04 +08 2025
+/proc/uptime=24.09 4.33 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44170 
+/sys/class/thermal/thermal_zone1/temp=46200 
+/sys/class/thermal/thermal_zone2/temp=45640 
+===== V25 sample 7 =====
+Tue Sep  9 03:26:06 +08 2025
+/proc/uptime=26.21 4.91 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=43960 
+/sys/class/thermal/thermal_zone1/temp=46200 
+/sys/class/thermal/thermal_zone2/temp=46130 
+===== V25 sample 8 =====
+Tue Sep  9 03:26:08 +08 2025
+/proc/uptime=28.34 5.55 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44450 
+/sys/class/thermal/thermal_zone1/temp=46200 
+/sys/class/thermal/thermal_zone2/temp=45500 
+===== V25 sample 9 =====
+Tue Sep  9 03:26:10 +08 2025
+/proc/uptime=30.46 6.19 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=43890 
+/sys/class/thermal/thermal_zone1/temp=45780 
+/sys/class/thermal/thermal_zone2/temp=45570 
+===== V25 sample 10 =====
+Tue Sep  9 03:26:12 +08 2025
+/proc/uptime=32.58 6.82 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44380 
+/sys/class/thermal/thermal_zone1/temp=45990 
+/sys/class/thermal/thermal_zone2/temp=45780 
+===== V25 sample 11 =====
+Tue Sep  9 03:26:14 +08 2025
+/proc/uptime=34.68 7.48 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44380 
+/sys/class/thermal/thermal_zone1/temp=46340 
+/sys/class/thermal/thermal_zone2/temp=45990 
+===== V25 sample 12 =====
+Tue Sep  9 03:26:16 +08 2025
+/proc/uptime=36.74 8.06 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44520 
+/sys/class/thermal/thermal_zone1/temp=46410 
+/sys/class/thermal/thermal_zone2/temp=45990 
+===== V25 sample 13 =====
+Tue Sep  9 03:26:18 +08 2025
+/proc/uptime=38.75 8.72 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44660 
+/sys/class/thermal/thermal_zone1/temp=46900 
+/sys/class/thermal/thermal_zone2/temp=46130 
+===== V25 sample 14 =====
+Tue Sep  9 03:26:20 +08 2025
+/proc/uptime=40.75 9.33 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44660 
+/sys/class/thermal/thermal_zone1/temp=46620 
+/sys/class/thermal/thermal_zone2/temp=46410 
+===== V25 sample 15 =====
+Tue Sep  9 03:26:22 +08 2025
+/proc/uptime=42.75 9.95 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44730 
+/sys/class/thermal/thermal_zone1/temp=46830 
+/sys/class/thermal/thermal_zone2/temp=45990 
+===== V25 sample 16 =====
+Tue Sep  9 03:26:24 +08 2025
+/proc/uptime=44.75 10.57 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44940 
+/sys/class/thermal/thermal_zone1/temp=47110 
+/sys/class/thermal/thermal_zone2/temp=45920 
+===== V25 sample 17 =====
+Tue Sep  9 03:26:26 +08 2025
+/proc/uptime=46.75 11.22 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=45010 
+/sys/class/thermal/thermal_zone1/temp=47600 
+/sys/class/thermal/thermal_zone2/temp=46270 
+===== V25 sample 18 =====
+Tue Sep  9 03:26:28 +08 2025
+/proc/uptime=48.75 11.81 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=44800 
+/sys/class/thermal/thermal_zone1/temp=47390 
+/sys/class/thermal/thermal_zone2/temp=46200 
+===== V25 sample 19 =====
+Tue Sep  9 03:26:30 +08 2025
+/proc/uptime=50.75 12.41 
+sys.power.usb=1
+sys.acc.on=0
+sys.facreset=
+persist.just.reset=
+persist.reboot.days=
+persist.st.deviceidx=
+persist.st.currentbacklight=0
+persist.st.max_backlight=255
+persist.suspend.waitsec=1
+--- watchdog kernel controls ---
+/proc/sys/kernel/watchdog=<unavailable>
+/proc/sys/kernel/watchdog_thresh=<unavailable>
+/proc/sys/kernel/nmi_watchdog=<unavailable>
+--- watchdog devices ---
+/sys/class/watchdog/watchdog0/dev=248:0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/device
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/power
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0/subsystem
+/sys/class/watchdog/watchdog0/uevent=MAJOR=248 MINOR=0 DEVNAME=watchdog0 
+WATCHDOG_NODE=/sys/class/watchdog/watchdog0
+crw-------    1 root     root       10, 130 Jan  1  1970 /dev/watchdog
+crw-------    1 root     root      248,   0 Jan  1  1970 /dev/watchdog0
+--- processes with watchdog device open ---
+POWER_SUPPLY=<no sysfs power_supply entries>
+/sys/devices/platform/switch-gpio/power_shutdown=0 
+/sys/devices/platform/switch-gpio/audio_pa=0 
+/sys/devices/platform/switch-gpio/gps_ant_en=0 
+/sys/class/thermal/thermal_zone0/temp=45010 
+/sys/class/thermal/thermal_zone1/temp=46970 
+/sys/class/thermal/thermal_zone2/temp=46270 

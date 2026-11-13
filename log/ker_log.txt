@@ -1,441 +1,439 @@
-===== V24 kernel capture started =====
-Thu Jan  1 08:00:12 +08 1970
-<6>[    4.871143] sunxi-mmc sdc0: No vq33sw regulator found
-<6>[    4.876774] sunxi-mmc sdc0: No vq18sw regulator found
-<6>[    4.882779] sunxi-mmc sdc0: set host busy
-<6>[    4.887330] sunxi-mmc sdc0: Got CD GPIO
-<6>[    4.891917] sunxi-mmc sdc0: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.145595] sunxi-mmc sdc0: no vqmmc,Check if there is regulator
-<6>[    5.175552] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.215680] sunxi-mmc sdc0: detmode:gpio irq
-<6>[    5.215702] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.222547] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.245294] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.256083] sunxi-mmc sdc1: SD/MMC/SDIO Host Controller Driver(v3.30 2022-7-20 15:45)
-<6>[    5.256231] sunxi-mmc sdc1: ***ctl-spec-caps*** 8
-<6>[    5.256276] sunxi-mmc sdc1: No vmmc regulator found
-<6>[    5.256279] sunxi-mmc sdc1: No vqmmc regulator found
-<6>[    5.256282] sunxi-mmc sdc1: No vdmmc regulator found
-<6>[    5.256285] sunxi-mmc sdc1: No vd33sw regulator found
-<6>[    5.256288] sunxi-mmc sdc1: No vd18sw regulator found
-<6>[    5.256291] sunxi-mmc sdc1: No vq33sw regulator found
-<6>[    5.256294] sunxi-mmc sdc1: No vq18sw regulator found
-<6>[    5.256616] sunxi-mmc sdc1: set host busy
-<3>[    5.256663] mmc:failed to get gpios
-<6>[    5.256889] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.287549] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.318502] sunxi-mmc sdc1: detmode:manually by software
-<7>[    5.319084] initcall 0xc04423f3 returned 0 after 479493 usecs
-<7>[    5.319088] calling  0xc0443ec5 @ 1
-<7>[    5.319091] initcall 0xc0443ec5 returned 0 after 0 usecs
-<7>[    5.319093] calling  0xc0443f07 @ 1
-<4>[    5.319096] totalram_pages 124979 log_size 262144
-<6>[    5.319371] logger: created 256K log 'log_main'
-<7>[    5.319377] initcall 0xc0443f07 returned 0 after 271 usecs
-<7>[    5.319379] calling  0xc044403b @ 1
-<7>[    5.319785] initcall 0xc044403b returned 0 after 389 usecs
-<7>[    5.319789] calling  0xc044412d @ 1
-<7>[    5.319842] initcall 0xc044412d returned 0 after 46 usecs
-<7>[    5.319844] calling  0xc04448d5 @ 1
-<7>[    5.320014] initcall 0xc04448d5 returned 0 after 156 usecs
-<7>[    5.320017] calling  0xc0444e75 @ 1
-<6>[    5.320022] Netfilter messages via NETLINK v0.30.
-<7>[    5.320031] initcall 0xc0444e75 returned 0 after 9 usecs
-<7>[    5.320033] calling  0xc0444edd @ 1
-<6>[    5.320085] nf_conntrack version 0.5.0 (8192 buckets, 32768 max)
-<7>[    5.320186] initcall 0xc0444edd returned 0 after 143 usecs
-<7>[    5.320190] calling  0xc0444fa5 @ 1
-<6>[    5.320193] ctnetlink v0.93: registering with nfnetlink.
-<7>[    5.320198] initcall 0xc0444fa5 returned 0 after 5 usecs
-<7>[    5.320200] calling  0xc044503f @ 1
-<7>[    5.320204] initcall 0xc044503f returned 0 after 1 usecs
-<7>[    5.320205] calling  0xc04450a5 @ 1
-<7>[    5.320226] initcall 0xc04450a5 returned 0 after 16 usecs
-<7>[    5.320228] calling  0xc044516f @ 1
-<7>[    5.320233] initcall 0xc044516f returned 0 after 2 usecs
-<7>[    5.320235] calling  0xc04451f1 @ 1
-<7>[    5.320241] initcall 0xc04451f1 returned 0 after 3 usecs
-<7>[    5.320243] calling  0xc0445201 @ 1
-<7>[    5.320246] initcall 0xc0445201 returned 0 after 0 usecs
-<7>[    5.320248] calling  0xc0445231 @ 1
-<7>[    5.320252] initcall 0xc0445231 returned 0 after 0 usecs
-<7>[    5.320253] calling  0xc0445261 @ 1
-<7>[    5.320258] initcall 0xc0445261 returned 0 after 1 usecs
-<7>[    5.320260] calling  0xc044526f @ 1
-<7>[    5.320263] initcall 0xc044526f returned 0 after 1 usecs
-<7>[    5.320265] calling  0xc044527d @ 1
-<7>[    5.320269] initcall 0xc044527d returned 0 after 1 usecs
-<7>[    5.320271] calling  0xc044528b @ 1
-<7>[    5.320275] initcall 0xc044528b returned 0 after 1 usecs
-<7>[    5.320276] calling  0xc0445299 @ 1
-<7>[    5.320279] initcall 0xc0445299 returned 0 after 0 usecs
-<7>[    5.320281] calling  0xc0446403 @ 1
-<7>[    5.320285] initcall 0xc0446403 returned 0 after 1 usecs
-<7>[    5.320287] calling  0xc0446467 @ 1
-<7>[    5.320295] initcall 0xc0446467 returned 0 after 5 usecs
-<7>[    5.320297] calling  0xc044648d @ 1
-<7>[    5.320408] initcall 0xc044648d returned 0 after 103 usecs
-<7>[    5.320410] calling  0xc0446869 @ 1
-<7>[    5.320414] initcall 0xc0446869 returned 0 after 1 usecs
-<7>[    5.320416] calling  0xc0446877 @ 1
-<7>[    5.320420] initcall 0xc0446877 returned 0 after 0 usecs
-<7>[    5.320422] calling  0xc0446885 @ 1
-<7>[    5.320425] initcall 0xc0446885 returned 0 after 0 usecs
-<7>[    5.320426] calling  0xc04468a1 @ 1
-<7>[    5.320504] initcall 0xc04468a1 returned 0 after 70 usecs
-<7>[    5.320507] calling  0xc04469bd @ 1
-<7>[    5.320513] initcall 0xc04469bd returned 0 after 3 usecs
-<7>[    5.320516] calling  0xc04469f3 @ 1
-<7>[    5.320520] initcall 0xc04469f3 returned 0 after 2 usecs
-<7>[    5.320522] calling  0xc0446a07 @ 1
-<6>[    5.320539] ip_tables: (C) 2000-2006 Netfilter Core Team
-<7>[    5.320542] initcall 0xc0446a07 returned 0 after 16 usecs
-<7>[    5.320545] calling  0xc0446a79 @ 1
-<7>[    5.320581] initcall 0xc0446a79 returned 0 after 31 usecs
-<7>[    5.320584] calling  0xc0446b95 @ 1
-<7>[    5.320611] initcall 0xc0446b95 returned 0 after 22 usecs
-<7>[    5.320613] calling  0xc0446c47 @ 1
-<7>[    5.320630] initcall 0xc0446c47 returned 0 after 14 usecs
-<7>[    5.320632] calling  0xc0446c79 @ 1
-<7>[    5.320642] initcall 0xc0446c79 returned 0 after 5 usecs
-<7>[    5.320644] calling  0xc0446c95 @ 1
-<7>[    5.320649] initcall 0xc0446c95 returned 0 after 2 usecs
-<7>[    5.320651] calling  0xc0446cfd @ 1
-<7>[    5.320655] initcall 0xc0446cfd returned 0 after 1 usecs
-<7>[    5.320657] calling  0xc0446d09 @ 1
-<7>[    5.320661] initcall 0xc0446d09 returned 0 after 2 usecs
-<7>[    5.320664] calling  0xc04471a5 @ 1
-<7>[    5.320667] initcall 0xc04471a5 returned 0 after 0 usecs
-<7>[    5.320669] calling  0xc0447293 @ 1
-<6>[    5.320713] NET: Registered protocol family 10
-<7>[    5.331719] initcall 0xc0447293 returned 0 after 10780 usecs
-<7>[    5.331724] calling  0xc0448871 @ 1
-<6>[    5.331728] NET: Registered protocol family 17
-<7>[    5.331740] initcall 0xc0448871 returned 0 after 12 usecs
-<7>[    5.331743] calling  0xc04488c5 @ 1
-<7>[    5.331746] initcall 0xc04488c5 returned 0 after 1 usecs
-<7>[    5.331748] calling  0xc0448921 @ 1
-<6>[    5.331770] NET: Registered protocol family 15
-<7>[    5.331774] initcall 0xc0448921 returned 0 after 22 usecs
-<7>[    5.331776] calling  0xc0448af9 @ 1
-<7>[    5.332028] initcall 0xc0448af9 returned 0 after 237 usecs
-<7>[    5.332175] calling  0xc0434331 @ 1
-<7>[    5.332385] initcall 0xc0434331 returned 0 after 197 usecs
-<7>[    5.332389] calling  0xc0435059 @ 1
-<5>[    5.332400] Registering SWP/SWPB emulation handler
-<7>[    5.332404] initcall 0xc0435059 returned 0 after 11 usecs
-<7>[    5.332406] calling  0xc001a64d @ 1
-<7>[    5.332414] initcall 0xc001a64d returned 0 after 4 usecs
-<7>[    5.332415] calling  0xc04384e3 @ 1
-<7>[    5.333144] initcall 0xc04384e3 returned 0 after 700 usecs
-<7>[    5.333148] calling  0xc0438855 @ 1
-<7>[    5.333151] initcall 0xc0438855 returned 0 after 0 usecs
-<7>[    5.333154] calling  0xc0439871 @ 1
-<7>[    5.333176] initcall 0xc0439871 returned 0 after 18 usecs
-<7>[    5.333178] calling  0xc043ae2b @ 1
-<7>[    5.333185] initcall 0xc043ae2b returned 0 after 4 usecs
-<7>[    5.333187] calling  0xc043bc59 @ 1
-<7>[    5.333191] initcall 0xc043bc59 returned 0 after 0 usecs
-<7>[    5.333193] calling  0xc043c365 @ 1
-<7>[    5.333203] initcall 0xc043c365 returned 0 after 7 usecs
-<7>[    5.333205] calling  0xc043df3b @ 1
-<7>[    5.333218] initcall 0xc043df3b returned 0 after 9 usecs
-<7>[    5.333219] calling  0xc043ea05 @ 1
-<7>[    5.336382] initcall 0xc043ea05 returned 0 after 3075 usecs
-<7>[    5.336387] calling  0xc043f4fd @ 1
-<7>[    5.336791] initcall 0xc043f4fd returned 0 after 387 usecs
-<7>[    5.336795] calling  0xc019a52d @ 1
-<7>[    5.951215] initcall 0xc019a52d returned 0 after 600009 usecs
-<3>[    5.957655] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
-<3>[    5.958479] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
-<6>[    5.958683] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.959769] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    5.967777] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<3>[    5.974756] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    5.985423] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    5.996095] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    6.006773] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<6>[    6.006793] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.007858] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.014761] sunxi-mmc sdc0: sdc set ios:clk 0Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.014778] sunxi-mmc sdc0: no vqmmc,Check if there is regulator
-<6>[    6.042419] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.043491] sunxi-mmc sdc1: sdc set ios:clk 300000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<3>[    6.081305] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
-<3>[    6.091981] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
-<6>[    6.092017] sunxi-mmc sdc1: sdc set ios:clk 300000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.100043] sunxi-mmc sdc1: sdc set ios:clk 300000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<3>[    6.107029] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<4>[    6.107045] mmc0: host does not support reading read-only switch, assuming write-enable
-<3>[    6.117719] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    6.128390] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<6>[    6.128405] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 4 timing LEGACY(SDR12) dt B
-<3>[    6.134295] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<6>[    6.134306] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 4 timing UHS-SDR104 dt B
-<6>[    6.134358] sunxi-mmc sdc0: sdc set ios:clk 150000000Hz bm PP pm ON vdd 21 width 4 timing UHS-SDR104 dt B
-<6>[    6.134456] mmc0: new ultra high speed SDR104 SDHC card at address 0001
-<6>[    6.134684] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.135751] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.167238] sunxi-mmc sdc1: sdc set ios:clk 200000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<3>[    6.211793] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
-<3>[    6.221990] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
-<6>[    6.222008] sunxi-mmc sdc1: sdc set ios:clk 200000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.234772] sunxi-mmc sdc1: sdc set ios:clk 200000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<3>[    6.241763] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    6.247695] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    6.258362] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    6.269034] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<6>[    6.269046] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.270107] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.303630] sunxi-mmc sdc1: sdc set ios:clk 100000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<7>[    6.324573] calling  0xc0441429 @ 1
-<7>[    6.328607] initcall 0xc0441429 returned 0 after 113 usecs
-<3>[    6.334720] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
-<3>[    6.340743] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
-<6>[    6.340776] sunxi-mmc sdc1: sdc set ios:clk 100000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[    6.348881] sunxi-mmc sdc1: sdc set ios:clk 100000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<3>[    6.360669] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    6.371368] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    6.377211] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<3>[    6.383038] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
-<6>[    6.383049] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
-<7>[    6.405952] calling  0xc0441785 @ 1
-<6>[    6.410788] input: pmc-v1-pek as /devices/platform/soc/7090000.pmu/pmc-pek.0/input/input2
-<7>[    6.420358] initcall 0xc0441785 returned 0 after 10273 usecs
-<7>[    6.426839] calling  0xc0441893 @ 1
-<6>[    6.430721] hctosys: unable to open rtc device (rtc0)
-<7>[    6.436375] initcall 0xc0441893 returned -19 after 5523 usecs
-<7>[    6.442779] calling  0xc0442e2f @ 1
-<7>[    6.447164] initcall 0xc0442e2f returned 0 after 460 usecs
-<7>[    6.453273] calling  0xc0444885 @ 1
-<7>[    6.457266] initcall 0xc0444885 returned 0 after 0 usecs
-<7>[    6.463177] calling  0xc044597d @ 1
-<7>[    6.467080] initcall 0xc044597d returned 0 after 1 usecs
-<7>[    6.472995] calling  0xc015f6b5 @ 1
-<4>[    6.476888] clk: Not disabling unused clocks
-<7>[    6.481636] initcall 0xc015f6b5 returned 0 after 4636 usecs
-<7>[    6.487957] calling  0xc043f581 @ 1
-<7>[    6.491896] initcall 0xc043f581 returned 0 after 45 usecs
-<6>[    6.499859] VFS: Mounted root (squashfs filesystem) readonly on device 31:3.
-<6>[    6.509804] devtmpfs: mounted
-<6>[    6.513250] Freeing unused kernel memory: 132K
-<4>[    6.518255] This architecture does not have kernel memory protection.
-<0>[    6.525438] will run init ...
-<5>[    7.137209] random: crng init done
-<7>[    7.198969] calling  0xbf813001 @ 468
-<4>[    7.203332] [VIN_WARN]sensor_helper_probe: cannot get sensor0_cameravdd supply, setting it to NULL!
-<4>[    7.213571] [VIN_WARN]sensor_helper_probe: cannot get sensor0_iovdd supply, setting it to NULL!
-<4>[    7.223389] [VIN_WARN]sensor_helper_probe: cannot get sensor0_avdd supply, setting it to NULL!
-<4>[    7.233052] [VIN_WARN]sensor_helper_probe: cannot get sensor0_dvdd supply, setting it to NULL!
-<4>[    7.242781] [VIN_WARN]sensor_helper_probe: cannot get sensor1_cameravdd supply, setting it to NULL!
-<4>[    7.252923] [VIN_WARN]sensor_helper_probe: cannot get sensor1_iovdd supply, setting it to NULL!
-<4>[    7.262629] [VIN_WARN]sensor_helper_probe: cannot get sensor1_avdd supply, setting it to NULL!
-<4>[    7.272248] [VIN_WARN]sensor_helper_probe: cannot get sensor1_dvdd supply, setting it to NULL!
-<7>[    7.282095] initcall 0xbf813001 returned 0 after 77184 usecs
-<7>[    7.379355] calling  0xbf818001 @ 470
-<7>[    7.383888] initcall 0xbf818001 returned 0 after 410 usecs
-<7>[    7.392893] calling  0xbf81d001 @ 473
-<7>[    7.397320] initcall 0xbf81d001 returned 0 after 183 usecs
-<7>[    7.445742] calling  0xbf843001 @ 478
-<6>[    7.452478] Freeing isp_reserved memory: 10240K
-<4>[    7.463577] sun8iw21p1-pinctrl pio: expect_func as:mipi_csi_mclk1, but muxsel(5) is func:uart0
-<3>[    7.525430] [VIN_ERR]registering gc2053_mipi, No such device!
-<4>[    7.541655] sun8iw21p1-pinctrl pio: expect_func as:mipi_csi_mclk1, but muxsel(5) is func:uart0
-<3>[    7.565625] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.575799] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.583970] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.592172] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.602338] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.610487] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.618684] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.628849] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.637024] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    7.645168] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
-<3>[    7.652488] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.662655] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.670800] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.678993] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.689158] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.697303] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.705492] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.715657] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.723800] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    7.731951] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
-<6>[    7.739223] [sc2336_mipi]V4L2_IDENT_SENSOR = 0x0
-<3>[    7.744403] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.754567] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.762712] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.770923] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.781088] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.789234] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.797427] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.807592] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.815737] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    7.823882] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
-<3>[    7.831195] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.841360] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.849504] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.857700] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.867865] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.876009] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.884194] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.894359] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.902520] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    7.910670] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
-<6>[    7.917951] [sc2336_mipi]retry = 0, V4L2_IDENT_SENSOR = 0
-<3>[    7.924002] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.934166] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.942311] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.950504] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.960668] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.968813] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    7.977005] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    7.987172] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    7.995315] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    8.003467] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
-<3>[    8.010806] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.020972] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.029138] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.037336] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.047501] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.055644] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.063828] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.073993] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.082137] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    8.090289] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
-<6>[    8.097559] [sc2336_mipi]retry = 1, V4L2_IDENT_SENSOR = 0
-<3>[    8.103613] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.113778] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.121923] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.130115] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.140280] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.148423] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.156633] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.166798] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.174942] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    8.183090] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
-<3>[    8.190405] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.200570] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.208713] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.216905] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.227070] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.235218] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.243414] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.253579] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.261723] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    8.269872] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
-<6>[    8.277143] [sc2336_mipi]retry = 2, V4L2_IDENT_SENSOR = 0
-<3>[    8.283192] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.293356] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.301517] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.309714] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.319879] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.328022] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.336216] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.346381] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.354524] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    8.362676] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
-<3>[    8.369989] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.380154] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.388298] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.396494] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.406659] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.414803] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.422999] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.433165] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.441324] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    8.449473] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
-<6>[    8.456745] [sc2336_mipi]retry = 3, V4L2_IDENT_SENSOR = 0
-<3>[    8.462796] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.472962] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.481107] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.489299] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.499464] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.507608] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.515799] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.525964] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.534108] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    8.542260] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
-<3>[    8.549572] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.559737] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.567897] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.576094] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.586261] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.594405] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<3>[    8.602597] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
-<3>[    8.612762] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
-<3>[    8.620905] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
-<6>[    8.629057] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
-<6>[    8.636325] [sc2336_mipi]retry = 4, V4L2_IDENT_SENSOR = 0
-<3>[    8.642334] [sc2336_mipi] error, chip found is not an target chip.
-<3>[    8.649508] [VIN_ERR]registering sc2336_mipi, No such device!
-<4>[    8.658528] sun8iw21p1-pinctrl pio: expect_func as:mipi_csi_mclk1, but muxsel(5) is func:uart0
-<6>[    8.680835] [tp9950]V4L2_IDENT_SENSOR = 0x5028
-<6>[   10.197063] [tp9950]read reg0x3= 0xf reg0x1= 0x8b det_size_type=0
-<6>[   10.203851] [tp9950]sensor_type = 1 info->width=1280 info->height=720
-<7>[   10.217897] initcall 0xbf843001 returned 0 after 2703171 usecs
-<7>[   10.249425] calling  0xbf847001 @ 519
-<7>[   10.253638] initcall 0xbf847001 returned 0 after 122 usecs
-<7>[   10.300883] calling  0xbf851031 @ 521
-<7>[   10.305003] initcall 0xbf851031 returned 0 after 36 usecs
-<7>[   10.314002] calling  0xbf858001 @ 522
-<7>[   10.318462] initcall 0xbf858001 returned 0 after 282 usecs
-<7>[   10.328388] calling  0xbf867001 @ 524
-<7>[   10.332491] initcall 0xbf867001 returned 0 after 17 usecs
-<7>[   10.376616] calling  0xbf87d001 @ 526
-<7>[   10.381460] initcall 0xbf87d001 returned 0 after 737 usecs
-<7>[   10.395706] calling  0xbf885001 @ 532
-<7>[   10.400277] initcall 0xbf885001 returned 0 after 471 usecs
-<7>[   10.409355] calling  0xbf88c001 @ 534
-<4>[   10.413851] [sound 1158][DAUDIO snd_sunxi_regulator_init] regulator missing or invalid
-<7>[   10.423113] initcall 0xbf88c001 returned 0 after 9443 usecs
-<7>[   10.432487] calling  0xbf895001 @ 536
-<7>[   10.437405] initcall 0xbf895001 returned 0 after 723 usecs
-<7>[   10.446454] calling  0xbf89a001 @ 538
-<6>[   10.451494] sunxi-snd-mach soc@03000000:codec_mach: sunxi-snd-codec <-> soc@03000000:codec_plat mapping ok
-<6>[   10.464102] sunxi-snd-mach soc@03000000:daudio0_mach: snd-soc-dummy-dai <-> 2032000.daudio0_plat mapping ok
-<7>[   10.476343] initcall 0xbf89a001 returned 0 after 25195 usecs
-<7>[   10.532152] calling  0xbf89f001 @ 554
-<4>[   10.536721] [GOODIX 9XX INFO] LINE:0122-->goodix_reset:reset the tp !!!!!!
-<3>[   10.645617] sunxi:i2c_sunxi_ng@twi2[ERR]: SLA+W has been transmitted; ACK not received
-<3>[   10.654434] sunxi:i2c_sunxi_ng@twi2[ERR]: engine mode: TWI BUS error state is 0x20
-<3>[   10.662879] sunxi:i2c_sunxi_ng@twi2[ERR]: engine-mode: xfer failed(dev addr:0x5d)
-<3>[   10.671234] Goodix-TS 2-005d: read version failed: -22
-<3>[   10.676963] Goodix-TS 2-005d: Read version failed.
-<4>[   10.682324] Goodix-TS: probe of 2-005d failed with error -22
-<7>[   10.688775] initcall 0xbf89f001 returned 0 after 148684 usecs
-<7>[   10.719868] calling  0xbf8ac03d @ 563
-<7>[   10.723973] initcall 0xbf8ac03d returned 0 after 21 usecs
-<7>[   10.754516] calling  0xbf8b1001 @ 564
-<7>[   10.758681] initcall 0xbf8b1001 returned 0 after 6 usecs
-<7>[   10.775279] calling  0xbf8b9001 @ 568
-<6>[   10.782462] mmcblk0: mmc0:0001 USD 29.8 GiB 
-<6>[   10.790854]  mmcblk0: p1
-<7>[   10.794494] initcall 0xbf8b9001 returned 0 after 12059 usecs
-<4>[   10.914540] init (577): /proc/1/oom_adj is deprecated, please use /proc/1/oom_score_adj instead.
-<4>[   11.447380] FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
-<4>[   11.485108] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
-<6>[   14.391377] [tp9950]V4L2_IDENT_SENSOR = 0x5028
-<7>[   14.848044] calling  0xbf940001 @ 753
-<6>[   15.046056] sunxi-wlan soc@03000000:wlan@0: bus_index: 1
-<4>[   15.046061] ----- platform_wifi_power_on sdc_id: 1
-<6>[   15.046096] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
-<7>[   15.059193] initcall 0xbf940001 returned 0 after 201946 usecs
-<6>[   15.075638] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[   15.112706] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<6>[   15.115207] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
-<4>[   15.118693] sunxi-mmc sdc1: card claims to support voltages below defined range
-<6>[   15.169635] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing SD-HS(SDR25) dt B
-<6>[   15.181270] sunxi-mmc sdc1: sdc set ios:clk 50000000Hz bm PP pm ON vdd 21 width 1 timing SD-HS(SDR25) dt B
-<6>[   15.197152] sunxi-mmc sdc1: sdc set ios:clk 50000000Hz bm PP pm ON vdd 21 width 4 timing SD-HS(SDR25) dt B
-<6>[   15.197863] mmc1: new high speed SDIO card at address 0001
-<6>[   15.915587] [tp9950]read reg0x3= 0x28 reg0x1= 0x83 det_size_type=0
-<6>[   15.915594] [tp9950]sensor_type = 1 info->width=1280 info->height=720
-<6>[   15.920034] [tp9950]sensor_s_stream on = 1, 1280*720 2006
-<6>[   16.198064] VE: before freq=200000000
-<6>[   16.198098] VE: real freq=400000000
-<6>[   16.198191] VE: before freq=400000000
-<6>[   16.198194] VE: real freq=400000000
-<6>[   16.202228] VE: before freq=400000000
-<6>[   16.202233] VE: real freq=400000000
-<6>[   16.220489] [tp9950]V4L2_IDENT_SENSOR = 0x5028
+===== V25 kernel capture started =====
+Thu Jan  1 08:00:11 +08 1970
+<6>[    4.870362] sunxi-mmc sdc0: No vq33sw regulator found
+<6>[    4.875992] sunxi-mmc sdc0: No vq18sw regulator found
+<6>[    4.881992] sunxi-mmc sdc0: set host busy
+<6>[    4.886544] sunxi-mmc sdc0: Got CD GPIO
+<6>[    4.891132] sunxi-mmc sdc0: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.145221] sunxi-mmc sdc0: no vqmmc,Check if there is regulator
+<6>[    5.175176] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.215303] sunxi-mmc sdc0: detmode:gpio irq
+<6>[    5.215325] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.222172] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.244916] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.255705] sunxi-mmc sdc1: SD/MMC/SDIO Host Controller Driver(v3.30 2022-7-20 15:45)
+<6>[    5.255854] sunxi-mmc sdc1: ***ctl-spec-caps*** 8
+<6>[    5.255898] sunxi-mmc sdc1: No vmmc regulator found
+<6>[    5.255902] sunxi-mmc sdc1: No vqmmc regulator found
+<6>[    5.255905] sunxi-mmc sdc1: No vdmmc regulator found
+<6>[    5.255908] sunxi-mmc sdc1: No vd33sw regulator found
+<6>[    5.255911] sunxi-mmc sdc1: No vd18sw regulator found
+<6>[    5.255914] sunxi-mmc sdc1: No vq33sw regulator found
+<6>[    5.255917] sunxi-mmc sdc1: No vq18sw regulator found
+<6>[    5.256247] sunxi-mmc sdc1: set host busy
+<3>[    5.256296] mmc:failed to get gpios
+<6>[    5.256523] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.287176] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.318123] sunxi-mmc sdc1: detmode:manually by software
+<7>[    5.318704] initcall 0xc04423f3 returned 0 after 479879 usecs
+<7>[    5.318708] calling  0xc0443ec5 @ 1
+<7>[    5.318711] initcall 0xc0443ec5 returned 0 after 0 usecs
+<7>[    5.318713] calling  0xc0443f07 @ 1
+<4>[    5.318715] totalram_pages 124979 log_size 262144
+<6>[    5.318986] logger: created 256K log 'log_main'
+<7>[    5.318991] initcall 0xc0443f07 returned 0 after 267 usecs
+<7>[    5.318993] calling  0xc044403b @ 1
+<7>[    5.319399] initcall 0xc044403b returned 0 after 389 usecs
+<7>[    5.319403] calling  0xc044412d @ 1
+<7>[    5.319455] initcall 0xc044412d returned 0 after 47 usecs
+<7>[    5.319458] calling  0xc04448d5 @ 1
+<7>[    5.319629] initcall 0xc04448d5 returned 0 after 157 usecs
+<7>[    5.319633] calling  0xc0444e75 @ 1
+<6>[    5.319637] Netfilter messages via NETLINK v0.30.
+<7>[    5.319647] initcall 0xc0444e75 returned 0 after 10 usecs
+<7>[    5.319649] calling  0xc0444edd @ 1
+<6>[    5.319700] nf_conntrack version 0.5.0 (8192 buckets, 32768 max)
+<7>[    5.319804] initcall 0xc0444edd returned 0 after 145 usecs
+<7>[    5.319807] calling  0xc0444fa5 @ 1
+<6>[    5.319810] ctnetlink v0.93: registering with nfnetlink.
+<7>[    5.319815] initcall 0xc0444fa5 returned 0 after 5 usecs
+<7>[    5.319817] calling  0xc044503f @ 1
+<7>[    5.319821] initcall 0xc044503f returned 0 after 1 usecs
+<7>[    5.319823] calling  0xc04450a5 @ 1
+<7>[    5.319845] initcall 0xc04450a5 returned 0 after 17 usecs
+<7>[    5.319847] calling  0xc044516f @ 1
+<7>[    5.319852] initcall 0xc044516f returned 0 after 2 usecs
+<7>[    5.319854] calling  0xc04451f1 @ 1
+<7>[    5.319861] initcall 0xc04451f1 returned 0 after 3 usecs
+<7>[    5.319862] calling  0xc0445201 @ 1
+<7>[    5.319866] initcall 0xc0445201 returned 0 after 1 usecs
+<7>[    5.319868] calling  0xc0445231 @ 1
+<7>[    5.319872] initcall 0xc0445231 returned 0 after 1 usecs
+<7>[    5.319874] calling  0xc0445261 @ 1
+<7>[    5.319878] initcall 0xc0445261 returned 0 after 1 usecs
+<7>[    5.319880] calling  0xc044526f @ 1
+<7>[    5.319884] initcall 0xc044526f returned 0 after 1 usecs
+<7>[    5.319886] calling  0xc044527d @ 1
+<7>[    5.319890] initcall 0xc044527d returned 0 after 1 usecs
+<7>[    5.319892] calling  0xc044528b @ 1
+<7>[    5.319896] initcall 0xc044528b returned 0 after 1 usecs
+<7>[    5.319898] calling  0xc0445299 @ 1
+<7>[    5.319901] initcall 0xc0445299 returned 0 after 0 usecs
+<7>[    5.319902] calling  0xc0446403 @ 1
+<7>[    5.319906] initcall 0xc0446403 returned 0 after 1 usecs
+<7>[    5.319908] calling  0xc0446467 @ 1
+<7>[    5.319916] initcall 0xc0446467 returned 0 after 5 usecs
+<7>[    5.319918] calling  0xc044648d @ 1
+<7>[    5.320030] initcall 0xc044648d returned 0 after 104 usecs
+<7>[    5.320032] calling  0xc0446869 @ 1
+<7>[    5.320037] initcall 0xc0446869 returned 0 after 1 usecs
+<7>[    5.320039] calling  0xc0446877 @ 1
+<7>[    5.320042] initcall 0xc0446877 returned 0 after 0 usecs
+<7>[    5.320044] calling  0xc0446885 @ 1
+<7>[    5.320047] initcall 0xc0446885 returned 0 after 0 usecs
+<7>[    5.320049] calling  0xc04468a1 @ 1
+<7>[    5.320125] initcall 0xc04468a1 returned 0 after 68 usecs
+<7>[    5.320128] calling  0xc04469bd @ 1
+<7>[    5.320134] initcall 0xc04469bd returned 0 after 3 usecs
+<7>[    5.320136] calling  0xc04469f3 @ 1
+<7>[    5.320142] initcall 0xc04469f3 returned 0 after 2 usecs
+<7>[    5.320144] calling  0xc0446a07 @ 1
+<6>[    5.320161] ip_tables: (C) 2000-2006 Netfilter Core Team
+<7>[    5.320164] initcall 0xc0446a07 returned 0 after 17 usecs
+<7>[    5.320166] calling  0xc0446a79 @ 1
+<7>[    5.320202] initcall 0xc0446a79 returned 0 after 30 usecs
+<7>[    5.320204] calling  0xc0446b95 @ 1
+<7>[    5.320229] initcall 0xc0446b95 returned 0 after 21 usecs
+<7>[    5.320232] calling  0xc0446c47 @ 1
+<7>[    5.320250] initcall 0xc0446c47 returned 0 after 14 usecs
+<7>[    5.320252] calling  0xc0446c79 @ 1
+<7>[    5.320261] initcall 0xc0446c79 returned 0 after 5 usecs
+<7>[    5.320263] calling  0xc0446c95 @ 1
+<7>[    5.320268] initcall 0xc0446c95 returned 0 after 2 usecs
+<7>[    5.320270] calling  0xc0446cfd @ 1
+<7>[    5.320274] initcall 0xc0446cfd returned 0 after 0 usecs
+<7>[    5.320275] calling  0xc0446d09 @ 1
+<7>[    5.320280] initcall 0xc0446d09 returned 0 after 2 usecs
+<7>[    5.320282] calling  0xc04471a5 @ 1
+<7>[    5.320285] initcall 0xc04471a5 returned 0 after 0 usecs
+<7>[    5.320287] calling  0xc0447293 @ 1
+<6>[    5.320330] NET: Registered protocol family 10
+<7>[    5.331325] initcall 0xc0447293 returned 0 after 10767 usecs
+<7>[    5.331329] calling  0xc0448871 @ 1
+<6>[    5.331334] NET: Registered protocol family 17
+<7>[    5.331346] initcall 0xc0448871 returned 0 after 13 usecs
+<7>[    5.331348] calling  0xc04488c5 @ 1
+<7>[    5.331352] initcall 0xc04488c5 returned 0 after 0 usecs
+<7>[    5.331354] calling  0xc0448921 @ 1
+<6>[    5.331374] NET: Registered protocol family 15
+<7>[    5.331378] initcall 0xc0448921 returned 0 after 20 usecs
+<7>[    5.331380] calling  0xc0448af9 @ 1
+<7>[    5.331630] initcall 0xc0448af9 returned 0 after 235 usecs
+<7>[    5.331776] calling  0xc0434331 @ 1
+<7>[    5.331994] initcall 0xc0434331 returned 0 after 204 usecs
+<7>[    5.331998] calling  0xc0435059 @ 1
+<5>[    5.332009] Registering SWP/SWPB emulation handler
+<7>[    5.332013] initcall 0xc0435059 returned 0 after 11 usecs
+<7>[    5.332015] calling  0xc001a64d @ 1
+<7>[    5.332023] initcall 0xc001a64d returned 0 after 5 usecs
+<7>[    5.332025] calling  0xc04384e3 @ 1
+<7>[    5.332755] initcall 0xc04384e3 returned 0 after 703 usecs
+<7>[    5.332759] calling  0xc0438855 @ 1
+<7>[    5.332763] initcall 0xc0438855 returned 0 after 0 usecs
+<7>[    5.332765] calling  0xc0439871 @ 1
+<7>[    5.332787] initcall 0xc0439871 returned 0 after 18 usecs
+<7>[    5.332789] calling  0xc043ae2b @ 1
+<7>[    5.332795] initcall 0xc043ae2b returned 0 after 3 usecs
+<7>[    5.332797] calling  0xc043bc59 @ 1
+<7>[    5.332800] initcall 0xc043bc59 returned 0 after 0 usecs
+<7>[    5.332802] calling  0xc043c365 @ 1
+<7>[    5.332812] initcall 0xc043c365 returned 0 after 7 usecs
+<7>[    5.332814] calling  0xc043df3b @ 1
+<7>[    5.332827] initcall 0xc043df3b returned 0 after 9 usecs
+<7>[    5.332829] calling  0xc043ea05 @ 1
+<7>[    5.336004] initcall 0xc043ea05 returned 0 after 3087 usecs
+<7>[    5.336009] calling  0xc043f4fd @ 1
+<7>[    5.336415] initcall 0xc043f4fd returned 0 after 390 usecs
+<7>[    5.336420] calling  0xc019a52d @ 1
+<7>[    5.950832] initcall 0xc019a52d returned 0 after 600001 usecs
+<3>[    5.957272] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
+<3>[    5.958096] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
+<6>[    5.958299] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.959383] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    5.967391] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<3>[    5.974371] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    5.985042] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    5.995711] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    6.006385] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<6>[    6.006404] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.007469] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.014372] sunxi-mmc sdc0: sdc set ios:clk 0Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.014389] sunxi-mmc sdc0: no vqmmc,Check if there is regulator
+<6>[    6.042029] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.043103] sunxi-mmc sdc1: sdc set ios:clk 300000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<3>[    6.080909] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
+<3>[    6.091579] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
+<6>[    6.091616] sunxi-mmc sdc1: sdc set ios:clk 300000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.099640] sunxi-mmc sdc1: sdc set ios:clk 300000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<3>[    6.106627] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<4>[    6.106643] mmc0: host does not support reading read-only switch, assuming write-enable
+<3>[    6.117315] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    6.127986] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<6>[    6.128002] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 4 timing LEGACY(SDR12) dt B
+<3>[    6.133892] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<6>[    6.133902] sunxi-mmc sdc0: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 4 timing UHS-SDR104 dt B
+<6>[    6.133954] sunxi-mmc sdc0: sdc set ios:clk 150000000Hz bm PP pm ON vdd 21 width 4 timing UHS-SDR104 dt B
+<6>[    6.134056] mmc0: new ultra high speed SDR104 SDHC card at address 0001
+<6>[    6.134282] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.135346] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.166827] sunxi-mmc sdc1: sdc set ios:clk 200000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<3>[    6.211366] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
+<3>[    6.221563] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
+<6>[    6.221580] sunxi-mmc sdc1: sdc set ios:clk 200000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.234339] sunxi-mmc sdc1: sdc set ios:clk 200000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<3>[    6.241326] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    6.247257] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    6.257922] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    6.268592] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<6>[    6.268604] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.269668] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.303182] sunxi-mmc sdc1: sdc set ios:clk 100000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<7>[    6.324124] calling  0xc0441429 @ 1
+<7>[    6.328162] initcall 0xc0441429 returned 0 after 114 usecs
+<3>[    6.334275] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
+<3>[    6.340294] sunxi-mmc sdc1: smc 1 p1 err, cmd 52, RTO !!
+<6>[    6.340326] sunxi-mmc sdc1: sdc set ios:clk 100000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[    6.348424] sunxi-mmc sdc1: sdc set ios:clk 100000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<3>[    6.360215] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    6.370913] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    6.376752] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<3>[    6.382578] sunxi-mmc sdc1: smc 1 p1 err, cmd 5, RTO !!
+<6>[    6.382589] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm OFF vdd 0 width 1 timing LEGACY(SDR12) dt B
+<7>[    6.405482] calling  0xc0441785 @ 1
+<6>[    6.410309] input: pmc-v1-pek as /devices/platform/soc/7090000.pmu/pmc-pek.0/input/input2
+<7>[    6.419875] initcall 0xc0441785 returned 0 after 10265 usecs
+<7>[    6.426351] calling  0xc0441893 @ 1
+<6>[    6.430232] hctosys: unable to open rtc device (rtc0)
+<7>[    6.435887] initcall 0xc0441893 returned -19 after 5522 usecs
+<7>[    6.442288] calling  0xc0442e2f @ 1
+<7>[    6.446672] initcall 0xc0442e2f returned 0 after 457 usecs
+<7>[    6.452778] calling  0xc0444885 @ 1
+<7>[    6.456770] initcall 0xc0444885 returned 0 after 0 usecs
+<7>[    6.462680] calling  0xc044597d @ 1
+<7>[    6.466584] initcall 0xc044597d returned 0 after 2 usecs
+<7>[    6.472503] calling  0xc015f6b5 @ 1
+<4>[    6.476391] clk: Not disabling unused clocks
+<7>[    6.481139] initcall 0xc015f6b5 returned 0 after 4635 usecs
+<7>[    6.487460] calling  0xc043f581 @ 1
+<7>[    6.491399] initcall 0xc043f581 returned 0 after 44 usecs
+<6>[    6.499363] VFS: Mounted root (squashfs filesystem) readonly on device 31:3.
+<6>[    6.509305] devtmpfs: mounted
+<6>[    6.512752] Freeing unused kernel memory: 132K
+<4>[    6.517754] This architecture does not have kernel memory protection.
+<0>[    6.524938] will run init ...
+<5>[    7.149694] random: crng init done
+<7>[    7.191714] calling  0xbf813001 @ 468
+<4>[    7.196246] [VIN_WARN]sensor_helper_probe: cannot get sensor0_cameravdd supply, setting it to NULL!
+<4>[    7.206475] [VIN_WARN]sensor_helper_probe: cannot get sensor0_iovdd supply, setting it to NULL!
+<4>[    7.216246] [VIN_WARN]sensor_helper_probe: cannot get sensor0_avdd supply, setting it to NULL!
+<4>[    7.225883] [VIN_WARN]sensor_helper_probe: cannot get sensor0_dvdd supply, setting it to NULL!
+<4>[    7.235605] [VIN_WARN]sensor_helper_probe: cannot get sensor1_cameravdd supply, setting it to NULL!
+<4>[    7.245709] [VIN_WARN]sensor_helper_probe: cannot get sensor1_iovdd supply, setting it to NULL!
+<4>[    7.255428] [VIN_WARN]sensor_helper_probe: cannot get sensor1_avdd supply, setting it to NULL!
+<4>[    7.265024] [VIN_WARN]sensor_helper_probe: cannot get sensor1_dvdd supply, setting it to NULL!
+<7>[    7.274861] initcall 0xbf813001 returned 0 after 77052 usecs
+<7>[    7.354137] calling  0xbf818001 @ 470
+<7>[    7.358633] initcall 0xbf818001 returned 0 after 305 usecs
+<7>[    7.367789] calling  0xbf81d001 @ 473
+<7>[    7.372220] initcall 0xbf81d001 returned 0 after 334 usecs
+<7>[    7.420771] calling  0xbf843001 @ 478
+<6>[    7.427575] Freeing isp_reserved memory: 10240K
+<4>[    7.438689] sun8iw21p1-pinctrl pio: expect_func as:mipi_csi_mclk1, but muxsel(5) is func:uart0
+<3>[    7.500579] [VIN_ERR]registering gc2053_mipi, No such device!
+<4>[    7.515327] sun8iw21p1-pinctrl pio: expect_func as:mipi_csi_mclk1, but muxsel(5) is func:uart0
+<3>[    7.539213] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.549383] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.557558] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.565777] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.575933] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.584080] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.592274] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.602437] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.610585] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    7.618736] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+<3>[    7.626073] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.636236] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.644381] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.652577] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.662741] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.670886] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.679077] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.689240] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.697384] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    7.705533] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+<6>[    7.712793] [sc2336_mipi]V4L2_IDENT_SENSOR = 0x0
+<3>[    7.717979] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.728141] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.736284] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.744469] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.754632] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.762794] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.770989] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.781152] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.789295] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    7.797442] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+<3>[    7.804751] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.814914] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.823056] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.831248] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.841412] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.849554] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.857749] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.867912] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.876053] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    7.884197] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+<6>[    7.891477] [sc2336_mipi]retry = 0, V4L2_IDENT_SENSOR = 0
+<3>[    7.897532] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.907694] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.915836] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.924024] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.934188] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.942330] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    7.950523] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.960686] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    7.968827] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    7.976974] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+<3>[    7.984279] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    7.994442] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.002583] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.010799] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.020964] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.029126] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.037324] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.047488] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.055630] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    8.063771] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+<6>[    8.071043] [sc2336_mipi]retry = 1, V4L2_IDENT_SENSOR = 0
+<3>[    8.077096] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.087259] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.095401] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.103591] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.113753] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.121895] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.130086] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.140249] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.148391] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    8.156558] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+<3>[    8.163862] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.174025] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.182169] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.190363] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.200526] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.208668] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.216858] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.227021] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.235164] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    8.243309] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+<6>[    8.250575] [sc2336_mipi]retry = 2, V4L2_IDENT_SENSOR = 0
+<3>[    8.256633] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.266795] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.274938] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.283128] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.293289] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.301447] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.309643] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.319806] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.327948] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    8.336095] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+<3>[    8.343403] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.353565] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.361708] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.369897] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.380061] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.388215] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.396406] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.406570] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.414713] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    8.422862] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+<6>[    8.430142] [sc2336_mipi]retry = 3, V4L2_IDENT_SENSOR = 0
+<3>[    8.436197] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.446360] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.454502] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.462697] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.472859] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.481003] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.489202] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.499365] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.507508] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    8.515656] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+<3>[    8.522965] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.533128] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.541272] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.549462] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.559624] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.567782] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<3>[    8.575979] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+<3>[    8.586142] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+<3>[    8.594284] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+<6>[    8.602430] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+<6>[    8.609700] [sc2336_mipi]retry = 4, V4L2_IDENT_SENSOR = 0
+<3>[    8.615710] [sc2336_mipi] error, chip found is not an target chip.
+<3>[    8.622884] [VIN_ERR]registering sc2336_mipi, No such device!
+<4>[    8.631858] sun8iw21p1-pinctrl pio: expect_func as:mipi_csi_mclk1, but muxsel(5) is func:uart0
+<6>[    8.654189] [tp9950]V4L2_IDENT_SENSOR = 0x5028
+<6>[    8.766082] [tp9950]read reg0x3= 0x3 reg0x1= 0x9 det_size_type=2
+<6>[    8.772769] [tp9950]sensor_type = 1 info->width=1920 info->height=1080
+<7>[    8.786860] initcall 0xbf843001 returned 0 after 1330076 usecs
+<7>[    8.818460] calling  0xbf847001 @ 518
+<7>[    8.822670] initcall 0xbf847001 returned 0 after 120 usecs
+<7>[    8.869993] calling  0xbf851031 @ 520
+<7>[    8.874116] initcall 0xbf851031 returned 0 after 36 usecs
+<7>[    8.883121] calling  0xbf858001 @ 521
+<7>[    8.887579] initcall 0xbf858001 returned 0 after 283 usecs
+<7>[    8.897545] calling  0xbf867001 @ 523
+<7>[    8.901646] initcall 0xbf867001 returned 0 after 17 usecs
+<7>[    8.945784] calling  0xbf87d001 @ 525
+<7>[    8.950619] initcall 0xbf87d001 returned 0 after 730 usecs
+<7>[    8.964812] calling  0xbf885001 @ 531
+<7>[    8.969486] initcall 0xbf885001 returned 0 after 473 usecs
+<7>[    8.978610] calling  0xbf88c001 @ 533
+<4>[    8.983105] [sound 1158][DAUDIO snd_sunxi_regulator_init] regulator missing or invalid
+<7>[    8.992371] initcall 0xbf88c001 returned 0 after 9445 usecs
+<7>[    9.001793] calling  0xbf895001 @ 535
+<7>[    9.006712] initcall 0xbf895001 returned 0 after 721 usecs
+<7>[    9.015767] calling  0xbf89a001 @ 537
+<6>[    9.020811] sunxi-snd-mach soc@03000000:codec_mach: sunxi-snd-codec <-> soc@03000000:codec_plat mapping ok
+<6>[    9.033398] sunxi-snd-mach soc@03000000:daudio0_mach: snd-soc-dummy-dai <-> 2032000.daudio0_plat mapping ok
+<7>[    9.045677] initcall 0xbf89a001 returned 0 after 25214 usecs
+<7>[    9.101506] calling  0xbf89f001 @ 553
+<4>[    9.105993] [GOODIX 9XX INFO] LINE:0122-->goodix_reset:reset the tp !!!!!!
+<3>[    9.215240] sunxi:i2c_sunxi_ng@twi2[ERR]: SLA+W has been transmitted; ACK not received
+<3>[    9.224055] sunxi:i2c_sunxi_ng@twi2[ERR]: engine mode: TWI BUS error state is 0x20
+<3>[    9.232500] sunxi:i2c_sunxi_ng@twi2[ERR]: engine-mode: xfer failed(dev addr:0x5d)
+<3>[    9.240851] Goodix-TS 2-005d: read version failed: -22
+<3>[    9.246579] Goodix-TS 2-005d: Read version failed.
+<4>[    9.251939] Goodix-TS: probe of 2-005d failed with error -22
+<7>[    9.258384] initcall 0xbf89f001 returned 0 after 148971 usecs
+<7>[    9.289521] calling  0xbf8ac03d @ 562
+<7>[    9.293629] initcall 0xbf8ac03d returned 0 after 23 usecs
+<7>[    9.324161] calling  0xbf8b1001 @ 563
+<7>[    9.328327] initcall 0xbf8b1001 returned 0 after 6 usecs
+<7>[    9.344941] calling  0xbf8b9001 @ 567
+<6>[    9.352118] mmcblk0: mmc0:0001 USD 29.8 GiB 
+<6>[    9.360394]  mmcblk0: p1
+<7>[    9.364048] initcall 0xbf8b9001 returned 0 after 11958 usecs
+<4>[    9.484199] init (576): /proc/1/oom_adj is deprecated, please use /proc/1/oom_score_adj instead.
+<4>[   10.017033] FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+<4>[   10.054648] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+<6>[   13.472303] [tp9950]sensor_s_stream on = 1, 1920*1080 2006
+<6>[   13.957680] VE: before freq=200000000
+<6>[   13.961772] VE: real freq=400000000
+<6>[   13.970227] VE: before freq=400000000
+<6>[   13.986228] VE: real freq=400000000
+<6>[   13.997776] VE: before freq=400000000
+<6>[   14.016372] VE: real freq=400000000
+<6>[   14.084115] VE: before freq=400000000
+<6>[   14.102041] VE: real freq=400000000
+<7>[   14.334980] calling  0xbf940001 @ 849
+<6>[   14.682949] sunxi-wlan soc@03000000:wlan@0: bus_index: 1
+<4>[   14.695999] ----- platform_wifi_power_on sdc_id: 1
+<6>[   14.710242] sunxi-mmc sdc1: sdc set ios:clk 0Hz bm PP pm UP vdd 21 width 1 timing LEGACY(SDR12) dt B
+<7>[   14.712287] initcall 0xbf940001 returned 0 after 356735 usecs
+<6>[   14.738238] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[   14.766234] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<6>[   14.793875] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing LEGACY(SDR12) dt B
+<4>[   14.812826] sunxi-mmc sdc1: card claims to support voltages below defined range
+<6>[   14.827233] sunxi-mmc sdc1: sdc set ios:clk 400000Hz bm PP pm ON vdd 21 width 1 timing SD-HS(SDR25) dt B
+<6>[   14.827340] sunxi-mmc sdc1: sdc set ios:clk 50000000Hz bm PP pm ON vdd 21 width 1 timing SD-HS(SDR25) dt B
+<6>[   14.828117] sunxi-mmc sdc1: sdc set ios:clk 50000000Hz bm PP pm ON vdd 21 width 4 timing SD-HS(SDR25) dt B
+<6>[   14.836959] mmc1: new high speed SDIO card at address 0001
