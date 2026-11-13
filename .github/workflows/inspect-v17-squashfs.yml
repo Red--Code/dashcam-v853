@@ -252,7 +252,7 @@ jobs:
                   raise SystemExit("Unexpected default XZ dictionary size")
           if len(d) > 10 * 1024 * 1024:
               raise SystemExit("Rebuilt filesystem exceeds 10 MiB rootfs partition")
-          magic = b"\\xfd7zXZ\\x00"
+          magic = b"\xfd7zXZ\x00"
           counts = {}
           positions = []
           start = 0
@@ -284,7 +284,7 @@ jobs:
           if any(check not in (0, 1) for _,_,_,check in valid):
               raise SystemExit("Rebuilt filesystem still contains XZ checks unsupported by Linux 4.9")
           pathlib.Path(sys.argv[2]).write_text(
-              "\\n".join(f"0x{pos:x}\\t{size}\\t{out}\\t{check}" for pos,size,out,check in valid)
+              "\n".join(f"0x{pos:x}\t{size}\t{out}\t{check}" for pos,size,out,check in valid)
           )
           PY
           sudo mkdir -p "$RUNNER_TEMP/v18-rootfs-extracted"
@@ -339,7 +339,7 @@ jobs:
           if len(sqfs) > part_size:
               raise SystemExit(f"Rebuilt SquashFS too large: {len(sqfs)} > {part_size}")
           candidate = bytearray(base)
-          candidate[start:end] = b"\\xff" * part_size
+          candidate[start:end] = b"\xff" * part_size
           candidate[start:start+len(sqfs)] = sqfs
           if candidate[:start] != base[:start]:
               raise SystemExit("Unexpected changes before rootfs")
@@ -359,8 +359,8 @@ jobs:
               "JFFS2 and all bytes after 0xF60000 unchanged: YES",
               "Unused rootfs partition tail erased to 0xFF: YES",
           ]
-          report_path.write_text("\\n".join(r) + "\\n")
-          print("\\n".join(r))
+          report_path.write_text("\n".join(r) + "\n")
+          print("\n".join(r))
           PY
 
       - name: Upload V18 candidate and report
