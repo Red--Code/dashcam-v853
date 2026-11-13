@@ -327,18 +327,127 @@ jobs:
                   print("No direct file match; stream may belong to an inode metadata or fragment block.")
           PY
 
-      - name: Build V18 CRC32-compatible root filesystem candidate
+      - name: Build V19 SD-logging diagnostic candidate
         shell: bash
         run: |
           set -euo pipefail
           SRC="$RUNNER_TEMP/v17-rootfs-extracted"
-          NEW="$RUNNER_TEMP/v18-rootfs.squashfs"
-          OUT="$RUNNER_TEMP/v18_crc32_rootfs_candidate.bin"
-          REPORT="$RUNNER_TEMP/v18_report.txt"
+          NEW="$RUNNER_TEMP/v19-rootfs.squashfs"
+          OUT="$RUNNER_TEMP/v19_crc32_rootfs_candidate.bin"
+          REPORT="$RUNNER_TEMP/v19_report.txt"
+          python3 - "$SRC" <<'PY'
+          import pathlib, subprocess, sys
+          root = pathlib.Path(sys.argv[1])
+
+          log_script = """#!/bin/sh
+          # V19 diagnostic: wait for a real /mnt/extsd mount, not sys.sd.in.
+          # This makes the SD-mounted/property-not-set condition observable.
+          is_extsd_mounted() {
+              awk '$2 == "/mnt/extsd" { found=1 } END { exit !found }' /proc/mounts
+          }
+          is_overlay_mounted() {
+              awk '$2 == "/overlay" { found=1 } END { exit !found }' /proc/mounts
+          }
+
+          waited=0
+          internal_log=""
+          if is_overlay_mounted; then
+              internal_log="/overlay/v19_sd_boot_diag.txt"
+              {
+                  echo "V19 logger started"
+                  date
+                  echo "sys.sd.in=$(getprop sys.sd.in)"
+                  echo "persist.debug.log.enable=$(getprop persist.debug.log.enable)"
+                  echo "--- initial mounts ---"
+                  cat /proc/mounts
+              } > "$internal_log" 2>&1
+          fi
+
+          # Wait for the card filesystem itself to be mounted. Do not wait for
+          # sys.sd.in: that is the property whose failure we need to diagnose.
+          while ! is_extsd_mounted; do
+              sleep 1
+              waited=$((waited + 1))
+              if [ -n "$internal_log" ] && [ $((waited % 5)) -eq 0 ]; then
+                  {
+                      echo "--- waited \${waited}s ---"
+                      echo "sys.sd.in=$(getprop sys.sd.in)"
+                      echo "sys.sd.needformat=$(getprop sys.sd.needformat)"
+                      echo "sys.sd.rw_err=$(getprop sys.sd.rw_err)"
+                      cat /proc/mounts
+                      cat /proc/partitions
+                  } >> "$internal_log" 2>&1
+              fi
+          done
+
+          LOG_DIR="/mnt/extsd/log"
+          mkdir -p "$LOG_DIR" || exit 1
+          {
+              echo "V19 SD logging diagnostic"
+              date
+              echo "waited_seconds=$waited"
+              echo "sys.sd.in=$(getprop sys.sd.in)"
+              echo "sys.sd.needformat=$(getprop sys.sd.needformat)"
+              echo "sys.sd.rw_err=$(getprop sys.sd.rw_err)"
+              echo "persist.debug.log.enable=$(getprop persist.debug.log.enable)"
+              echo "sys.mainsys.bootcount=$(getprop sys.mainsys.bootcount)"
+              echo "--- /proc/mounts ---"
+              cat /proc/mounts
+              echo "--- /proc/partitions ---"
+              cat /proc/partitions
+              echo "--- block devices ---"
+              ls -l /dev/mmcblk* /dev/block/mmc* 2>&1
+              echo "--- recent kernel messages ---"
+              dmesg | tail -n 160
+              if [ -n "$internal_log" ] && [ -f "$internal_log" ]; then
+                  echo "--- internal wait log ---"
+                  cat "$internal_log"
+              fi
+          } > "$LOG_DIR/v19_sd_boot_diag.txt" 2>&1
+
+          logcat -v threadtime -n 5 -f "$LOG_DIR/soc_log.txt" &
+          cat /proc/kmsg > "$LOG_DIR/ker_log.txt" &
+          while is_extsd_mounted; do
+              sleep 2
+          done
+          killall logcat
+          killall cat
+          sleep 5
+          """
+          script_path = root / "usr/bin/log_catch.sh"
+          script_path.write_text(log_script)
+          script_path.chmod(0o755)
+          check = subprocess.run(["/bin/sh", "-n", str(script_path)])
+          if check.returncode:
+              raise SystemExit("V19 log_catch.sh syntax check failed")
+
+          rc_path = root / "etc/init.rc"
+          lines = rc_path.read_text(errors="replace").splitlines()
+          try:
+              i = lines.index("service logcatch /usr/bin/log_catch.sh")
+          except ValueError:
+              raise SystemExit("Could not find logcatch service declaration")
+          expected = [
+              "service logcatch /usr/bin/log_catch.sh",
+              "    class main",
+              "    disabled",
+              "on property:persist.debug.log.enable=1",
+              "    start logcatch",
+          ]
+          if lines[i:i+5] != expected:
+              raise SystemExit("Unexpected logcatch service block; refusing to patch init.rc: " + repr(lines[i:i+5]))
+          # Enable logcatch as a normal main-class service and remove its
+          # property trigger, so it cannot be blocked by the same property.
+          lines[i:i+5] = expected[:2]
+          rc_path.write_text("\n".join(lines) + "\n")
+          print("Patched only usr/bin/log_catch.sh and etc/init.rc.")
+          print("logcatch now starts with class main and waits for an actual /mnt/extsd mount.")
+          print("The diagnostic records sys.sd.in and SD mount/device state before starting logcat and kmsg capture.")
+          PY
           sudo mksquashfs "$SRC" "$NEW" -noappend -comp xz -b 256K -Xdict-size 256K -processors 1 -no-progress
           echo "New SquashFS size:"
           stat -c '%s bytes' "$NEW"
-          python3 - "$NEW" "$RUNNER_TEMP/v18-rootfs-check" <<'PY'
+          python3 - "$NEW" "$RUNNER_TEMP/v19-rootfs-check" <<'PY'
           import lzma, pathlib, struct, sys
           p = pathlib.Path(sys.argv[1])
           d = p.read_bytes()
@@ -403,9 +512,9 @@ jobs:
               "\n".join(f"0x{pos:x}\t{size}\t{out}\t{check}" for pos,size,out,check in valid)
           )
           PY
-          sudo mkdir -p "$RUNNER_TEMP/v18-rootfs-extracted"
-          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/v18-rootfs-extracted" "$NEW"
-          python3 - "$SRC" "$RUNNER_TEMP/v18-rootfs-extracted" <<'PY'
+          sudo mkdir -p "$RUNNER_TEMP/v19-rootfs-extracted"
+          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/v19-rootfs-extracted" "$NEW"
+          python3 - "$SRC" "$RUNNER_TEMP/v19-rootfs-extracted" <<'PY'
           import hashlib, os, pathlib, stat, sys
           def manifest(root):
               root = pathlib.Path(root)
@@ -465,7 +574,7 @@ jobs:
           sha = hashlib.sha256(candidate).hexdigest()
           baseline_sha = hashlib.sha256(base).hexdigest()
           r = [
-              "V18 CRC32-compatible rootfs candidate (NOT FLASHED)",
+              "V19 CRC32-compatible rootfs candidate (NOT FLASHED)",
               f"Baseline SHA-256: {baseline_sha}",
               f"Candidate SHA-256: {sha}",
               f"Candidate image size: {len(candidate)}",
@@ -479,10 +588,10 @@ jobs:
           print("\n".join(r))
           PY
 
-      - name: Upload V18 candidate and report
+      - name: Upload V19 SD-logging diagnostic candidate and report
         uses: actions/upload-artifact@v4
         with:
-          name: v18-crc32-rootfs-candidate
+          name: v19-sd-logging-diagnostic
           path: |
             ${{ runner.temp }}/v18_crc32_rootfs_candidate.bin
             ${{ runner.temp }}/v18_report.txt
