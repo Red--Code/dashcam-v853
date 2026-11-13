@@ -62,6 +62,7 @@ jobs:
           MAIN="$ROOT/usr/bin/mainsys"
           test -s "$MAIN"
           strings -a -n 4 "$MAIN" > "$OUT/mainsys.strings.txt"
+          strings -a -t x "$MAIN" > "$OUT/mainsys.strings-offset.txt"
           arm-linux-gnueabihf-nm -anC "$MAIN" > "$OUT/mainsys.symbols.txt"
           {
             echo "=== relevant function symbols ==="
