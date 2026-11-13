@@ -210,3 +210,163 @@ jobs:
               if not found:
                   print("No direct file match; stream may belong to an inode metadata or fragment block.")
           PY
+
+      - name: Build V18 CRC32-compatible root filesystem candidate
+        shell: bash
+        run: |
+          set -euo pipefail
+          SRC="$RUNNER_TEMP/v17-rootfs-extracted"
+          NEW="$RUNNER_TEMP/v18-rootfs.squashfs"
+          OUT="$RUNNER_TEMP/v18_crc32_rootfs_candidate.bin"
+          REPORT="$RUNNER_TEMP/v18_report.txt"
+          sudo mksquashfs "$SRC" "$NEW" -noappend -comp xz -b 256K -Xdict-size 256K -processors 1 -no-progress
+          echo "New SquashFS size:"
+          stat -c '%s bytes' "$NEW"
+          python3 - "$NEW" "$RUNNER_TEMP/v18-rootfs-check" <<'PY'
+          import lzma, pathlib, struct, sys
+          p = pathlib.Path(sys.argv[1])
+          d = p.read_bytes()
+          u16 = lambda o: struct.unpack_from("<H", d, o)[0]
+          u32 = lambda o: struct.unpack_from("<I", d, o)[0]
+          u64 = lambda o: struct.unpack_from("<Q", d, o)[0]
+          assert d[:4] == b"hsqs", f"rebuilt SquashFS magic invalid: {d[:4]!r}"
+          flags = u16(24)
+          print(f"Rebuilt flags=0x{flags:04x}; COMP_OPT={(flags >> 10) & 1}")
+          print(f"Rebuilt dictionary/block size={u32(12)}")
+          print(f"Rebuilt bytes_used={u64(40)}")
+          if flags & (1 << 10):
+              h = u16(96)
+              length = h & 0x7fff
+              opts = d[98:98+length]
+              print(f"Options metadata header=0x{h:04x}, length={length}, uncompressed={bool(h & 0x8000)}")
+              print(f"Options payload={opts.hex()}")
+              assert length == 8, f"expected 8-byte standard XZ options, got {length}"
+              dictionary, filters = struct.unpack("<II", opts)
+              print(f"dictionary_size={dictionary}; bcj_filter_flags=0x{filters:08x}")
+              assert dictionary == 262144, "unexpected XZ dictionary size"
+              assert filters == 0, "unexpected BCJ filters; candidate is intended to use no BCJ filters"
+          else:
+              raise SystemExit("Rebuilt XZ filesystem is missing compressor-options metadata")
+          if len(d) > 10 * 1024 * 1024:
+              raise SystemExit("Rebuilt filesystem exceeds 10 MiB rootfs partition")
+          magic = b"\\xfd7zXZ\\x00"
+          counts = {}
+          positions = []
+          start = 0
+          while True:
+              pos = d.find(magic, start)
+              if pos < 0:
+                  break
+              positions.append(pos)
+              start = pos + 1
+          valid = []
+          for pos in positions:
+              dec = lzma.LZMADecompressor(format=lzma.FORMAT_XZ, memlimit=64*1024*1024)
+              try:
+                  decoded = dec.decompress(d[pos:])
+              except lzma.LZMAError:
+                  continue
+              if not dec.eof:
+                  continue
+              consumed = len(d) - pos - len(dec.unused_data)
+              if consumed < 32:
+                  continue
+              check = d[pos+7] & 0x0f
+              counts[check] = counts.get(check, 0) + 1
+              valid.append((pos, consumed, len(decoded), check))
+          print(f"Valid XZ stream candidates={len(valid)}; check-ID counts={counts}")
+          print("Check ID 0=none, 1=CRC32, 4=CRC64.")
+          if not valid:
+              raise SystemExit("No complete XZ streams found in rebuilt filesystem")
+          if any(check not in (0, 1) for _,_,_,check in valid):
+              raise SystemExit("Rebuilt filesystem still contains XZ checks unsupported by Linux 4.9")
+          pathlib.Path(sys.argv[2]).write_text(
+              "\\n".join(f"0x{pos:x}\\t{size}\\t{out}\\t{check}" for pos,size,out,check in valid)
+          )
+          PY
+          sudo mkdir -p "$RUNNER_TEMP/v18-rootfs-extracted"
+          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/v18-rootfs-extracted" "$NEW"
+          python3 - "$SRC" "$RUNNER_TEMP/v18-rootfs-extracted" <<'PY'
+          import hashlib, os, pathlib, stat, sys
+          def manifest(root):
+              root = pathlib.Path(root)
+              out = {}
+              for p in [root] + sorted(root.rglob("*"), key=lambda x: str(x.relative_to(root))):
+                  rel = "." if p == root else str(p.relative_to(root))
+                  st = p.lstat()
+                  mode = stat.S_IMODE(st.st_mode)
+                  common = (stat.S_IFMT(st.st_mode), mode, st.st_uid, st.st_gid)
+                  if stat.S_ISLNK(st.st_mode):
+                      out[rel] = common + ("link", os.readlink(p))
+                  elif stat.S_ISREG(st.st_mode):
+                      h = hashlib.sha256()
+                      with p.open("rb") as f:
+                          for chunk in iter(lambda: f.read(1024*1024), b""):
+                              h.update(chunk)
+                      out[rel] = common + ("file", st.st_size, h.hexdigest())
+                  elif stat.S_ISDIR(st.st_mode):
+                      out[rel] = common + ("dir",)
+                  elif stat.S_ISCHR(st.st_mode) or stat.S_ISBLK(st.st_mode):
+                      out[rel] = common + ("device", st.st_rdev)
+                  elif stat.S_ISFIFO(st.st_mode):
+                      out[rel] = common + ("fifo",)
+                  else:
+                      out[rel] = common + ("other",)
+              return out
+          a = manifest(sys.argv[1])
+          b = manifest(sys.argv[2])
+          if a != b:
+              keys = sorted(set(a) | set(b))
+              differences = [k for k in keys if a.get(k) != b.get(k)]
+              print("Filesystem manifest differences:")
+              for k in differences[:50]:
+                  print(k, "SOURCE=", a.get(k), "REBUILT=", b.get(k))
+              raise SystemExit(f"Manifest mismatch: {len(differences)} entries")
+          print(f"Exact file tree/content/ownership/mode match: {len(a)} entries")
+          PY
+          python3 - "$GITHUB_WORKSPACE/v17_current_backup.bin" "$NEW" "$OUT" "$REPORT" <<'PY'
+          import hashlib, pathlib, sys
+          base_path, sqfs_path, out_path, report_path = map(pathlib.Path, sys.argv[1:])
+          base = bytearray(base_path.read_bytes())
+          sqfs = sqfs_path.read_bytes()
+          start, end = 0x560000, 0xF60000
+          part_size = end - start
+          if len(base) != 0x1000000:
+              raise SystemExit(f"Wrong baseline size: {len(base)}")
+          if len(sqfs) > part_size:
+              raise SystemExit(f"Rebuilt SquashFS too large: {len(sqfs)} > {part_size}")
+          candidate = bytearray(base)
+          candidate[start:end] = b"\\xff" * part_size
+          candidate[start:start+len(sqfs)] = sqfs
+          if candidate[:start] != base[:start]:
+              raise SystemExit("Unexpected changes before rootfs")
+          if candidate[end:] != base[end:]:
+              raise SystemExit("Unexpected changes after rootfs (JFFS2 overlay / remaining flash)")
+          out_path.write_bytes(candidate)
+          sha = hashlib.sha256(candidate).hexdigest()
+          baseline_sha = hashlib.sha256(base).hexdigest()
+          r = [
+              "V18 CRC32-compatible rootfs candidate (NOT FLASHED)",
+              f"Baseline SHA-256: {baseline_sha}",
+              f"Candidate SHA-256: {sha}",
+              f"Candidate image size: {len(candidate)}",
+              f"New SquashFS file size: {len(sqfs)}",
+              f"Rootfs partition: 0x{start:06x}..0x{end:06x} ({part_size} bytes)",
+              "Bytes before rootfs unchanged: YES",
+              "JFFS2 and all bytes after 0xF60000 unchanged: YES",
+              "Unused rootfs partition tail erased to 0xFF: YES",
+          ]
+          report_path.write_text("\\n".join(r) + "\\n")
+          print("\\n".join(r))
+          PY
+
+      - name: Upload V18 candidate and report
+        uses: actions/upload-artifact@v4
+        with:
+          name: v18-crc32-rootfs-candidate
+          path: |
+            ${{ runner.temp }}/v18_crc32_rootfs_candidate.bin
+            ${{ runner.temp }}/v18_report.txt
+            ${{ runner.temp }}/v18-rootfs-check
+          if-no-files-found: error
+          retention-days: 30
