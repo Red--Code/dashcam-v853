@@ -596,8 +596,8 @@ jobs:
         with:
           name: v19-sd-logging-diagnostic
           path: |
-            ${{ runner.temp }}/v18_crc32_rootfs_candidate.bin
-            ${{ runner.temp }}/v18_report.txt
-            ${{ runner.temp }}/v18-rootfs-check
+            ${{ runner.temp }}/v19_crc32_rootfs_candidate.bin
+            ${{ runner.temp }}/v19_report.txt
+            ${{ runner.temp }}/v19-rootfs-check
           if-no-files-found: error
           retention-days: 30
