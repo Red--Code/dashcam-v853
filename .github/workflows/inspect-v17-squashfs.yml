@@ -1,0 +1,75 @@
+name: V17 read-only SquashFS diagnosis
+
+on:
+  push:
+    branches:
+      - diagnostic/v17-squashfs-check
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-v17:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Check out diagnostic branch
+        uses: actions/checkout@v4
+
+      - name: Verify exact V17 backup
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="v17_current_backup.bin"
+          EXPECTED_SHA="582c23df1f691734ae9a18513686eab4dd44d6b58307824a80e48a0be64fc002"
+          EXPECTED_SIZE=16777216
+          ACTUAL_SIZE="$(stat -c '%s' "$IMAGE")"
+          ACTUAL_SHA="$(sha256sum "$IMAGE" | awk '{print $1}')"
+          echo "Image size: $ACTUAL_SIZE"
+          echo "Image SHA-256: $ACTUAL_SHA"
+          test "$ACTUAL_SIZE" -eq "$EXPECTED_SIZE"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          echo "Exact V17 backup confirmed."
+
+      - name: Install SquashFS inspection tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y squashfs-tools file binutils
+
+      - name: Extract the presumed rootfs partition
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="v17_current_backup.bin"
+          ROOTFS="$RUNNER_TEMP/v17-rootfs.squashfs"
+          # Known firmware map: rootfs starts at 0x560000 and ends at 0xF60000.
+          dd if="$IMAGE" of="$ROOTFS" bs=65536 skip=86 count=160 status=progress
+          echo "Rootfs candidate size:"
+          stat -c '%s bytes' "$ROOTFS"
+          echo "First 16 bytes:"
+          od -An -tx1 -N16 "$ROOTFS"
+          MAGIC="$(head -c 4 "$ROOTFS")"
+          printf 'SquashFS magic bytes: %s\n' "$(printf '%s' "$MAGIC" | od -An -tx1 | tr -d ' \n')"
+          test "$MAGIC" = "hsqs"
+          unsquashfs -s "$ROOTFS"
+
+      - name: Test entire SquashFS filesystem
+        shell: bash
+        run: |
+          set +e
+          unsquashfs -t "$RUNNER_TEMP/v17-rootfs.squashfs" 2>&1 | tee "$RUNNER_TEMP/squashfs-test.log"
+          STATUS=${PIPESTATUS[0]}
+          echo "unsquashfs integrity-test exit code: $STATUS"
+          exit "$STATUS"
+
+      - name: Extract and inspect mainsys
+        shell: bash
+        run: |
+          set -euo pipefail
+          DEST="$RUNNER_TEMP/mainsys-extract"
+          mkdir -p "$DEST"
+          unsquashfs -d "$DEST" "$RUNNER_TEMP/v17-rootfs.squashfs" usr/bin/mainsys
+          echo "Extracted mainsys metadata:"
+          stat "$DEST/usr/bin/mainsys"
+          file "$DEST/usr/bin/mainsys"
+          readelf -h "$DEST/usr/bin/mainsys" || true
