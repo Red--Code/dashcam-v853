@@ -164,6 +164,70 @@ jobs:
           sudo readelf -l "$DEST/usr/bin/mainsys" | grep -E 'INTERP|Requesting program interpreter' || true
           sudo readelf -d "$DEST/usr/bin/mainsys" | grep NEEDED || true
 
+      - name: Inspect SD-card logging configuration (read-only)
+        shell: bash
+        run: |
+          set -euo pipefail
+          ROOT="$RUNNER_TEMP/v17-rootfs-extracted"
+          python3 - "$ROOT" <<'PY'
+          import os, pathlib, re, sys
+          root = pathlib.Path(sys.argv[1])
+          name_re = re.compile(r"log|sd|mount|init|debug", re.I)
+          text_re = re.compile(
+              rb"logcatch|ker_log\.txt|soc_log\.txt|persist\.debug\.log\.enable|"
+              rb"sdcard|extsd|mmcblk|/mnt/|/media/|/storage/|/tmp/|/var/log|"
+              rb"fopen|open\(|log_path|logpath|log_dir|logdir",
+              re.I
+          )
+          print("=== Files with logging / SD / init-related names ===")
+          for base, dirs, files in os.walk(root):
+              for name in sorted(files):
+                  p = pathlib.Path(base) / name
+                  rel = str(p.relative_to(root))
+                  if name_re.search(rel):
+                      print(rel)
+          print("\n=== Text/binary files containing logging or SD path markers ===")
+          hits = 0
+          for base, dirs, files in os.walk(root):
+              for name in files:
+                  p = pathlib.Path(base) / name
+                  try:
+                      if p.is_symlink() or not p.is_file() or p.stat().st_size > 64*1024*1024:
+                          continue
+                      data = p.read_bytes()
+                  except OSError:
+                      continue
+                  found = list(text_re.finditer(data))
+                  if not found:
+                      continue
+                  rel = str(p.relative_to(root))
+                  print(f"\n--- {rel} ({p.stat().st_size} bytes), {len(found)} matches ---")
+                  for m in found[:30]:
+                      a, b = max(0, m.start()-100), min(len(data), m.end()+180)
+                      snippet = data[a:b].replace(b"\x00", b" ")
+                      print(snippet.decode("utf-8", "replace").replace("\n", " ")[:420])
+                  hits += len(found)
+          print(f"\nTotal matching strings: {hits}")
+          print("\n=== init.rc service and SD-related context ===")
+          for p in sorted(root.rglob("*.rc")):
+              try:
+                  lines = p.read_text(errors="replace").splitlines()
+              except OSError:
+                  continue
+              keep = set()
+              for i, line in enumerate(lines):
+                  if re.search(r"logcatch|persist\.debug|sdcard|extsd|mmcblk|mount", line, re.I):
+                      keep.update(range(max(0, i-4), min(len(lines), i+7)))
+              if keep:
+                  print(f"\n--- {p.relative_to(root)} ---")
+                  last = -2
+                  for i in sorted(keep):
+                      if i > last+1:
+                          print("...")
+                      print(f"{i+1}: {lines[i]}")
+                      last = i
+          PY
+
       - name: Map CRC64 stream to extracted file
         shell: bash
         run: |
