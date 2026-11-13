@@ -45,6 +45,13 @@ jobs:
           file report/pre-rootfs-boot-kernel.bin > report/boot-kernel-file.txt
           strings -a report/pre-rootfs-boot-kernel.bin | grep -i -E 'watchdog|sunxi_wdt|wdt|reset reason|brown.?out|power.?fail|pmic|shutdown|reboot' > report/kernel-power-strings.txt || true
           find rootfs -type f -print0 | xargs -0 -r grep -a -l -i -E 'watchdog|/dev/watchdog|sunxi_wdt|wdt' > report/rootfs-watchdog-references.txt || true
+          find rootfs -type f -print0 | xargs -0 -r grep -a -l -i 'facreset' > report/rootfs-facreset-references.txt || true
+          python3 - <<'PY'
+          from pathlib import Path
+          image = Path('v17_current_backup.bin').read_bytes()
+          Path('report/jffs2-overlay.bin').write_bytes(image[0xF60000:])
+          PY
+          strings -a report/jffs2-overlay.bin | grep -i -C 2 'facreset\|reboot.days\|just.reset' > report/jffs2-reset-strings.txt || true
           strings -a -t x report/mainsys > report/mainsys.strings
           grep -in -C 12 'rebootCheck\|reboot\|power_shutdown\|sys.power.usb\|sys.acc.on\|shutDownSoc2' report/mainsys.strings > report/reboot-strings.txt || true
           readelf -h -A -s report/mainsys > report/mainsys.readelf.txt 2>&1 || true
