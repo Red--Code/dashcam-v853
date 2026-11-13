@@ -64,12 +64,31 @@ jobs:
           strings -a -n 4 "$MAIN" > "$OUT/mainsys.strings.txt"
           strings -a -t x "$MAIN" > "$OUT/mainsys.strings-offset.txt"
           arm-linux-gnueabihf-nm -anC "$MAIN" > "$OUT/mainsys.symbols.txt"
+          arm-linux-gnueabihf-objdump -d -C "$MAIN" > "$OUT/mainsys.full.disasm.txt"
+          python3 - "$OUT/mainsys.full.disasm.txt" "$OUT/mainsys-brightness-xrefs.txt" <<'PY'
+          import pathlib, sys
+          lines = pathlib.Path(sys.argv[1]).read_text(errors="replace").splitlines()
+          targets = ["001d99b8", "001d99c8", "001d99dc", "00206768", "00206778", "002067b8"]
+          out = []
+          for target in targets:
+              hits = [i for i, line in enumerate(lines) if target in line.lower()]
+              out.append(f"=== address {target}, {len(hits)} references ===")
+              for i in hits:
+                  out.extend(lines[max(0, i-12):min(len(lines), i+18)])
+          pathlib.Path(sys.argv[2]).write_text("\n".join(out) + "\n")
+          PY
           {
             echo "=== relevant function symbols ==="
             grep -iE 'acc|suspend|bright|backlight|gpio|power|onAcc' "$OUT/mainsys.symbols.txt" || true
             echo
             echo "=== getAccState() disassembly ==="
             arm-linux-gnueabihf-objdump -d -C --disassemble=getAccState "$MAIN"
+            echo
+            echo "=== rebootCheck() disassembly ==="
+            arm-linux-gnueabihf-objdump -d -C --disassemble=rebootCheck "$MAIN"
+            echo
+            echo "=== GUI/backlight string cross-reference contexts ==="
+            cat "$OUT/mainsys-brightness-xrefs.txt"
             echo
             echo "=== suspendCheck() disassembly ==="
             arm-linux-gnueabihf-objdump -d -C --disassemble=suspendCheck "$MAIN"
