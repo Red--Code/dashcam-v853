@@ -26,7 +26,7 @@ jobs:
           Path("v17-rootfs.squashfs").write_bytes(image[0x560000:0xF60000])
           PY
           unsquashfs -s v17-rootfs.squashfs | tee squashfs-info.txt
-          unsquashfs -d rootfs v17-rootfs.squashfs
+          sudo unsquashfs -d rootfs v17-rootfs.squashfs
           file rootfs/usr/bin/mainsys || true
           find rootfs -iname '*reboot*' -o -name 'init.rc' | sort | tee relevant-files.txt
       - name: Inspect rebootCheck references
