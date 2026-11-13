@@ -1,0 +1,47 @@
+name: Inspect V17 rebootCheck
+
+on:
+  workflow_dispatch:
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install inspection tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y squashfs-tools binutils file python3
+      - name: Extract V17 root filesystem
+        run: |
+          set -euxo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          image = Path("v17_current_backup.bin").read_bytes()
+          assert len(image) == 16777216
+          assert image[0x560000:0x560004] == b'hsqs'
+          Path("v17-rootfs.squashfs").write_bytes(image[0x560000:0xF60000])
+          PY
+          unsquashfs -s v17-rootfs.squashfs | tee squashfs-info.txt
+          unsquashfs -d rootfs v17-rootfs.squashfs
+          file rootfs/usr/bin/mainsys || true
+          find rootfs -iname '*reboot*' -o -name 'init.rc' | sort | tee relevant-files.txt
+      - name: Inspect rebootCheck references
+        run: |
+          set -euxo pipefail
+          mkdir -p report
+          cp squashfs-info.txt relevant-files.txt report/
+          cp rootfs/etc/init.rc report/ 2>/dev/null || true
+          cp rootfs/usr/bin/reboot.sh report/ 2>/dev/null || true
+          cp rootfs/usr/bin/mainsys report/mainsys
+          strings -a -t x report/mainsys > report/mainsys.strings
+          grep -in -C 12 'rebootCheck\|reboot\|power_shutdown\|sys.power.usb\|sys.acc.on\|shutDownSoc2' report/mainsys.strings > report/reboot-strings.txt || true
+          readelf -h -A -s report/mainsys > report/mainsys.readelf.txt 2>&1 || true
+          objdump -d report/mainsys > report/mainsys.disasm.txt 2>&1 || true
+          sha256sum v17_current_backup.bin report/mainsys > report/hashes.txt
+      - name: Upload inspection report
+        uses: actions/upload-artifact@v4
+        with:
+          name: v17-rebootcheck-inspection
+          path: report/
+          if-no-files-found: error
