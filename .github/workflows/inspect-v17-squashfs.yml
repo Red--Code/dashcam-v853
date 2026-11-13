@@ -173,7 +173,7 @@ jobs:
           streams_dir = pathlib.Path(sys.argv[2])
           root = pathlib.Path(sys.argv[3])
           rows = (streams_dir / "stream-list.txt").read_text().splitlines()
-          crc64 = [r.split("\\t") for r in rows if r.split("\\t")[3] == "4"]
+          crc64 = [r.split(chr(9)) for r in rows if r.split(chr(9))[3] == "4"]
           print(f"CRC64 XZ streams: {len(crc64)}")
           for row in crc64:
               off, compressed, uncompressed, check = row
