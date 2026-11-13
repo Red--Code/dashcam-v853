@@ -14,7 +14,7 @@ jobs:
       - name: Install inspection tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y squashfs-tools binutils file python3
+          sudo apt-get install -y squashfs-tools binutils binutils-arm-linux-gnueabihf file python3
       - name: Extract V17 root filesystem
         run: |
           set -euxo pipefail
@@ -40,7 +40,9 @@ jobs:
           strings -a -t x report/mainsys > report/mainsys.strings
           grep -in -C 12 'rebootCheck\|reboot\|power_shutdown\|sys.power.usb\|sys.acc.on\|shutDownSoc2' report/mainsys.strings > report/reboot-strings.txt || true
           readelf -h -A -s report/mainsys > report/mainsys.readelf.txt 2>&1 || true
-          objdump -d report/mainsys > report/mainsys.disasm.txt 2>&1 || true
+          arm-linux-gnueabihf-objdump -d -C report/mainsys > report/mainsys.disasm.txt 2>&1 || true
+          arm-linux-gnueabihf-nm -D -C report/mainsys > report/mainsys.nm.txt 2>&1 || true
+          grep -in -C 8 '1c3414\|1c33bc\|1c3008\|1c488c\|1c44fc\|1c1ccc\|1c1ec8\|1f7094' report/mainsys.disasm.txt > report/power-xrefs.txt || true
           sha256sum v17_current_backup.bin report/mainsys > report/hashes.txt
       - name: Upload inspection report
         uses: actions/upload-artifact@v4
