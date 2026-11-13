@@ -1,0 +1,177 @@
+01-01 03:30:07.300   467   467 D logo    : logo file w 640 h 480 bd 8
+01-01 03:30:07.310   467   467 D logo    : decoded ok, size 921600
+01-01 03:30:07.310   467   467 I logo    : fb(0xb6c39000) /dev/fb0 open ok! info v_x:640, v_y:960, s_x:640, s_y:480, rotate:1, bits:32, xoff:0, yoff:0
+01-01 03:30:07.310   467   467 I logo    : show begin!
+01-01 03:30:07.340   467   467 I logo    : show completed!
+01-01 03:30:10.870   586   586 I init    : <5>init: init process start 
+01-01 03:30:10.910   586   586 E init    : <3>init: /etc/init.rc: 174: invalid option 'chdir'
+01-01 03:30:10.910   586   586 I init    : <6>init: processing action 0xb6eacf70 (early-init)
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'write' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: processing action 0x2b720 (init)
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'loglevel' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'write' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: processing action 0x2b7c0 (post-fs)
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'chmod' r=0
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'chmod' r=-2
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'chmod' r=-2
+01-01 03:30:10.920   586   586 I init    : <6>init: command 'chmod' r=-2
+01-01 03:30:10.920   586   586 I init    : <6>init: processing action 0xb6f2a780 (property_service_init)
+01-01 03:30:10.940   586   586 E init    : <3>init: start_property_service->temp = , configDone = 0
+01-01 03:30:10.940   586   586 I init    : <6>init: Created socket '/tmp/socket/property_service' with mode '666', user '0', group '0'
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'property_service_init' r=0
+01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a7c0 (signal_init)
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'signal_init' r=0
+01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a820 (check_startup)
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'check_startup' r=0
+01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0x2b8c0 (boot)
+01-01 03:30:10.940   586   586 I init    : <5>init: starting 'sysd'
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'class_start' r=0
+01-01 03:30:10.940   586   586 I init    : <5>init: starting 'mainsys'
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'class_start' r=0
+01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a880 (queue_property_triggers)
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'queue_property_triggers' r=0
+01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f276b0 (property:persist.jt808.enable=1)
+01-01 03:30:10.940   586   586 I init    : <5>init: starting 'jt808'
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'start' r=0
+01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a230 (property:persist.debug.log.enable=1)
+01-01 03:30:10.940   586   586 I init    : <5>init: starting 'logcatch'
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'start' r=0
+01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a710 (property:persist.timezone.offset=*)
+01-01 03:30:10.940   586   586 I init    : <5>init: starting 'tzsync'
+01-01 03:30:10.940   586   586 I init    : <6>init: command 'start' r=0
+01-01 03:30:11.090   590   590 E init    : <3>init: cannot execve('/usr/bin/mainsys'): I/O error
+01-01 03:30:11.090   586   586 I init    : <6>init: waitpid returned pid 590, status = 00007f00
+01-01 03:30:11.090   586   586 I init    : <5>init: process 'mainsys', pid 590 exited
+01-01 03:30:11.090   586   586 I init    : <5>init: process 'mainsys' killing any children in process group
+01-01 03:30:11.430   589   589 I evbus   : evbusCreate listen on 127.0.0.1:1025 sockfd:3
+01-01 03:30:11.430   589   589 I poller  : add fd:3, total:1
+01-01 03:30:11.430   589   589 I poller  : add fd:5, total:2
+01-01 03:30:11.430   589   589 I sdcard  : networkType :1
+01-01 03:30:11.450   589   589 D os      : osTaskCreate rocheck with priority 0
+01-01 03:30:11.450   589   589 D os      : osTaskCreate acccheck with priority 0
+01-01 03:30:11.450   589   589 D os      : osTaskCreate ahdcheck with priority 0
+01-01 03:30:11.460   589   610 I os      : Task ahdcheck start...
+01-01 03:30:11.460   589   609 I os      : Task acccheck start...
+01-01 03:30:11.460   589   609 I sdcard  : postAccMsg:562 >> property_set sys.acc.on 0
+01-01 03:30:11.460   589   608 I os      : Task rocheck start...
+01-01 03:30:11.470   589   609 I sdcard  : gpsPowerEn:531 >> /sys/devices/platform/switch-gpio/gps_ant_en low
+01-01 03:30:11.540   611   611 I tzif    : set tzif: 3.50
+01-01 03:30:11.540   611   611 I tzif    : tzif: 3-50(5.000000) 0x38310000
+01-01 03:30:11.540   611   611 I tzif    : designations: +0330
+01-01 03:30:11.540   611   611 I tzif    : footStr: 
+01-01 03:30:11.540   611   611 I tzif    : <+0330>-3:30
+01-01 03:30:11.550   589   608 I sdcard  : sdcard=1, mount err 0/No error information
+01-01 03:30:11.550   586   586 I init    : <6>init: waitpid returned pid 593, status = 00000000
+01-01 03:30:11.550   586   586 I init    : <5>init: process 'tzsync', pid 593 exited
+01-01 03:30:11.700   591   591 D WLogger : set log prefix to jt808_
+01-01 03:30:11.700   591   591 D jt808_Poller: create control pipe: 4/5, epoll 6
+01-01 03:30:11.700   591   591 I jt808_JTListener: setLooper: 
+01-01 03:30:11.700   591   591 D jt808_JTListener: JTListener: create checkAccThread -1230758556 ok
+01-01 03:30:11.700   591   591 I jt808_v85ximpl: connect evbus, client name: evbus-591
+01-01 03:30:11.700   589   589 I evbus   : evbus-591 connected to eventbus
+01-01 03:30:11.700   589   589 I poller  : add fd:6, total:3
+01-01 03:30:11.700   591   591 I evbus   : evbus-591 connect eventbus ok,fd=7
+01-01 03:30:11.710   591   591 D jt808_PropFile: loadFromFile: /etc/config_jt.prop
+01-01 03:30:11.710   591   591 D jt808_PropFile: loadFromFile: go on
+01-01 03:30:11.710   591   591 D jt808_PropFile: loadFromFile: end
+01-01 03:30:11.710   591   591 D jt808_JT_MAIN: cat1Proxy.Mode: 0
+01-01 03:30:11.710   591   591 I jt808_JT_MAIN: get prop, host 47.241.210.146 port 6608
+01-01 03:30:11.720   591   591 D jt808_JT_MAIN: terminal imei number: 036707173653, len: 12
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x13
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):14, value hex:34372e3234312e3231302e313436
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x13 => 47.241.210.146
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x18
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x18 => 6608
+01-01 03:30:11.720   591   591 D jt808_JT_MAIN: server:47.241.210.146, port:6608, imei:36707173653, version: 2011, 905=0, rtmp=0, Extra=0
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x1
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x1 => 20
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x2
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x2 => 10
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x81
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x81 => 0
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x82
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x82 => 0
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x84
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x84 => 0
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x83
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):0, value hex:
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x83 => 
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x55
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x55 => 120
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x56
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x56 => 10
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x57
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x57 => 14400
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x5b
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x5b => 50
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x20
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x20 => 0
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x21
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x21 => 0
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x27
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x27 => 10
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x24
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x24 => 10
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x29
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x29 => 10
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x2b
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x2b => 0
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x30
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x30 => 20
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x80
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x80 => 43087
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0xf101
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):15, value hex:383638333637303731373336353336
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0xf101 => 868367071736536
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0xf102
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):0, value hex:
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0xf102 => 
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0xf105
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):3, value hex:313834
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0xf105 => 184
+01-01 03:30:11.720   591   591 D jt808_JTTCPClient: ClientHandler
+01-01 03:30:11.720   591   591 D jt808_Connection: new Connection 0xb6f5ec60
+01-01 03:30:11.720   591   591 D jt808_TCPClient: startTCP_AS_Client IMTCPClient:0xb6f5ec60
+01-01 03:30:11.720   591   591 D jt808_JTListener: terminal imei number: 036707173653, len: 12
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: getString(id: 0x80 int/byte) return 43087
+01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: /etc/config_jt.prop
+01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: go on
+01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: end
+01-01 03:30:11.720   591   618 I jt808_v85ximpl: enter evbusLoop...
+01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: /etc/config_jt.prop
+01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: go on
+01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: end
+01-01 03:30:11.720   591   591 D jt808_TCPClient: IMTCPClient addServerAddr 47.241.210.146, 6608, index=0
+01-01 03:30:11.720   591   591 W jt808_Socket: getsockname -1 error Bad file descriptor
+01-01 03:30:11.720   591   591 D jt808_TCPClient: IMTCPClient TCPClient start ipstr:
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: getString(id: 0x2b int/byte) return 0
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: getString(id: 0x20 int/byte) return 0
+01-01 03:30:11.720   591   591 D jt808_JTListener: Msg_UploadGps: 0(0:time/1:distance)
+01-01 03:30:11.720   591   591 D jt808_JTListener: Msg_UploadGps: time error, not upload Gps
+01-01 03:30:11.720   591   591 D jt808_TerminalParamList: getString(id: 0x29 int/byte) return 10
+01-01 03:30:11.720   591   591 D jt808_JTListener: Msg_UploadGps: sendEmptyMessage 10s
+01-01 03:30:11.720   591   619 D jt808_Thread: @IMTCPClient Starting thread tid=619
+01-01 03:30:11.720   591   619 D jt808_JTTCPClient: Conn::Event = 7
+01-01 03:30:11.720   591   619 D jt808_JTListener: JTListener onConnEvent:_0 7
+01-01 03:30:11.720   591   619 D jt808_v85ximpl: 47.241.210.146->47.241.210.146
+01-01 03:30:11.720   591   619 I jt808_TCPClient: IMTCPClient try to connectNonBlock fd:-1 url: 47.241.210.146:6608, timeout: 80ms, useCAT1Proxy: 0
+01-01 03:30:11.720   591   619 D jt808_JTTCPClient: Conn::Event = 5
+01-01 03:30:11.720   591   619 D jt808_JTListener: JTListener onConnEvent:_0 5
+01-01 03:30:11.720   591   619 E jt808_TCPClient: NETWORK_ERR
+01-01 03:30:11.970   586   586 I init    : <6>init: processing action 0xb6f2a230 (property:persist.debug.log.enable=1)
+01-01 03:30:11.970   586   586 I init    : <6>init: command 'start' r=0
+01-01 03:30:14.720   591   619 D jt808_v85ximpl: 47.241.210.146->47.241.210.146
+01-01 03:30:14.720   591   619 I jt808_TCPClient: IMTCPClient try to connectNonBlock fd:-1 url: 47.241.210.146:6608, timeout: 100ms, useCAT1Proxy: 0
+01-01 03:30:14.720   591   619 D jt808_JTTCPClient: Conn::Event = 5
+01-01 03:30:14.720   591   619 D jt808_JTListener: JTListener onConnEvent:_0 5
+01-01 03:30:14.720   591   619 E jt808_TCPClient: NETWORK_ERR
+01-01 03:30:15.970   586   586 I init    : <5>init: starting 'mainsys'
+01-01 03:30:16.490   589   610 I sdcard  : getAHDState, state:1
+01-01 03:30:16.540   589   610 I evbus   : serv relay =>evbus-591 what:ahd/len:0 ck:0 isReply:0
