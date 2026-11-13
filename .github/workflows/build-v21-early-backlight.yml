@@ -1,0 +1,233 @@
+name: V21 early backlight property test
+
+on:
+  push:
+    branches:
+      - diagnostic/v17-squashfs-check
+    paths:
+      - .github/workflows/build-v21-early-backlight.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-v21:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - name: Checkout exact baseline
+        uses: actions/checkout@v4
+
+      - name: Install firmware tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y squashfs-tools xz-utils
+
+      - name: Verify V17 backup and extract rootfs
+        shell: bash
+        run: |
+          set -euo pipefail
+          IMAGE="v17_current_backup.bin"
+          EXPECTED_SHA="582c23df1f691734ae9a18513686eab4dd44d6b58307824a80e48a0be64fc002"
+          test "$(stat -c '%s' "$IMAGE")" -eq 16777216
+          ACTUAL_SHA="$(sha256sum "$IMAGE" | awk '{print $1}')"
+          echo "V17 baseline SHA-256: $ACTUAL_SHA"
+          test "$ACTUAL_SHA" = "$EXPECTED_SHA"
+          dd if="$IMAGE" of="$RUNNER_TEMP/v17-rootfs.squashfs" bs=65536 skip=86 count=160 status=none
+          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/v21-rootfs" "$RUNNER_TEMP/v17-rootfs.squashfs"
+
+      - name: Patch init ordering and install boot timeline logger
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo python3 - "$RUNNER_TEMP/v21-rootfs" <<'PY'
+          import pathlib, subprocess, sys
+
+          root = pathlib.Path(sys.argv[1])
+          rc = root / "etc/init.rc"
+          lines = rc.read_text(errors="replace").splitlines()
+
+          try:
+              on_boot = lines.index("on boot")
+          except ValueError:
+              raise SystemExit("Cannot find 'on boot' block")
+          try:
+              main_index = lines.index("    class_start main", on_boot)
+          except ValueError:
+              raise SystemExit("Cannot find class_start main inside on boot block")
+
+          # Insert the property command immediately before mainsys is started.
+          command = "    setprop persist.st.currentbacklight 120"
+          if command in lines:
+              raise SystemExit("V21 setprop command already exists; refusing duplicate insertion")
+          if main_index == 0 or lines[main_index - 1] != "    class_start core":
+              raise SystemExit("Unexpected on-boot service order; refusing to patch")
+          lines.insert(main_index, command)
+          rc.write_text("\n".join(lines) + "\n")
+
+          default_prop = (root / "etc/default.prop").read_text(errors="replace")
+          if "persist.st.currentbacklight=" in default_prop:
+              raise SystemExit("V17 baseline unexpectedly already contains currentbacklight; test would not be isolated")
+
+          log_script = """#!/bin/sh
+          # V21: log property values over time; preserve records across repeated boots.
+          is_extsd_mounted() {
+              awk '$2 == "/mnt/extsd" { found=1 } END { exit !found }' /proc/mounts
+          }
+          props() {
+              echo "persist.st.currentbacklight=$(getprop persist.st.currentbacklight)"
+              echo "persist.st.max_backlight=$(getprop persist.st.max_backlight)"
+              echo "sys.acc.on=$(getprop sys.acc.on)"
+              echo "persist.suspend.waitsec=$(getprop persist.suspend.waitsec)"
+          }
+
+          waited=0
+          while ! is_extsd_mounted; do
+              sleep 1
+              waited=$((waited + 1))
+          done
+
+          LOG_DIR="/mnt/extsd/log"
+          mkdir -p "$LOG_DIR" || exit 1
+          {
+              echo "===== V21 boot marker ====="
+              date
+              echo "logger_waited_seconds=$waited"
+              echo "V21 init.rc sets persist.st.currentbacklight=120 before class_start main"
+              props
+              echo "--- /proc/mounts ---"
+              cat /proc/mounts
+              echo "--- recent kernel messages ---"
+              dmesg | tail -n 120
+          } >> "$LOG_DIR/v21_backlight_diag.txt" 2>&1
+
+          # Sample long enough to see whether mainsys changes the value to zero.
+          (
+              n=0
+              while [ "$n" -lt 35 ]; do
+                  echo "--- V21 sample $n ---"
+                  date
+                  props
+                  n=$((n + 1))
+                  sleep 1
+              done
+          ) >> "$LOG_DIR/v21_backlight_timeline.txt" 2>&1 &
+
+          echo "===== V21 log capture started =====" >> "$LOG_DIR/soc_log.txt"
+          date >> "$LOG_DIR/soc_log.txt"
+          echo "===== V21 kernel capture started =====" >> "$LOG_DIR/ker_log.txt"
+          date >> "$LOG_DIR/ker_log.txt"
+          logcat -v threadtime -n 5 -f "$LOG_DIR/soc_log.txt" &
+          cat /proc/kmsg >> "$LOG_DIR/ker_log.txt" &
+          while is_extsd_mounted; do
+              sleep 2
+          done
+          killall logcat
+          killall cat
+          sleep 5
+          """
+          script = root / "usr/bin/log_catch.sh"
+          script.write_text(log_script)
+          script.chmod(0o755)
+          if subprocess.run(["/bin/sh", "-n", str(script)]).returncode:
+              raise SystemExit("V21 logger shell syntax check failed")
+
+          print("V21 patches only /etc/init.rc and /usr/bin/log_catch.sh.")
+          print("Verified setprop command is before class_start main.")
+          print("V21 does not add currentbacklight to default.prop.")
+          PY
+
+      - name: Rebuild and validate SquashFS
+        shell: bash
+        run: |
+          set -euo pipefail
+          sudo mksquashfs "$RUNNER_TEMP/v21-rootfs" "$RUNNER_TEMP/v21-rootfs.squashfs" -noappend -comp xz -b 256K -Xdict-size 256K -processors 1 -no-progress
+          test "$(stat -c '%s' "$RUNNER_TEMP/v21-rootfs.squashfs")" -le 10485760
+          sudo unsquashfs -no-progress -strict-errors -d "$RUNNER_TEMP/v21-rootfs-check" "$RUNNER_TEMP/v21-rootfs.squashfs"
+          python3 - "$RUNNER_TEMP/v21-rootfs.squashfs" "$RUNNER_TEMP/v21-rootfs-check" <<'PY'
+          import lzma, pathlib, re, sys
+          data = pathlib.Path(sys.argv[1]).read_bytes()
+          magic = b"\xfd7zXZ\x00"
+          counts = {}
+          valid = 0
+          pos = 0
+          while True:
+              pos = data.find(magic, pos)
+              if pos < 0:
+                  break
+              dec = lzma.LZMADecompressor(format=lzma.FORMAT_XZ, memlimit=64*1024*1024)
+              try:
+                  dec.decompress(data[pos:])
+              except lzma.LZMAError:
+                  pos += 1
+                  continue
+              if dec.eof:
+                  cid = data[pos+7] & 0x0f
+                  counts[cid] = counts.get(cid, 0) + 1
+                  valid += 1
+              pos += 1
+          print(f"Complete XZ streams={valid}; check IDs={counts} (0=None, 1=CRC32, 4=CRC64)")
+          if not valid or any(cid not in (0, 1) for cid in counts):
+              raise SystemExit("Unsupported or missing XZ check type")
+          root = pathlib.Path(sys.argv[2])
+          rc = (root / "etc/init.rc").read_text(errors="replace")
+          assert rc.count("setprop persist.st.currentbacklight 120") == 1
+          assert rc.index("setprop persist.st.currentbacklight 120") < rc.index("class_start main")
+          prop = (root / "etc/default.prop").read_text(errors="replace")
+          assert "persist.st.currentbacklight=" not in prop
+          log = (root / "usr/bin/log_catch.sh").read_text()
+          assert "v21_backlight_timeline.txt" in log
+          print("Extracted rootfs confirms early setprop and 35-second property timeline logger.")
+          PY
+
+      - name: Assemble image and verify unchanged partitions
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - "$GITHUB_WORKSPACE/v17_current_backup.bin" "$RUNNER_TEMP/v21-rootfs.squashfs" "$GITHUB_WORKSPACE/v21-early-backlight-test.bin" "$GITHUB_WORKSPACE/v21-report.txt" <<'PY'
+          import hashlib, pathlib, sys
+          base_path, sqfs_path, out_path, report_path = map(pathlib.Path, sys.argv[1:])
+          base = base_path.read_bytes()
+          sqfs = sqfs_path.read_bytes()
+          start, end = 0x560000, 0xF60000
+          if len(base) != 0x1000000:
+              raise SystemExit("V17 baseline is not 16 MiB")
+          if len(sqfs) > end - start:
+              raise SystemExit("V21 SquashFS exceeds rootfs partition")
+          candidate = bytearray(base)
+          candidate[start:end] = b"\xff" * (end - start)
+          candidate[start:start+len(sqfs)] = sqfs
+          if candidate[:start] != base[:start]:
+              raise SystemExit("Bytes before rootfs changed")
+          if candidate[end:] != base[end:]:
+              raise SystemExit("Bytes after rootfs (including JFFS2) changed")
+          out_path.write_bytes(candidate)
+          rows = [
+              "V21 early backlight property test (NOT FLASHED)",
+              f"Baseline SHA-256: {hashlib.sha256(base).hexdigest()}",
+              f"Candidate SHA-256: {hashlib.sha256(candidate).hexdigest()}",
+              f"Candidate size: {len(candidate)}",
+              f"SquashFS size: {len(sqfs)}",
+              f"Rootfs partition: 0x{start:06x}..0x{end:06x}",
+              "Changed rootfs files: /etc/init.rc, /usr/bin/log_catch.sh",
+              "Setprop order: persist.st.currentbacklight=120 BEFORE class_start main",
+              "Default property file: unchanged (no currentbacklight line added)",
+              "Bytes before rootfs unchanged: YES",
+              "Bytes after rootfs, including JFFS2 overlay, unchanged: YES",
+              "XZ checks validated as none/CRC32 only: YES",
+              "Kernel/boot partition changed: NO",
+          ]
+          report_path.write_text("\n".join(rows) + "\n")
+          print("\n".join(rows))
+          PY
+
+      - name: Upload V21 candidate
+        uses: actions/upload-artifact@v4
+        with:
+          name: v21-early-backlight-test
+          path: |
+            v21-early-backlight-test.bin
+            v21-report.txt
+          if-no-files-found: error
+          retention-days: 14
