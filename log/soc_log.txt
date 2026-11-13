@@ -1,177 +1,758 @@
-01-01 03:30:07.300   467   467 D logo    : logo file w 640 h 480 bd 8
-01-01 03:30:07.310   467   467 D logo    : decoded ok, size 921600
-01-01 03:30:07.310   467   467 I logo    : fb(0xb6c39000) /dev/fb0 open ok! info v_x:640, v_y:960, s_x:640, s_y:480, rotate:1, bits:32, xoff:0, yoff:0
-01-01 03:30:07.310   467   467 I logo    : show begin!
-01-01 03:30:07.340   467   467 I logo    : show completed!
-01-01 03:30:10.870   586   586 I init    : <5>init: init process start 
-01-01 03:30:10.910   586   586 E init    : <3>init: /etc/init.rc: 174: invalid option 'chdir'
-01-01 03:30:10.910   586   586 I init    : <6>init: processing action 0xb6eacf70 (early-init)
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'write' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'export' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: processing action 0x2b720 (init)
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'loglevel' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'write' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: processing action 0x2b7c0 (post-fs)
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'chmod' r=0
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'chmod' r=-2
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'chmod' r=-2
-01-01 03:30:10.920   586   586 I init    : <6>init: command 'chmod' r=-2
-01-01 03:30:10.920   586   586 I init    : <6>init: processing action 0xb6f2a780 (property_service_init)
-01-01 03:30:10.940   586   586 E init    : <3>init: start_property_service->temp = , configDone = 0
-01-01 03:30:10.940   586   586 I init    : <6>init: Created socket '/tmp/socket/property_service' with mode '666', user '0', group '0'
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'property_service_init' r=0
-01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a7c0 (signal_init)
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'signal_init' r=0
-01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a820 (check_startup)
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'check_startup' r=0
-01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0x2b8c0 (boot)
-01-01 03:30:10.940   586   586 I init    : <5>init: starting 'sysd'
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'class_start' r=0
-01-01 03:30:10.940   586   586 I init    : <5>init: starting 'mainsys'
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'class_start' r=0
-01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a880 (queue_property_triggers)
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'queue_property_triggers' r=0
-01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f276b0 (property:persist.jt808.enable=1)
-01-01 03:30:10.940   586   586 I init    : <5>init: starting 'jt808'
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'start' r=0
-01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a230 (property:persist.debug.log.enable=1)
-01-01 03:30:10.940   586   586 I init    : <5>init: starting 'logcatch'
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'start' r=0
-01-01 03:30:10.940   586   586 I init    : <6>init: processing action 0xb6f2a710 (property:persist.timezone.offset=*)
-01-01 03:30:10.940   586   586 I init    : <5>init: starting 'tzsync'
-01-01 03:30:10.940   586   586 I init    : <6>init: command 'start' r=0
-01-01 03:30:11.090   590   590 E init    : <3>init: cannot execve('/usr/bin/mainsys'): I/O error
-01-01 03:30:11.090   586   586 I init    : <6>init: waitpid returned pid 590, status = 00007f00
-01-01 03:30:11.090   586   586 I init    : <5>init: process 'mainsys', pid 590 exited
-01-01 03:30:11.090   586   586 I init    : <5>init: process 'mainsys' killing any children in process group
-01-01 03:30:11.430   589   589 I evbus   : evbusCreate listen on 127.0.0.1:1025 sockfd:3
-01-01 03:30:11.430   589   589 I poller  : add fd:3, total:1
-01-01 03:30:11.430   589   589 I poller  : add fd:5, total:2
-01-01 03:30:11.430   589   589 I sdcard  : networkType :1
-01-01 03:30:11.450   589   589 D os      : osTaskCreate rocheck with priority 0
-01-01 03:30:11.450   589   589 D os      : osTaskCreate acccheck with priority 0
-01-01 03:30:11.450   589   589 D os      : osTaskCreate ahdcheck with priority 0
-01-01 03:30:11.460   589   610 I os      : Task ahdcheck start...
-01-01 03:30:11.460   589   609 I os      : Task acccheck start...
-01-01 03:30:11.460   589   609 I sdcard  : postAccMsg:562 >> property_set sys.acc.on 0
-01-01 03:30:11.460   589   608 I os      : Task rocheck start...
-01-01 03:30:11.470   589   609 I sdcard  : gpsPowerEn:531 >> /sys/devices/platform/switch-gpio/gps_ant_en low
-01-01 03:30:11.540   611   611 I tzif    : set tzif: 3.50
-01-01 03:30:11.540   611   611 I tzif    : tzif: 3-50(5.000000) 0x38310000
-01-01 03:30:11.540   611   611 I tzif    : designations: +0330
-01-01 03:30:11.540   611   611 I tzif    : footStr: 
-01-01 03:30:11.540   611   611 I tzif    : <+0330>-3:30
-01-01 03:30:11.550   589   608 I sdcard  : sdcard=1, mount err 0/No error information
-01-01 03:30:11.550   586   586 I init    : <6>init: waitpid returned pid 593, status = 00000000
-01-01 03:30:11.550   586   586 I init    : <5>init: process 'tzsync', pid 593 exited
-01-01 03:30:11.700   591   591 D WLogger : set log prefix to jt808_
-01-01 03:30:11.700   591   591 D jt808_Poller: create control pipe: 4/5, epoll 6
-01-01 03:30:11.700   591   591 I jt808_JTListener: setLooper: 
-01-01 03:30:11.700   591   591 D jt808_JTListener: JTListener: create checkAccThread -1230758556 ok
-01-01 03:30:11.700   591   591 I jt808_v85ximpl: connect evbus, client name: evbus-591
-01-01 03:30:11.700   589   589 I evbus   : evbus-591 connected to eventbus
-01-01 03:30:11.700   589   589 I poller  : add fd:6, total:3
-01-01 03:30:11.700   591   591 I evbus   : evbus-591 connect eventbus ok,fd=7
-01-01 03:30:11.710   591   591 D jt808_PropFile: loadFromFile: /etc/config_jt.prop
-01-01 03:30:11.710   591   591 D jt808_PropFile: loadFromFile: go on
-01-01 03:30:11.710   591   591 D jt808_PropFile: loadFromFile: end
-01-01 03:30:11.710   591   591 D jt808_JT_MAIN: cat1Proxy.Mode: 0
-01-01 03:30:11.710   591   591 I jt808_JT_MAIN: get prop, host 47.241.210.146 port 6608
-01-01 03:30:11.720   591   591 D jt808_JT_MAIN: terminal imei number: 036707173653, len: 12
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x13
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):14, value hex:34372e3234312e3231302e313436
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x13 => 47.241.210.146
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x18
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x18 => 6608
-01-01 03:30:11.720   591   591 D jt808_JT_MAIN: server:47.241.210.146, port:6608, imei:36707173653, version: 2011, 905=0, rtmp=0, Extra=0
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x1
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x1 => 20
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x2
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x2 => 10
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x81
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x81 => 0
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x82
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x82 => 0
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x84
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x84 => 0
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x83
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):0, value hex:
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x83 => 
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x55
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x55 => 120
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x56
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x56 => 10
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x57
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x57 => 14400
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x5b
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x5b => 50
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x20
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x20 => 0
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x21
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x21 => 0
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x27
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x27 => 10
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x24
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x24 => 10
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x29
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x29 => 10
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x2b
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x2b => 0
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x30
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x30 => 20
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0x80
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0x80 => 43087
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0xf101
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):15, value hex:383638333637303731373336353336
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0xf101 => 868367071736536
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0xf102
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):0, value hex:
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0xf102 => 
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: paramId:0xf105
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: setParam: string strlen(value):3, value hex:313834
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: set TerminalPramList put: 0xf105 => 184
-01-01 03:30:11.720   591   591 D jt808_JTTCPClient: ClientHandler
-01-01 03:30:11.720   591   591 D jt808_Connection: new Connection 0xb6f5ec60
-01-01 03:30:11.720   591   591 D jt808_TCPClient: startTCP_AS_Client IMTCPClient:0xb6f5ec60
-01-01 03:30:11.720   591   591 D jt808_JTListener: terminal imei number: 036707173653, len: 12
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: getString(id: 0x80 int/byte) return 43087
-01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: /etc/config_jt.prop
-01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: go on
-01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: end
-01-01 03:30:11.720   591   618 I jt808_v85ximpl: enter evbusLoop...
-01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: /etc/config_jt.prop
-01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: go on
-01-01 03:30:11.720   591   591 D jt808_PropFile: loadFromFile: end
-01-01 03:30:11.720   591   591 D jt808_TCPClient: IMTCPClient addServerAddr 47.241.210.146, 6608, index=0
-01-01 03:30:11.720   591   591 W jt808_Socket: getsockname -1 error Bad file descriptor
-01-01 03:30:11.720   591   591 D jt808_TCPClient: IMTCPClient TCPClient start ipstr:
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: getString(id: 0x2b int/byte) return 0
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: getString(id: 0x20 int/byte) return 0
-01-01 03:30:11.720   591   591 D jt808_JTListener: Msg_UploadGps: 0(0:time/1:distance)
-01-01 03:30:11.720   591   591 D jt808_JTListener: Msg_UploadGps: time error, not upload Gps
-01-01 03:30:11.720   591   591 D jt808_TerminalParamList: getString(id: 0x29 int/byte) return 10
-01-01 03:30:11.720   591   591 D jt808_JTListener: Msg_UploadGps: sendEmptyMessage 10s
-01-01 03:30:11.720   591   619 D jt808_Thread: @IMTCPClient Starting thread tid=619
-01-01 03:30:11.720   591   619 D jt808_JTTCPClient: Conn::Event = 7
-01-01 03:30:11.720   591   619 D jt808_JTListener: JTListener onConnEvent:_0 7
-01-01 03:30:11.720   591   619 D jt808_v85ximpl: 47.241.210.146->47.241.210.146
-01-01 03:30:11.720   591   619 I jt808_TCPClient: IMTCPClient try to connectNonBlock fd:-1 url: 47.241.210.146:6608, timeout: 80ms, useCAT1Proxy: 0
-01-01 03:30:11.720   591   619 D jt808_JTTCPClient: Conn::Event = 5
-01-01 03:30:11.720   591   619 D jt808_JTListener: JTListener onConnEvent:_0 5
-01-01 03:30:11.720   591   619 E jt808_TCPClient: NETWORK_ERR
-01-01 03:30:11.970   586   586 I init    : <6>init: processing action 0xb6f2a230 (property:persist.debug.log.enable=1)
-01-01 03:30:11.970   586   586 I init    : <6>init: command 'start' r=0
-01-01 03:30:14.720   591   619 D jt808_v85ximpl: 47.241.210.146->47.241.210.146
-01-01 03:30:14.720   591   619 I jt808_TCPClient: IMTCPClient try to connectNonBlock fd:-1 url: 47.241.210.146:6608, timeout: 100ms, useCAT1Proxy: 0
-01-01 03:30:14.720   591   619 D jt808_JTTCPClient: Conn::Event = 5
-01-01 03:30:14.720   591   619 D jt808_JTListener: JTListener onConnEvent:_0 5
-01-01 03:30:14.720   591   619 E jt808_TCPClient: NETWORK_ERR
-01-01 03:30:15.970   586   586 I init    : <5>init: starting 'mainsys'
-01-01 03:30:16.490   589   610 I sdcard  : getAHDState, state:1
-01-01 03:30:16.540   589   610 I evbus   : serv relay =>evbus-591 what:ahd/len:0 ck:0 isReply:0
+01-01 08:00:07.050   462   462 D logo    : logo file w 640 h 480 bd 8
+01-01 08:00:07.060   462   462 D logo    : decoded ok, size 921600
+01-01 08:00:07.060   462   462 I logo    : fb(0xb6c8b000) /dev/fb0 open ok! info v_x:640, v_y:960, s_x:640, s_y:480, rotate:1, bits:32, xoff:0, yoff:0
+01-01 08:00:07.060   462   462 I logo    : show begin!
+01-01 08:00:07.100   462   462 I logo    : show completed!
+01-01 08:00:10.780   579   579 I init    : <5>init: init process start 
+01-01 08:00:10.820   579   579 E init    : <3>init: /etc/init.rc: 174: invalid option 'chdir'
+01-01 08:00:10.820   579   579 I init    : <6>init: processing action 0xb6e94f70 (early-init)
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'write' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'export' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'export' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'export' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'export' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'export' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'export' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'export' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: processing action 0x2b720 (init)
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'loglevel' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'write' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: processing action 0x2b7c0 (post-fs)
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'chmod' r=0
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'chmod' r=-2
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'chmod' r=-2
+01-01 08:00:10.830   579   579 I init    : <6>init: command 'chmod' r=-2
+01-01 08:00:10.830   579   579 I init    : <6>init: processing action 0xb6f12710 (property_service_init)
+01-01 08:00:10.840   579   579 E init    : <3>init: start_property_service->temp = , configDone = 0
+01-01 08:00:10.840   579   579 I init    : <6>init: Created socket '/tmp/socket/property_service' with mode '666', user '0', group '0'
+01-01 08:00:10.840   579   579 I init    : <6>init: command 'property_service_init' r=0
+01-01 08:00:10.840   579   579 I init    : <6>init: processing action 0xb6f12750 (signal_init)
+01-01 08:00:10.840   579   579 I init    : <6>init: command 'signal_init' r=0
+01-01 08:00:10.840   579   579 I init    : <6>init: processing action 0xb6f127b0 (check_startup)
+01-01 08:00:10.840   579   579 I init    : <6>init: command 'check_startup' r=0
+01-01 08:00:10.840   579   579 I init    : <6>init: processing action 0x2b8c0 (boot)
+01-01 08:00:10.840   579   579 I init    : <5>init: starting 'sysd'
+01-01 08:00:10.840   579   579 I init    : <6>init: command 'class_start' r=0
+01-01 08:00:10.840   579   579 I init    : <5>init: starting 'mainsys'
+01-01 08:00:10.840   579   579 I init    : <5>init: starting 'logcatch'
+01-01 08:00:10.840   579   579 I init    : <6>init: command 'class_start' r=0
+01-01 08:00:10.840   579   579 I init    : <6>init: processing action 0xb6f12810 (queue_property_triggers)
+01-01 08:00:10.840   579   579 I init    : <6>init: command 'queue_property_triggers' r=0
+01-01 08:00:10.840   579   579 I init    : <6>init: processing action 0xb6f0f6b0 (property:persist.jt808.enable=1)
+01-01 08:00:10.840   579   579 I init    : <5>init: starting 'jt808'
+01-01 08:00:10.840   579   579 I init    : <6>init: command 'start' r=0
+01-01 08:00:10.850   579   579 I init    : <6>init: processing action 0xb6f126a0 (property:persist.timezone.offset=*)
+01-01 08:00:10.850   579   579 I init    : <5>init: starting 'tzsync'
+01-01 08:00:10.850   579   579 I init    : <6>init: command 'start' r=0
+01-01 08:00:11.500   581   581 I evbus   : evbusCreate listen on 127.0.0.1:1025 sockfd:3
+01-01 08:00:11.500   581   581 I poller  : add fd:3, total:1
+01-01 08:00:11.500   581   581 I poller  : add fd:5, total:2
+01-01 08:00:11.500   581   581 I sdcard  : networkType :1
+01-01 08:00:11.500   581   581 D os      : osTaskCreate rocheck with priority 0
+01-01 08:00:11.500   581   581 D os      : osTaskCreate acccheck with priority 0
+01-01 08:00:11.500   581   581 D os      : osTaskCreate ahdcheck with priority 0
+01-01 08:00:11.520   581   606 I os      : Task ahdcheck start...
+01-01 08:00:11.520   581   605 I os      : Task acccheck start...
+01-01 08:00:11.520   581   605 I sdcard  : postAccMsg:562 >> property_set sys.acc.on 0
+01-01 08:00:11.520   581   604 I os      : Task rocheck start...
+01-01 08:00:11.540   581   605 I sdcard  : gpsPowerEn:531 >> /sys/devices/platform/switch-gpio/gps_ant_en low
+01-01 08:00:11.610   581   604 I sdcard  : sdcard=1, mount err 0/No error information
+01-01 08:00:11.630   607   607 I tzif    : set tzif: 8
+01-01 08:00:11.630   607   607 I tzif    : tzif: 8-0(0.000000) 0x80700000
+01-01 08:00:11.630   607   607 I tzif    : designations: +08
+01-01 08:00:11.630   607   607 I tzif    : footStr: 
+01-01 08:00:11.630   607   607 I tzif    : <+08>-8
+01-01 08:00:11.640   579   579 I init    : <6>init: waitpid returned pid 585, status = 00000000
+01-01 08:00:11.640   579   579 I init    : <5>init: process 'tzsync', pid 585 exited
+01-01 08:00:11.960   584   584 D WLogger : set log prefix to jt808_
+01-01 08:00:11.960   584   584 D jt808_Poller: create control pipe: 4/5, epoll 6
+01-01 08:00:11.960   584   584 I jt808_JTListener: setLooper: 
+01-01 08:00:11.960   584   584 D jt808_JTListener: JTListener: create checkAccThread -1231004316 ok
+01-01 08:00:11.960   584   584 I jt808_v85ximpl: connect evbus, client name: evbus-584
+01-01 08:00:11.960   581   581 I evbus   : evbus-584 connected to eventbus
+01-01 08:00:11.960   581   581 I poller  : add fd:6, total:3
+01-01 08:00:11.960   584   584 I evbus   : evbus-584 connect eventbus ok,fd=7
+01-01 08:00:11.960   584   584 D jt808_PropFile: loadFromFile: /etc/config_jt.prop
+01-01 08:00:11.960   584   584 D jt808_PropFile: loadFromFile: go on
+01-01 08:00:11.970   584   630 I jt808_v85ximpl: enter evbusLoop...
+01-01 08:00:12.010   584   584 D jt808_PropFile: loadFromFile: end
+01-01 08:00:12.010   584   584 D jt808_JT_MAIN: cat1Proxy.Mode: 0
+01-01 08:00:12.010   584   584 I jt808_JT_MAIN: get prop, host 47.241.210.146 port 6608
+01-01 08:00:12.010   584   584 I jt808_JT_MAIN: wait 3s get imei
+01-01 08:00:13.030   582   582 I main    : Mainsys start...
+01-01 08:00:13.030   582   582 I main    : ########## mainService ###############
+09-09 03:25:52.000   582   582 W device  : 1757359552 No RTC driver: No such file or directory
+09-09 03:25:52.000   582   582 I main    : updateTime timep:1757359552
+09-09 03:25:52.110   582   582 I main    : register sigprocess finish
+09-09 03:25:52.110   582   582 I main    : mainsys bootcount #1
+09-09 03:25:52.120   582   582 I nvdm    : use envA
+09-09 03:25:52.120   582   582 I nvdm    : open /overlay/factory.ini failed
+09-09 03:25:52.120   582   582 I nvdm    : open /system/etc/fw_info failed
+09-09 03:25:52.120   582   582 D os      : osTaskCreate uiTask with priority 0
+09-09 03:25:52.120   582   582 I main    : @@@### DeviceID :5c6a1fda0104cc5c00001c4000000000
+09-09 03:25:52.130   582   656 I os      : Task uiTask start...
+09-09 03:25:52.130   582   656 I gui     : (start_ui_service-417): ui_service_thread OKOKOK
+09-09 03:25:52.130   582   656 I gui     : (start_ui_service-425): ui_watchdog_thread OKOKOK
+09-09 03:25:52.130   582   656 I os      : Task uiTask exited!
+09-09 03:25:52.130   582   658 I gui     : (ui_watchdog_thread-99): screenUiTimeS = 10
+09-09 03:25:52.160   582   582 I key     : create KeyService
+09-09 03:25:52.160   582   582 I key     : KeyReader create!
+09-09 03:25:52.160   582   582 I key     : init KeyService ok
+09-09 03:25:52.160   582   659 D KeyServiceThread: MsgLooperThread created
+09-09 03:25:52.160   582   659 D @Poller : create control pipe: 4/5, epoll 6
+09-09 03:25:52.160   582   582 I propfile: foreverPropInit ok
+09-09 03:25:52.160   582   582 D @PropFile: loadFromFile: /overlay/forever.prop
+09-09 03:25:52.160   582   582 D @PropFile: loadFromFile: go on
+09-09 03:25:52.160   582   582 E @PropFile: read /overlay/forever.prop err:No such file or directory
+09-09 03:25:52.160   582   582 E propfile: getForeverPropFloat fail! file not exist!
+09-09 03:25:52.160   582   582 D setting : old timezone offset 8.000000
+09-09 03:25:52.160   582   582 D @PropFile: loadFromFile: /overlay/forever.prop
+09-09 03:25:52.160   582   582 D @PropFile: loadFromFile: go on
+09-09 03:25:52.160   582   582 E @PropFile: read /overlay/forever.prop err:No such file or directory
+09-09 03:25:52.160   582   582 D setting : forever file /overlay/forever.prop not exist
+09-09 03:25:52.160   582   582 D @PropFile: loadFromFile: /overlay/forever.prop
+09-09 03:25:52.160   582   582 D @PropFile: loadFromFile: go on
+09-09 03:25:52.160   582   582 E @PropFile: read /overlay/forever.prop err:No such file or directory
+09-09 03:25:52.160   582   582 D setting : forever file /overlay/forever.prop not exist
+09-09 03:25:52.160   579   579 I init    : <5>init: starting 'fwenv'
+09-09 03:25:52.160   582   582 D setting : gsenor 6 cur 2 sens: [260,230,200,45,35,20]
+09-09 03:25:52.170   582   659 I key     : KeyService key event file open success!
+09-09 03:25:52.200   582   657 I lvgl    : [User]	(13.252, +13252)	 sunxifb_init: wh=640x480, vwh=640x960, bpp=32, rotated=0
+09-09 03:25:52.200   582   657 I lvgl    :  	(in sunxifb.c line #148)
+09-09 03:25:52.200   582   657 I lvgl    : [User]	(13.252, +0)	 sunxifb_init: Turon on double buffer. 	(in sunxifb.c line #166)
+09-09 03:25:52.200   582   657 I lvgl    : [User]	(13.252, +0)	 sunxifb_init: buffer 0：0x0xb5e5c000, buffer 1: 0x0xb5f88000 	(in sunxifb.c line #170)
+09-09 03:25:52.200   582   657 I lvgl    : [User]	(13.252, +0)	 sunxifb_init: Turn on 2d hardware acceleration. 	(in sunxifb.c line #178)
+09-09 03:25:52.200   582   657 I gui     : sunxifb_get_sizes->(width = 640, height = 480)
+09-09 03:25:52.200   582   657 I lvgl    : [Error]	(13.253, +1)	 evdev_init: Not found input device! 	(in evdev.c line #179)
+09-09 03:25:52.200   582   657 I lvgl    : [Error]	(13.253, +0)	 keyDev_Init: Not found input device! 	(in evdev.c line #405)
+09-09 03:25:52.200   582   657 I lvgl    : (ui_service_thread-344): keyDev_Init fail, keyDev_Init fail, keyDev_Init fail
+09-09 03:25:52.200   582   657 I gui     : (setup_ui-141): width:640 height:480
+09-09 03:25:52.200   582   657 I backlight: Open disp handle success: 12
+09-09 03:25:52.200   582   582 D setting : update gwakesense=>35 gsensorsense=>230
+09-09 03:25:52.200   582   582 I gsensor : create GSensorService
+09-09 03:25:52.200   582   582 I gsensor : GSensorReader create!
+09-09 03:25:52.200   582   582 I gsensor : init GSensorService ok
+09-09 03:25:52.210   582   661 D GSensorServiceThread: MsgLooperThread created
+09-09 03:25:52.210   582   661 D @Poller : create control pipe: 7/14, epoll 15
+09-09 03:25:52.210   582   582 D gsensor : Init mCollisionThreshold[0]: 260
+09-09 03:25:52.210   582   582 D gsensor : Init mCollisionThreshold[1]: 230
+09-09 03:25:52.210   582   582 D gsensor : Init mCollisionThreshold[2]: 200
+09-09 03:25:52.210   582   582 D gsensor : Init mCollisionThreshold[3]: 45
+09-09 03:25:52.210   582   582 D gsensor : Init mCollisionThreshold[4]: 35
+09-09 03:25:52.210   582   582 D gsensor : Init mCollisionThreshold[5]: 20
+09-09 03:25:52.210   582   657 D backlight: backlight_set_brightness value: 0
+09-09 03:25:52.210   582   657 I gui     : (gui_bright_init-40): backlight_set_brightness(0)
+09-09 03:25:52.210   582   657 I gui     : Gui msg thread create success!
+09-09 03:25:52.210   582   657 I gui     : Gui msg id: 0
+09-09 03:25:52.210   582   657 I gui     : (setup_ui-150): gui_msg_init OKOKOK
+09-09 03:25:52.210   582   657 I gui     : (setup_ui-158): gui_set_sys_language OKOKOK
+09-09 03:25:52.210   582   661 I gsensor : open gsensor event file /dev/input/event1 ok
+09-09 03:25:52.210   582   661 I gsensor : GSensorService input event file open success!
+09-09 03:25:52.210   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:52.210   582   663 I gui_timer: gui timer start!
+09-09 03:25:52.210   582   663 I gui_timer: No gui timer task, wait!
+09-09 03:25:52.230   582   582 D gsensor : load mCollisionThreshold[0]: 150
+09-09 03:25:52.230   582   582 D gsensor : load mCollisionThreshold[1]: 120
+09-09 03:25:52.230   582   582 D gsensor : load mCollisionThreshold[2]: 110
+09-09 03:25:52.230   582   582 D gsensor : load mCollisionThreshold[3]: 45
+09-09 03:25:52.230   582   582 D gsensor : load mCollisionThreshold[4]: 35
+09-09 03:25:52.230   582   582 D gsensor : load mCollisionThreshold[5]: 20
+09-09 03:25:52.230   582   582 D gsensor : set gsensorsense to 120
+09-09 03:25:52.240   579   579 I init    : <6>init: processing action 0xb6f0f6b0 (property:persist.jt808.enable=1)
+09-09 03:25:52.240   579   579 I init    : <6>init: command 'start' r=0
+09-09 03:25:52.240   582   582 D setting : get persist.fcam.rec_res valute 1440P
+09-09 03:25:52.240   582   582 I comm_control: got res type 2 options: 1080P:0,1440P:1
+09-09 03:25:52.250   582   582 I comm_control: set res name 1440P options: 1080P:0,1440P:1
+09-09 03:25:52.250   582   582 D os      : osTaskCreate iniFileCheck with priority 0
+09-09 03:25:52.250   582   582 D os      : osTaskCreate rebootCheck with priority 0
+09-09 03:25:52.250   582   582 D ledcontroller: call driver led Rec: UnChange=>On
+09-09 03:25:52.250   582   582 I led     : ledcontroller light 2 status 1
+09-09 03:25:52.250   582   582 D ledcontroller: call driver led Gps: UnChange=>Off
+09-09 03:25:52.250   582   582 I led     : ledcontroller light 1 status 2
+09-09 03:25:52.250   582   582 D ledcontroller: call driver led Signal: UnChange=>Off
+09-09 03:25:52.250   582   582 I led     : ledcontroller light 3 status 2
+09-09 03:25:52.250   582   667 D LedServiceThread: MsgLooperThread created
+09-09 03:25:52.250   582   667 D @Poller : create control pipe: 16/18, epoll 19
+09-09 03:25:52.250   582   666 I os      : Task rebootCheck start...
+09-09 03:25:52.250   582   582 D ledcontroller: init
+09-09 03:25:52.250   582   582 D os      : osTaskCreate ec800kUartInit with priority 0
+09-09 03:25:52.250   582   582 D os      : osTaskCreate atInit with priority 0
+09-09 03:25:52.250   582   582 D os      : osTaskCreate wifiFunc with priority 0
+09-09 03:25:52.250   582   582 D os      : osTaskCreate staCli with priority 0
+09-09 03:25:52.250   582   582 D os      : osTaskCreate spdLogic with priority 0
+09-09 03:25:52.250   582   582 D os      : osTaskCreate apServ with priority 0
+09-09 03:25:52.250   582   582 I @GPS    : empty GPS info
+09-09 03:25:52.250   582   582 I @GnssNmeaParser: GnssNmeaParser created. v1.0-20.0716
+09-09 03:25:52.250   582   582 I @gpsupload: GPSUpload create
+09-09 03:25:52.250   582   665 I os      : Task iniFileCheck start...
+09-09 03:25:52.250   582   670 I os      : Task wifiFunc start...
+09-09 03:25:52.250   579   579 I init    : <5>init: starting 'wificlean'
+09-09 03:25:52.250   582   671 I os      : Task staCli start...
+09-09 03:25:52.250   582   671 I stcpconn: ----------------------start----------------------
+09-09 03:25:52.250   582   671 I stcpconn: Create conn:0xb6f114d0
+09-09 03:25:52.250   582   671 D os      : osTaskCreate dns with priority 0
+09-09 03:25:52.250   582   671 I stcpconn: sSTCPServerAddr = iot.pulink.com.cn
+09-09 03:25:52.260   582   675 D @gpsupload: MsgLooperThread created
+09-09 03:25:52.260   582   675 D @Poller : create control pipe: 22/23, epoll 24
+09-09 03:25:52.260   582   582 I @gpsupload: GPSUpload create done
+09-09 03:25:52.260   582   582 I cloud   : create CloudService
+09-09 03:25:52.260   582   582 I cloud   : new cloud service
+09-09 03:25:52.260   582   672 I os      : Task spdLogic start...
+09-09 03:25:52.260   582   672 I stcpconn: spdLogicTask start OKOKOK
+09-09 03:25:52.260   582   672 W stcpconn: GetConn 0 bad step:0
+09-09 03:25:52.260   582   673 I os      : Task apServ start...
+09-09 03:25:52.260   582   673 I stcpconn: ----------------------start----------------------
+09-09 03:25:52.260   582   673 I stcpconn: bind & listen port :8000 sockfd: 25
+09-09 03:25:52.260   582   674 D @Thread : @GPSThread Starting thread tid=674
+09-09 03:25:52.260   582   674 I @GPS    : threadLoop:659 >> gps_model = 0
+09-09 03:25:52.260   582   674 D @Poller : create control pipe: 27/28, epoll 29
+09-09 03:25:52.260   582   674 I @UartConn: going to open uart /dev/ttyS3 baud 115200 
+09-09 03:25:52.270   582   669 I os      : Task atInit start...
+09-09 03:25:52.270   582   668 I os      : Task ec800kUartInit start...
+09-09 03:25:52.270   582   668 I modem_uart: (ec800kUartInit-93): /dev/ttyUSB3 file exist
+09-09 03:25:52.270   582   668 I modem_uart: uart open /dev/ttyUSB3 ok fd= 32
+09-09 03:25:52.270   582   668 I modem_uart: (setBaudRate-63): uart fd 32 fd set VIRTUAL_SERIAL ok
+09-09 03:25:52.270   582   677 I os      : Task dns start...
+09-09 03:25:52.270   582   678 D CloudServiceThread: MsgLooperThread created
+09-09 03:25:52.270   582   678 D @Poller : create control pipe: 33/34, epoll 35
+09-09 03:25:52.270   582   582 I udpserv : listen port:6666, sock:36
+09-09 03:25:52.270   582   582 I poller  : add fd:36, total:1
+09-09 03:25:52.270   582   582 D os      : osTaskCreate poller with priority 0
+09-09 03:25:52.270   582   582 I main    : (awMediaInit-96): start, flag = 0
+09-09 03:25:52.270   582   582 I main    : ########## AW_MPI_SYS_Init ###############
+09-09 03:25:52.280   582   680 I os      : Task poller start...
+09-09 03:25:52.280   582   669 D os      : osTaskCreate doInit with priority 0
+09-09 03:25:52.280   582   669 D os      : osTaskCreate netStatusCheck with priority 0
+09-09 03:25:52.280   582   669 D os      : osTaskCreate suspendCheck with priority 0
+09-09 03:25:52.280   582   669 I os      : Task atInit exited!
+09-09 03:25:52.280   582   684 I os      : Task netStatusCheck start...
+09-09 03:25:52.280   582   685 I os      : Task suspendCheck start...
+09-09 03:25:52.280   582   685 D modem   : suspendCheck:1223 >> getAccState() == 0
+09-09 03:25:52.280   582   685 D modem   : suspendCheck:1232 >> count = 6
+09-09 03:25:52.280   582   683 I os      : Task doInit start...
+09-09 03:25:52.280   582   683 D modem   : getWakeupReasonEc800k:2838 >> temp = powerkey
+09-09 03:25:52.280   582   683 D modem   : getWakeupReasonEc800k:2853 >> sReason = 0
+09-09 03:25:52.280   582   683 I modem   : doInit:2219 >> wakeupReason = 0
+09-09 03:25:52.280   582   683 I modem   : doInit:2221 >> reset vbus
+09-09 03:25:52.290   582   668 I os      : Task ec800kUartInit exited!
+09-09 03:25:52.350   582   674 I @UartConn: open uart /dev/ttyS3 ret 30 
+09-09 03:25:52.350   582   674 I @UartConn: setDefaultFlag /dev/ttyS3 
+09-09 03:25:52.350   582   674 I @UartConn: setBaudRate /dev/ttyS3 
+09-09 03:25:52.350   582   674 I @UartConn: setParity /dev/ttyS3 
+09-09 03:25:52.350   582   674 I @UartConn: open uart /dev/ttyS3 OK
+09-09 03:25:52.350   582   674 I @UartConn: registerFd
+09-09 03:25:52.350   582   674 I @UartConn: add uart /dev/ttyS3 
+09-09 03:25:52.350   582   674 I @GPS    : start GPS event loop
+09-09 03:25:52.350   582   687 D @Thread : @AGPSThread Starting thread tid=687
+09-09 03:25:52.350   582   687 D @GPS    : AGps mId MSK-P83-1080-PL_A34HPRO-V853-4G-808-CAT1-EN-5c6a1fda0104cc5c00001c4000000000
+09-09 03:25:52.350   582   687 D @UartConn: uart append data len:10
+09-09 03:25:52.350   582   687 D @UartConn: flushOutData write data:0x1709480, fd:30, len:10
+09-09 03:25:52.350   582   687 D @UartConn: flushOutData, write ret:10
+09-09 03:25:52.350   582   687 D @UartConn: uart flush data len:10
+09-09 03:25:52.350   582   687 I @GPS    : getGpsModelVersion:190 >> send modelVer ret:10 cmd:$PDTINFO
+09-09 03:25:52.370   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:52.390   579   579 I init    : <6>init: waitpid returned pid 676, status = 00000000
+09-09 03:25:52.390   579   579 I init    : <5>init: process 'wificlean', pid 676 exited
+09-09 03:25:52.540   579   579 I init    : <6>init: waitpid returned pid 660, status = 00000000
+09-09 03:25:52.540   579   579 I init    : <5>init: process 'fwenv', pid 660 exited
+09-09 03:25:52.560   582   657 I font    : Font[0] init success.
+09-09 03:25:52.560   582   657 I font    : Font[1] init success.
+09-09 03:25:52.560   582   657 I font    : Font[2] init success.
+09-09 03:25:52.560   582   657 I font    : Font[3] init success.
+09-09 03:25:52.560   582   657 I font    : Font[4] init success.
+09-09 03:25:52.570   582   657 I font    : Font[5] init success.
+09-09 03:25:52.570   582   657 I font    : Font[6] init success.
+09-09 03:25:52.580   582   657 I font    : Font[7] init success.
+09-09 03:25:52.580   582   657 I font    : Font[8] init success.
+09-09 03:25:52.580   582   657 I font    : Font[9] init success.
+09-09 03:25:52.580   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:52.580   582   657 I font    : Font[10] init success.
+09-09 03:25:52.590   582   657 I font    : Font[11] init success.
+09-09 03:25:52.600   582   657 I font    : Font[12] init success.
+09-09 03:25:52.600   582   657 I font    : Font[13] init success.
+09-09 03:25:52.600   582   657 I font    : Font[14] init success.
+09-09 03:25:52.610   582   657 I gui     : (setup_ui-165): gui_style_init OKOKOK
+09-09 03:25:52.660   582   657 I gui     : (setup_ui-169): gui_misc_init OKOKOK
+09-09 03:25:52.750   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:52.910   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:52.910   582   657 I gui     : SCR_ID_MAIN init ok!
+09-09 03:25:53.020   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.080   582   582 I awMedia : AW_MPI_SYS_Init done
+09-09 03:25:53.080   582   582 I main    : ########## aw_video_init ###############
+09-09 03:25:53.080   582   582 E awVideo : load_font_file FONT_SIZE_32 fail! ret:-1
+09-09 03:25:53.080   582   582 E awVideo : Do load_font_file FONT_SIZE_16 fail! ret:-1
+09-09 03:25:53.080   582   582 E awVideo : Do load_font_file FONT_SIZE_64 fail! ret:-1
+09-09 03:25:53.080   582   582 I awOSD   : logo A:/etc/logo.png: w: 0, h: 0, ret: 78
+09-09 03:25:53.080   582   582 I awOSD   : logo A:/etc/logo_small.png: w: 0, h: 0, ret: 78
+09-09 03:25:53.090   582   582 D awVideo : camera 0 : vippDev: 0, veChn: 0, ispDev: 0
+09-09 03:25:53.090   582   582 D awVideo : srcWidth: 1920, srcHeight: 1080
+09-09 03:25:53.090   582   582 D awVideo : dstWidth: 2560, dstHeight: 1440
+09-09 03:25:53.090   582   582 D awVideo : srcPixFmt=32, ColorSpace=0
+09-09 03:25:53.090   582   582 D awVideo : SaturationChange=0
+09-09 03:25:53.090   582   582 D awVideo : H.264
+09-09 03:25:53.090   582   582 D awVideo : vipp:0, SrcFrameRate:25, VideoFrameRate:25, bitrate:12000000, test_time=0, profile=2
+09-09 03:25:53.090   582   582 D awVideo : mirror:0, Color2Grey:0, RoiNum:0, RoiQp:0, RoiBgFrameRate Enable:0 Attenuation:0, IntraRefreshBlockNum:0, OrlNum:0VbvBufferSize:0, VbvThreshSize:0
+09-09 03:25:53.090   582   582 D awVideo : venc crop enable:0, X:0, Y:0, Width:0, Height:0
+09-09 03:25:53.090   582   582 D awVideo : VuiTimingInfoPresentFlag:0
+09-09 03:25:53.090   582   582 D awVideo : OnlineEnable: 0, OnlineShareBufNum: 0
+09-09 03:25:53.090   582   582 D awVideo : wdr_en: 0
+09-09 03:25:53.090   582   582 D awVideo : EnableGdc: 0
+09-09 03:25:53.090   582   582 D awVideo : EncppEnable: 1, IspAndVeLinkageEnable: 1
+09-09 03:25:53.090   582   582 D awVideo : SuperFrm Mode: -1, MaxRencodeTimes: 3, MaxP2IFrameBitsRatio: 0.33, IBitsThr: 0, PBitsThr: 0
+09-09 03:25:53.090   582   582 D awVideo : BitsClipParam: 0 1 0 {0.00,1.00,2.00}, {-0.50,0.50}, {-0.30,0.30}, {-0.30,0.30}, {-0.50,0.50}, {0.40,0.70}
+09-09 03:25:53.090   582   582 D awVideo : AeDiffParam: 0 40 [5,100] [0.10,0.60], 1 [20,25], [35,50]
+09-09 03:25:53.090   582   582 D awVideo : EnIFrmMbRcMoveStatus: en 0, 0
+09-09 03:25:53.090   582   582 D awVideo : BitsRatio: en 0, SceneCoef[0.00,0.00,0.00] MoveCoef[0.00,0.00,0.00,0.00,0.00]
+09-09 03:25:53.090   582   582 D awVideo : ReqIDREnable: 0
+09-09 03:25:53.090   582   582 D awVideo : DynamicSetVeRefFrameLbcModeEnable: 0
+09-09 03:25:53.090   582   582 D awVideo : RegionD3DEnable: 0, RegionD3DResultEnable: 0
+09-09 03:25:53.090   582   582 D awVideo : start mViDev 0
+09-09 03:25:53.090   582   582 E awVideo : fatal error! AW_MPI_VI_CreateVipp mViDev 0 failed: 0xffffffff
+09-09 03:25:53.090   582   582 E awVideo : create vi chn fail
+09-09 03:25:53.090   582   582 E awVideo : openCamera fail!
+09-09 03:25:53.090   582   582 D awVideo : stopCamera
+09-09 03:25:53.090   582   582 D awVideo : stopCamera finish
+09-09 03:25:53.090   582   582 D awVideo : *sensorType = 1, *sensorRes = 0
+09-09 03:25:53.090   582   582 D awVideo : camera 1 : vippDev: 8, veChn: 0, ispDev: -1
+09-09 03:25:53.090   582   582 D awVideo : srcWidth: 1280, srcHeight: 720
+09-09 03:25:53.090   582   582 D awVideo : dstWidth: 1920, dstHeight: 1080
+09-09 03:25:53.090   582   582 D awVideo : srcPixFmt=32, ColorSpace=0
+09-09 03:25:53.090   582   582 D awVideo : SaturationChange=0
+09-09 03:25:53.090   582   582 D awVideo : H.264
+09-09 03:25:53.100   582   582 D awVideo : vipp:8, SrcFrameRate:25, VideoFrameRate:25, bitrate:8000000, test_time=0, profile=2
+09-09 03:25:53.100   582   582 D awVideo : mirror:0, Color2Grey:0, RoiNum:0, RoiQp:0, RoiBgFrameRate Enable:0 Attenuation:0, IntraRefreshBlockNum:0, OrlNum:0VbvBufferSize:0, VbvThreshSize:0
+09-09 03:25:53.100   582   582 D awVideo : venc crop enable:0, X:0, Y:0, Width:0, Height:0
+09-09 03:25:53.100   582   582 D awVideo : VuiTimingInfoPresentFlag:0
+09-09 03:25:53.100   582   582 D awVideo : OnlineEnable: 0, OnlineShareBufNum: 0
+09-09 03:25:53.100   582   582 D awVideo : wdr_en: 0
+09-09 03:25:53.100   582   582 D awVideo : EnableGdc: 0
+09-09 03:25:53.100   582   582 D awVideo : EncppEnable: 1, IspAndVeLinkageEnable: 1
+09-09 03:25:53.100   582   582 D awVideo : SuperFrm Mode: -1, MaxRencodeTimes: 3, MaxP2IFrameBitsRatio: 0.33, IBitsThr: 0, PBitsThr: 0
+09-09 03:25:53.100   582   582 D awVideo : BitsClipParam: 0 1 0 {0.00,1.00,2.00}, {-0.50,0.50}, {-0.30,0.30}, {-0.30,0.30}, {-0.50,0.50}, {0.40,0.70}
+09-09 03:25:53.100   582   582 D awVideo : AeDiffParam: 0 40 [5,100] [0.10,0.60], 1 [20,25], [35,50]
+09-09 03:25:53.100   582   582 D awVideo : EnIFrmMbRcMoveStatus: en 0, 0
+09-09 03:25:53.100   582   582 D awVideo : BitsRatio: en 0, SceneCoef[0.00,0.00,0.00] MoveCoef[0.00,0.00,0.00,0.00,0.00]
+09-09 03:25:53.100   582   582 D awVideo : ReqIDREnable: 0
+09-09 03:25:53.100   582   582 D awVideo : DynamicSetVeRefFrameLbcModeEnable: 0
+09-09 03:25:53.100   582   582 D awVideo : RegionD3DEnable: 0, RegionD3DResultEnable: 0
+09-09 03:25:53.100   582   582 D awVideo : start mViDev 8
+09-09 03:25:53.100   582   582 D awVideo : vipp use 3 v4l2 buffers, colorspace: 0x3
+09-09 03:25:53.100   582   582 D awVideo : wdr_mode 0
+09-09 03:25:53.130   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.140   582   657 I gui     : SCR_ID_DVR init ok!
+09-09 03:25:53.160   582   657 I gui     : SCR_ID_PLAYBACK init ok!
+09-09 03:25:53.200   582   657 I gui     : SCR_ID_APP init ok!
+09-09 03:25:53.240   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.260   582   675 D @gpsupload: never cali time
+09-09 03:25:53.260   582   672 W stcpconn: GetConn 0 bad step:0
+09-09 03:25:53.280   579   579 I init    : <5>init: starting 'wificlean'
+09-09 03:25:53.280   582   685 D modem   : suspendCheck:1243 >> sleep(1), count = 5
+09-09 03:25:53.310   582   657 I gui     : SCR_ID_SETTING init ok!
+09-09 03:25:53.350   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.400   582   657 I gui     : SCR_ID_PLAY init ok!
+09-09 03:25:53.400   582   657 I gui     : SCR_ID_BACK_TRACK init ok!
+09-09 03:25:53.410   582   657 D backlight: backlight_set_brightness value: 0
+09-09 03:25:53.410   582   657 I gui     : (gui_load_first_screen-65): backlight_set_brightness(0)
+09-09 03:25:53.410   582   657 I gui     : (onMainWindEnter-53): (14467)
+09-09 03:25:53.410   582   657 I gui     : onMainWindEnter!!!!!!!!
+09-09 03:25:53.470   582   657 D backlight: backlight_set_brightness value: 0
+09-09 03:25:53.470   582   657 I lvgl    : #########################setup_ui, setup_ui, setup_ui
+09-09 03:25:53.470   582   657 I lvgl    : (ui_service_thread-367): #########################setup_ui, setup_ui, setup_ui
+09-09 03:25:53.470   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.480   582   663 I gui     : parent changed!!!!
+09-09 03:25:53.580   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.680   579   579 I init    : <6>init: waitpid returned pid 717, status = 0000ff00
+09-09 03:25:53.680   579   579 I init    : <5>init: process 'wificlean', pid 717 exited
+09-09 03:25:53.730   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.840   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.950   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:53.960   584   584 I jt808_JT_MAIN: wait 3s get imei
+09-09 03:25:54.060   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.170   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.260   582   667 D ledcontroller: call driver led Rec: On=>Off
+09-09 03:25:54.260   582   667 I led     : ledcontroller light 2 status 2
+09-09 03:25:54.260   582   672 W stcpconn: GetConn 0 bad step:0
+09-09 03:25:54.260   582   675 D @gpsupload: never cali time
+09-09 03:25:54.280   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.280   582   670 I wifi    : insmodWifiModules(1) ... 
+09-09 03:25:54.280   582   670 I wifi    : wifi start ... 
+09-09 03:25:54.280   582   685 D modem   : suspendCheck:1243 >> sleep(1), count = 4
+09-09 03:25:54.280   582   683 I modem   : doOpen:681 >> open /dev/ttyUSB1... sFd=-1
+09-09 03:25:54.390   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.500   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.610   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.720   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.780   582   683 I modem   : open AT interface success, retryCount 5
+09-09 03:25:54.780   582   683 D os      : osTaskCreate atRead with priority 0
+09-09 03:25:54.780   582   683 I modem_uart: @@@@@ (ec800k_cmd_send_recv-148): before send command:e, cmd_len = 1, sUartFd = -1
+09-09 03:25:54.780   582   683 I modem_uart: @@@@@ (ec800k_cmd_send_recv-172): finish send command:e
+09-09 03:25:54.790   582   756 I os      : Task atRead start...
+09-09 03:25:54.810   582   683 I modem_uart: (ec800k_cmd_send_recv-226): send command:e
+09-09 03:25:54.810   582   683 I modem_uart:  get at:80VACN_V4.0.05   OK
+09-09 03:25:54.840   582   582 D awVideo : createViChn OK! viDev 8 mIspDev -1 mViChn 0
+09-09 03:25:54.840   582   582 I userVo  : Screen resolution: 480*640
+09-09 03:25:54.840   582   582 I LOG_TAG : (doPreviewCamInit-160): user_g2d_init OKOKOK
+09-09 03:25:54.840   582   582 I userVo  : enable vo layer[0] success
+09-09 03:25:54.840   582   582 I userVo  : create vo layer[0] chn[0] success
+09-09 03:25:54.840   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.840   582   582 I userVo  : enable vo layer[1] success
+09-09 03:25:54.840   582   582 I userVo  : create vo layer[1] chn[0] success
+09-09 03:25:54.840   582   582 I userVo  : enable vo layer[2] success
+09-09 03:25:54.860   582   683 I modem_uart: (ec800kUartGetVer-430): ec800kVer = 80VACN_V4.0.05
+09-09 03:25:54.860   582   683 D modem   : AT> AT^UCVSIMSTATUS?
+09-09 03:25:54.860   582   582 I userVo  : create vo layer[2] chn[0] success
+09-09 03:25:54.860   582   582 I LOG_TAG : (doPreviewCamInit-163): userVoInit OKOKOK
+09-09 03:25:54.860   582   582 I userVi  : (userVippInit-1109): start
+09-09 03:25:54.860   582   582 I userVi  : (userVippInit-1124): VippChnInit (i = 1) start
+09-09 03:25:54.860   582   582 I userVi  : (VippChnInit-799): stCtx->mViDev = 8, has init
+09-09 03:25:54.860   582   582 E userVi  : create vipp[8] chn[0] error, try to get next chn, ret--->0xa0108048
+09-09 03:25:54.860   582   756 D modem   : readline:502 >> AT< ^UCVSIMSTATUS: 0,0,0
+09-09 03:25:54.860   582   582 I userVi  : create vipp[8-1] success
+09-09 03:25:54.860   582   582 I userVi  : (userVippInit-1145): VippChnInit (i = 1) finish
+09-09 03:25:54.860   582   582 I userVo  : vo[0]--->[60,640,360,640]
+09-09 03:25:54.860   582   582 I userVo  : vo[1]--->[60,640,360,640]
+09-09 03:25:54.860   582   582 I userVo  : vo[2]--->[240,640,180,267]
+09-09 03:25:54.860   582   582 I userVi  : (userVippInit-1161): finish
+09-09 03:25:54.860   582   582 I awVideo : MediaServiceInit!
+09-09 03:25:54.860   582   582 I LOG_TAG : (doMediaServiceInit-172): init = 1
+09-09 03:25:54.860   582   582 D awVideo : pixfmt:0x20, colorSpace:0x3
+09-09 03:25:54.860   582   582 D awVideo : venc set Rcmode=1
+09-09 03:25:54.860   582   582 D awVideo : createVencChn 0 start
+09-09 03:25:54.860   582   766 I userVi  : (GetCSIFrameThread-139): pContext->mViDev = 8, mirrorFrameInfo.VFrame.mWidth = 640, mirrorFrameInfo.VFrame.mHeight = 480
+09-09 03:25:54.860   582   766 I userVi  : (GetCSIFrameThread-177): pContext->mViDev = 8, pthread_cond_wait
+09-09 03:25:54.950   582   756 D modem   : readline:502 >> AT< OK
+09-09 03:25:54.950   582   683 D modem   : getVSimStatus ^UCVSIMSTATUS: 0,0,0
+09-09 03:25:54.950   582   683 D modem   : getVSimStatus return 0, status 0, progress 0, errNo 0
+09-09 03:25:54.950   582   683 D modem   : AT> AT+CIMI
+09-09 03:25:54.960   582   582 D awVideo : create venc channel[0] success!
+09-09 03:25:54.960   582   582 D awVideo : set venc framerate: src 25fps, dst 25fps
+09-09 03:25:54.960   582   582 I awVideo : VI(8) AW_MPI_VENC_SetHorizonFlip(0), ret=0
+09-09 03:25:54.960   582   582 D awVideo : mVeChn 0 OK
+09-09 03:25:54.960   582   582 D awVideo : opencamera 1 ok, start get frame
+09-09 03:25:54.960   582   582 D awVideo : create camera 1 Get Video Thread success! threadId[0x0x174a2f0]
+09-09 03:25:54.960   582   582 D awVideo : AW_MPI_VENC_StartRecvPic mVeChn 0
+09-09 03:25:54.990   582   768 D awVideo : start nVencChn 0
+09-09 03:25:54.990   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:54.990   582   768 D awVideo : Get H264 SPS/PPS 29
+09-09 03:25:54.990   582   768 I awOSD   : aw_osd_init handle:6
+09-09 03:25:54.990   582   768 I awOSD   : OSD: 6, X 1216 Y 1024 W 704 H 32
+09-09 03:25:54.990   582   768 I awOSD   : aw_osd_init handle:7
+09-09 03:25:54.990   582   768 I awOSD   : OSD: 7, X 1216 Y 992 W 704 H 32
+09-09 03:25:54.990   582   768 I awOSD   : aw_osd_init handle:8
+09-09 03:25:54.990   582   768 I awOSD   : OSD: 8, X 1200 Y 1056 W 0 H 0
+09-09 03:25:54.990   582   768 I awOSD   : aw_osd_init handle:9
+09-09 03:25:54.990   582   768 I awOSD   : OSD: 9, X 1216 Y 64 W 704 H 32
+09-09 03:25:54.990   582   768 I awOSD   : aw_osd_init handle:10
+09-09 03:25:54.990   582   768 I awOSD   : OSD: 10, X 16 Y 32 W 320 H 64
+09-09 03:25:54.990   582   768 I awOSD   : aw_osd_init handle:11
+09-09 03:25:54.990   582   768 I awOSD   : OSD: 11, X 768 Y 544 W 704 H 32
+09-09 03:25:54.990   582   582 D awVideo : camera init 1 OK!!!
+09-09 03:25:54.990   582   582 D awVideo : camera 2 : vippDev: 4, veChn: 0, ispDev: 0
+09-09 03:25:54.990   582   582 D awVideo : srcWidth: 1280, srcHeight: 720
+09-09 03:25:54.990   582   582 D awVideo : dstWidth: 1280, dstHeight: 720
+09-09 03:25:54.990   582   582 D awVideo : srcPixFmt=32, ColorSpace=0
+09-09 03:25:54.990   582   582 D awVideo : SaturationChange=0
+09-09 03:25:54.990   582   582 D awVideo : H.265
+09-09 03:25:54.990   582   582 D awVideo : vipp:4, SrcFrameRate:25, VideoFrameRate:25, bitrate:2500000, test_time=0, profile=0
+09-09 03:25:54.990   582   582 D awVideo : mirror:0, Color2Grey:0, RoiNum:0, RoiQp:0, RoiBgFrameRate Enable:0 Attenuation:0, IntraRefreshBlockNum:0, OrlNum:0VbvBufferSize:0, VbvThreshSize:0
+09-09 03:25:54.990   582   582 D awVideo : venc crop enable:0, X:0, Y:0, Width:0, Height:0
+09-09 03:25:54.990   582   582 D awVideo : VuiTimingInfoPresentFlag:0
+09-09 03:25:54.990   582   582 D awVideo : OnlineEnable: 0, OnlineShareBufNum: 0
+09-09 03:25:54.990   582   582 D awVideo : wdr_en: 0
+09-09 03:25:54.990   582   582 D awVideo : EnableGdc: 0
+09-09 03:25:54.990   582   582 D awVideo : EncppEnable: 1, IspAndVeLinkageEnable: 1
+09-09 03:25:54.990   582   582 D awVideo : SuperFrm Mode: -1, MaxRencodeTimes: 3, MaxP2IFrameBitsRatio: 0.33, IBitsThr: 0, PBitsThr: 0
+09-09 03:25:54.990   582   582 D awVideo : BitsClipParam: 0 1 0 {0.00,1.00,2.00}, {-0.50,0.50}, {-0.30,0.30}, {-0.30,0.30}, {-0.50,0.50}, {0.40,0.70}
+09-09 03:25:54.990   582   582 D awVideo : AeDiffParam: 0 40 [5,100] [0.10,0.60], 1 [20,25], [35,50]
+09-09 03:25:54.990   582   582 D awVideo : EnIFrmMbRcMoveStatus: en 0, 0
+09-09 03:25:54.990   582   582 D awVideo : BitsRatio: en 0, SceneCoef[0.00,0.00,0.00] MoveCoef[0.00,0.00,0.00,0.00,0.00]
+09-09 03:25:54.990   582   582 D awVideo : ReqIDREnable: 0
+09-09 03:25:54.990   582   582 D awVideo : DynamicSetVeRefFrameLbcModeEnable: 0
+09-09 03:25:54.990   582   582 D awVideo : RegionD3DEnable: 0, RegionD3DResultEnable: 0
+09-09 03:25:54.990   582   582 D awVideo : start mViDev 4
+09-09 03:25:54.990   582   582 E awVideo : fatal error! AW_MPI_VI_CreateVipp mViDev 4 failed: 0xffffffff
+09-09 03:25:54.990   582   582 E awVideo : create vi chn fail
+09-09 03:25:54.990   582   582 E awVideo : openCamera fail!
+09-09 03:25:54.990   582   582 D awVideo : stopCamera
+09-09 03:25:54.990   582   582 D awVideo : stopCamera finish
+09-09 03:25:54.990   582   582 D awVideo : camera 3 : vippDev: 12, veChn: 0, ispDev: -1
+09-09 03:25:54.990   582   582 D awVideo : srcWidth: 1280, srcHeight: 720
+09-09 03:25:54.990   582   582 D awVideo : dstWidth: 1280, dstHeight: 720
+09-09 03:25:54.990   582   582 D awVideo : srcPixFmt=32, ColorSpace=0
+09-09 03:25:54.990   582   582 D awVideo : SaturationChange=0
+09-09 03:25:54.990   582   582 D awVideo : H.265
+09-09 03:25:54.990   582   582 D awVideo : vipp:12, SrcFrameRate:25, VideoFrameRate:25, bitrate:2500000, test_time=0, profile=0
+09-09 03:25:54.990   582   582 D awVideo : mirror:0, Color2Grey:0, RoiNum:0, RoiQp:0, RoiBgFrameRate Enable:0 Attenuation:0, IntraRefreshBlockNum:0, OrlNum:0VbvBufferSize:0, VbvThreshSize:0
+09-09 03:25:54.990   582   582 D awVideo : venc crop enable:0, X:0, Y:0, Width:0, Height:0
+09-09 03:25:54.990   582   582 D awVideo : VuiTimingInfoPresentFlag:0
+09-09 03:25:54.990   582   582 D awVideo : OnlineEnable: 0, OnlineShareBufNum: 0
+09-09 03:25:54.990   582   582 D awVideo : wdr_en: 0
+09-09 03:25:54.990   582   582 D awVideo : EnableGdc: 0
+09-09 03:25:54.990   582   582 D awVideo : EncppEnable: 1, IspAndVeLinkageEnable: 1
+09-09 03:25:54.990   582   582 D awVideo : SuperFrm Mode: -1, MaxRencodeTimes: 3, MaxP2IFrameBitsRatio: 0.33, IBitsThr: 0, PBitsThr: 0
+09-09 03:25:54.990   582   582 D awVideo : BitsClipParam: 0 1 0 {0.00,1.00,2.00}, {-0.50,0.50}, {-0.30,0.30}, {-0.30,0.30}, {-0.50,0.50}, {0.40,0.70}
+09-09 03:25:54.990   582   582 D awVideo : AeDiffParam: 0 40 [5,100] [0.10,0.60], 1 [20,25], [35,50]
+09-09 03:25:54.990   582   582 D awVideo : EnIFrmMbRcMoveStatus: en 0, 0
+09-09 03:25:54.990   582   582 D awVideo : BitsRatio: en 0, SceneCoef[0.00,0.00,0.00] MoveCoef[0.00,0.00,0.00,0.00,0.00]
+09-09 03:25:54.990   582   582 D awVideo : ReqIDREnable: 0
+09-09 03:25:54.990   582   582 D awVideo : DynamicSetVeRefFrameLbcModeEnable: 0
+09-09 03:25:54.990   582   582 D awVideo : RegionD3DEnable: 0, RegionD3DResultEnable: 0
+09-09 03:25:54.990   582   582 D awVideo : start mViDev 12
+09-09 03:25:54.990   582   582 D awVideo : vipp use 3 v4l2 buffers, colorspace: 0x3
+09-09 03:25:54.990   582   582 D awVideo : wdr_mode 0
+09-09 03:25:55.020   582   768 I recorder: cameraId 1 videoType = 512
+09-09 03:25:55.050   582   756 D modem   : readline:502 >> AT< +CME ERROR: 10
+09-09 03:25:55.050   582   683 D modem   : AT> AT+CCLK?
+09-09 03:25:55.090   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:55.150   582   756 D modem   : readline:502 >> AT< +CCLK: "70/01/01,00:00:16+32"
+09-09 03:25:55.200   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:55.250   582   756 D modem   : readline:502 >> AT< OK
+09-09 03:25:55.250   582   683 D modem   : time=70/01/01,00:00:16
+09-09 03:25:55.250   582   683 D modem   : 1970/01/01, 00:00:16, timeOffsize = 28800
+09-09 03:25:55.250   582   683 D modem   : modemtime=16
+09-09 03:25:55.250   582   683 D modem   : AT> AT+QNTP=1,"202.112.31.197"
+09-09 03:25:55.260   582   672 W stcpconn: GetConn 0 bad step:0
+09-09 03:25:55.260   582   675 D @gpsupload: never cali time
+09-09 03:25:55.280   582   685 D modem   : suspendCheck:1243 >> sleep(1), count = 3
+09-09 03:25:55.310   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:55.350   582   756 D modem   : readline:502 >> AT< ERROR
+09-09 03:25:55.350   582   683 D modem   : AT> AT*ICCID?
+09-09 03:25:55.380   582   684 I modem   : netStatusCheck:1690 >> dealNetRegister, registerCount:0
+09-09 03:25:55.380   582   684 I modem   : netStatusCheck:1693 >> dealNetRegister ethup
+09-09 03:25:55.380   579   579 I init    : <5>init: starting 'ethup'
+09-09 03:25:55.390   582   684 I modem   : ctl.start, ethup...
+09-09 03:25:55.420   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:55.490   582   756 D modem   : readline:502 >> AT< +CME ERROR: 10
+09-09 03:25:55.520   581   606 I sdcard  : getAHDState, state:0
+09-09 03:25:55.520   581   606 I evbus   : serv relay =>evbus-584 what:ahd/len:0 ck:0 isReply:0
+09-09 03:25:55.520   582   683 D modem   : AT> AT+CGSN
+09-09 03:25:55.530   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:55.530   579   579 I init    : <6>init: waitpid returned pid 771, status = 00000000
+09-09 03:25:55.530   579   579 I init    : <5>init: process 'ethup', pid 771 exited
+09-09 03:25:55.680   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:55.780   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:55.890   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.000   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.110   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.220   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.250   582   667 D ledcontroller: call driver led Gps: Off=>On
+09-09 03:25:56.250   582   667 I led     : ledcontroller light 1 status 1
+09-09 03:25:56.260   582   672 W stcpconn: GetConn 0 bad step:0
+09-09 03:25:56.260   582   675 D @gpsupload: never cali time
+09-09 03:25:56.280   582   685 D modem   : suspendCheck:1243 >> sleep(1), count = 2
+09-09 03:25:56.330   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.440   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.550   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.640   582   582 D awVideo : createViChn OK! viDev 12 mIspDev -1 mViChn 0
+09-09 03:25:56.640   582   582 I awVideo : MediaServiceInit!
+09-09 03:25:56.640   582   582 I LOG_TAG : (doMediaServiceInit-172): init = 1
+09-09 03:25:56.640   582   582 D awVideo : pixfmt:0x20, colorSpace:0x3
+09-09 03:25:56.640   582   582 D awVideo : venc set Rcmode=14
+09-09 03:25:56.640   582   582 D awVideo : createVencChn 0 start
+09-09 03:25:56.640   582   582 D awVideo : venc channel[0] is exist, find next!
+09-09 03:25:56.660   582   582 D awVideo : create venc channel[1] success!
+09-09 03:25:56.660   582   582 D awVideo : set venc framerate: src 25fps, dst 25fps
+09-09 03:25:56.660   582   582 I awVideo : VI(12) AW_MPI_VENC_SetHorizonFlip(0), ret=0
+09-09 03:25:56.660   582   582 D awVideo : mVeChn 1 OK
+09-09 03:25:56.660   582   582 D awVideo : opencamera 3 ok, start get frame
+09-09 03:25:56.660   582   582 D awVideo : create camera 3 Get Video Thread success! threadId[0x0x1802690]
+09-09 03:25:56.660   582   582 D awVideo : AW_MPI_VENC_StartRecvPic mVeChn 1
+09-09 03:25:56.660   582   783 D awVideo : start nVencChn 1
+09-09 03:25:56.660   582   783 D awVideo : Get H265 SPS/PPS 83
+09-09 03:25:56.660   582   783 I awOSD   : aw_osd_init handle:18
+09-09 03:25:56.660   582   783 I awOSD   : OSD: 18, X 928 Y 688 W 352 H 16
+09-09 03:25:56.660   582   783 I awOSD   : aw_osd_init handle:19
+09-09 03:25:56.660   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.660   582   783 I awOSD   : OSD: 19, X 928 Y 672 W 352 H 16
+09-09 03:25:56.660   582   783 I awOSD   : aw_osd_init handle:20
+09-09 03:25:56.660   582   783 I awOSD   : OSD: 20, X 912 Y 704 W 0 H 0
+09-09 03:25:56.660   582   783 I awOSD   : aw_osd_init handle:21
+09-09 03:25:56.660   582   783 I awOSD   : OSD: 21, X 928 Y 64 W 352 H 16
+09-09 03:25:56.660   582   783 I awOSD   : aw_osd_init handle:22
+09-09 03:25:56.660   582   783 I awOSD   : OSD: 22, X 16 Y 32 W 320 H 64
+09-09 03:25:56.660   582   783 I awOSD   : aw_osd_init handle:23
+09-09 03:25:56.660   582   783 I awOSD   : OSD: 23, X 448 Y 368 W 352 H 16
+09-09 03:25:56.660   582   582 D awVideo : camera init 3 OK!!!
+09-09 03:25:56.660   582   582 I main    : ########## aw_audio_record_init ###############
+09-09 03:25:56.660   582   582 D awRecord: AAC info:samplerate=16000,bitwidth=16,chn=1,framesize=1024, devVolume=100
+09-09 03:25:56.660   582   582 I awRecord: enable AEC default
+09-09 03:25:56.700   582   582 D awRecord: create ai channel[0] success!
+09-09 03:25:56.700   582   582 D awRecord: create ai channel 0 ok!
+09-09 03:25:56.700   582   582 D awRecord: create aenc channel[0] success!
+09-09 03:25:56.700   582   582 D awRecord: aw_audio_init ctx 0x1830a20 ok
+09-09 03:25:56.700   582   582 D awRecord: (aw_audio_record_init-305): AW_MPI_AI_SuspendAec(0)
+09-09 03:25:56.700   582   582 I main    : (awMediaInit2-59): start, flag = 0
+09-09 03:25:56.700   582   582 I main    : ########## av_register_all ###############
+09-09 03:25:56.700   582   791 D awRecord: enter 0x1830a20
+09-09 03:25:56.720   582   783 I recorder: cameraId 3 videoType = 512
+09-09 03:25:56.790   582   582 I main    : ########## SwitchIspWB ###############
+09-09 03:25:56.790   582   582 I awCamera: SwitchIspConfig pthread create OKOKOK
+09-09 03:25:56.790   582   582 I main    : ########## aw_audio_play_init ###############
+09-09 03:25:56.790   582   582 D awPlay  : aw_audio_play_init
+09-09 03:25:56.800   582   582 D awPlay  : param: sampleRate[16000], channelCount[1], bitWidth[16], frameSize[1024], aoVolume[86], aoSoftVolume[10]
+09-09 03:25:56.800   582   582 D awPlay  : create ao channel[0] success!
+09-09 03:25:56.800   582   582 D awPlay  : AW_MPI_AO_StartChn done
+09-09 03:25:56.800   582   582 D awPlay  : Get Ao Volume:87, set:86
+09-09 03:25:56.800   582   582 D awPlay  : Set Ao SoftVolume:10
+09-09 03:25:56.800   582   582 D awPlay  : aw_audio_play_init aContext 0x18eb4a0
+09-09 03:25:56.800   582   582 I AudioTrack: AudioTrack create type 1 samplerate 16000 channel 1
+09-09 03:25:56.800   582   582 I AudioTrack: AudioTrack create type 2 samplerate 16000 channel 1
+09-09 03:25:56.800   582   582 I audio   : audioPlayInit done
+09-09 03:25:56.800   582   582 I main    : ########## awMediaSetBCamHFlip ###############
+09-09 03:25:56.800   582   582 I awVideo : ready to set horizon flip to 0.
+09-09 03:25:56.800   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.800   582   582 I awVideo : ready to set horizon flip to 0.
+09-09 03:25:56.800   582   795 I audio   : audioFileThread start
+09-09 03:25:56.800   582   796 I AudioTrack: audioTrackProc type 2 track 0x18ef720
+09-09 03:25:56.800   582   794 I audio   : audioMixThread start
+09-09 03:25:56.910   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:56.960   584   584 I jt808_JT_MAIN: wait 3s get imei
+09-09 03:25:57.020   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.130   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.160   582   582 D os      : osTaskCreate miscThread with priority 0
+09-09 03:25:57.160   582   582 I recorder: (recorder_init-397): start
+09-09 03:25:57.160   582   582 I recorder: (get_max_av_buffer_duration-375): max_av_buffer_duration = 10000
+09-09 03:25:57.160   582   582 I recorder: mCameraId 0 recorder 0x18057b0 create
+09-09 03:25:57.160   582   582 I recorder: mCameraId 1 recorder 0x1834ac0 create
+09-09 03:25:57.170   582   582 I @CU_AVBufferList: A:AVBufferList 0x1834b00 duration 10000 memLimit 4294967295 create
+09-09 03:25:57.170   582   582 I @CU_AVBufferList: V:AVBufferList 0x1834b80 duration 10000 memLimit 4294967295 create
+09-09 03:25:57.170   582   582 I @CU_AVBufferList: V:AVBufferList 0x1834c00 duration 10000 memLimit 4294967295 create
+09-09 03:25:57.170   582   582 I recorder: (recorder_init-415): i = 0, MAX_AV_BUFFER_DURATION = 10000
+09-09 03:25:57.170   582   582 I @CU_AVBufferList: V:AVBufferList 0x1834c80 duration 10000 memLimit 4294967295 create
+09-09 03:25:57.170   582   582 I @CU_AVBufferList: V:AVBufferList 0x1834d00 duration 10000 memLimit 4294967295 create
+09-09 03:25:57.170   582   582 I recorder: (recorder_init-415): i = 1, MAX_AV_BUFFER_DURATION = 10000
+09-09 03:25:57.170   582   797 I os      : Task miscThread start...
+09-09 03:25:57.170   582   582 I @FileRemuxerV2: FileRemuxerV2 0x18352b0 created
+09-09 03:25:57.170   582   582 I @FileRemuxerV2: FileRemuxerV2 0x1835440 created
+09-09 03:25:57.180   582   582 D @jt808_jtmedia: JTStreamer init
+09-09 03:25:57.180   582   582 I @RTPPro1078Extractor: RTPPro1078Extractor Create 0x183c690
+09-09 03:25:57.180   582   582 I @CU_AVStreaming: AVStreaming 0x183c860 Create
+09-09 03:25:57.180   582   582 I @FileSource: FileSource Create 0x183c8a0 mCameraID 70
+09-09 03:25:57.180   582   582 I @CU_AVStreaming: addStream AVStreaming 0x183c860 list 0x1834b00 audio 1 streamIndex 0
+09-09 03:25:57.180   582   582 I @CU_AVStreaming: addStream AVStreaming 0x183c860 list 0x1834c00 audio 0 streamIndex 1
+09-09 03:25:57.180   582   582 D @jt808_jtmedia: create RTPSender[0] ok
+09-09 03:25:57.180   582   582 I @RTPPro1078Extractor: RTPPro1078Extractor Create 0x1903360
+09-09 03:25:57.180   582   582 I @CU_AVStreaming: AVStreaming 0x17fea10 Create
+09-09 03:25:57.180   582   582 I @FileSource: FileSource Create 0x17fea50 mCameraID 66
+09-09 03:25:57.180   582   582 I @CU_AVStreaming: addStream AVStreaming 0x17fea10 list 0x1834b00 audio 1 streamIndex 0
+09-09 03:25:57.180   582   582 I @CU_AVStreaming: addStream AVStreaming 0x17fea10 list 0x1834d00 audio 0 streamIndex 1
+09-09 03:25:57.180   582   582 D @jt808_jtmedia: create RTPSender[1] ok
+09-09 03:25:57.180   582   797 D backlight: backlight_set_brightness value: 0
+09-09 03:25:57.180   582   582 D @jt808_jtmedia: JTStreamer init ok
+09-09 03:25:57.180   582   799 D @Thread : @FileRemuxerV2 Starting thread tid=799
+09-09 03:25:57.180   582   798 D @Thread : @FileRemuxerV2 Starting thread tid=798
+09-09 03:25:57.180   582   800 D @Thread : @CapturePropMonitor Starting thread tid=800
+09-09 03:25:57.190   582   801 D @Thread : @CapturePropMonitor Starting thread tid=801
+09-09 03:25:57.200   582   582 I mediaIPC: media IPC shared memory inited
+09-09 03:25:57.200   582   582 I @v85ximpl: connect evbus, client name: evbus-582
+09-09 03:25:57.200   581   581 I evbus   : evbus-582 connected to eventbus
+09-09 03:25:57.200   581   581 I poller  : add fd:7, total:4
+09-09 03:25:57.200   582   582 I evbus   : evbus-582 connect eventbus ok,fd=114
+09-09 03:25:57.200   582   582 D os      : osTaskCreate motion with priority 0
+09-09 03:25:57.200   582   805 D msgHandler: MsgLooperThread created
+09-09 03:25:57.200   582   805 D @Poller : create control pipe: 115/116, epoll 117
+09-09 03:25:57.200   582   804 I os      : Task motion start...
+09-09 03:25:57.200   582   582 D os      : osTaskCreate CheckAccStateOneShot with priority 0
+09-09 03:25:57.200   582   582 D os      : osTaskCreate AccOffStopRecor with priority 0
+09-09 03:25:57.200   582   582 D @cat1msg: Construct this 0x18062b0
+09-09 03:25:57.200   582   582 D @cat1msg: new CAT1Messenger, mReconnectTimeout=10s, mMsgTimeout=180s
+09-09 03:25:57.210   582   582 D @cat1msg: schedule connect delayMS 0
+09-09 03:25:57.210   582   582 D os      : osTaskCreate wakeupCheck with priority 0
+09-09 03:25:57.210   582   582 D os      : osTaskCreate fwCheck with priority 0
+09-09 03:25:57.210   582   582 D os      : osTaskCreate quectelFwCheck with priority 0
+09-09 03:25:57.210   582   582 I main    : ########## screen media service start ###############
+09-09 03:25:57.210   582   582 D os      : osTaskCreate media with priority 0
+09-09 03:25:57.210   582   805 D @cat1msg: do connect now
+09-09 03:25:57.210   582   804 I evhdl   : [MotionDet][onMotionDetectevent]create msg success, msg id: 32769
+09-09 03:25:57.210   582   582 I main    : ########## custCheck ###############
+09-09 03:25:57.210   582   582 D os      : osTaskCreate custCheck with priority 0
+09-09 03:25:57.210   582   582 D os      : osTaskCreate onSDError with priority 0
+09-09 03:25:57.210   582   803 I @v85ximpl: enter evbusLoop...
+09-09 03:25:57.210   582   802 I mediaIPC: mediaIPCThread start
+09-09 03:25:57.210   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.210   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.210   582   808 I os      : Task wakeupCheck start...
+09-09 03:25:57.210   581   581 I evbus   : serv relay evbus-582=>evbus-584 what:wakeup/len:24 ck:0 isReply:0
+09-09 03:25:57.210   584   630 D jt808_JTListener: onWakeup 0
+09-09 03:25:57.210   584   630 I jt808_JTListener: wakeup reason: poweron
+09-09 03:25:57.210   582   808 I mainsys : wakeup reason 0
+09-09 03:25:57.210   582   808 I cloud   : cloud_set_acc(0, 0)
+09-09 03:25:57.210   582   808 D @gpsupload: acc:0 get water mark gps info lat:0 lng:0
+09-09 03:25:57.220   582   810 I os      : Task quectelFwCheck start...
+09-09 03:25:57.220   582   810 I mainsys : quectelFwCheck:227 >> start ok
+09-09 03:25:57.220   582   811 I os      : Task media start...
+09-09 03:25:57.220   582   809 I os      : Task fwCheck start...
+09-09 03:25:57.220   582   807 I os      : Task AccOffStopRecor start...
+09-09 03:25:57.220   582   806 I os      : Task CheckAccStateOneShot start...
+09-09 03:25:57.220   582   813 I os      : Task custCheck start...
+09-09 03:25:57.220   582   813 I main    : custCheck Enter
+09-09 03:25:57.220   582   812 D @cat1msg: async connect thread 192.168.43.1:8003...
+09-09 03:25:57.220   582   812 D @Socket : getaddrinfo for 192.168.43.1:8003 takes 0ms
+09-09 03:25:57.220   582   812 W @Socket : socket connect 192.168.43.1@8003 failed 101/Network unreachable
+09-09 03:25:57.220   582   812 D @cat1msg: connect 192.168.43.1:8003 err: Network unreachable
+09-09 03:25:57.220   582   805 W @cat1msg: onCAT1ClientStatus: connect Closed err 101, delay 10000ms to reconnect.
+09-09 03:25:57.220   582   805 D @cat1msg: schedule connect delayMS 10000
+09-09 03:25:57.220   582   811 I os      : Task media exited!
+09-09 03:25:57.220   582   814 I os      : Task onSDError start...
+09-09 03:25:57.220   582   814 D mainsys : (onSDError-311): sdcard start task
+09-09 03:25:57.220   582   808 D @gpsupload: setAcc(0, 0)
+09-09 03:25:57.220   582   815 I videoPlayer: (videoPlayerContextInit-211): mScreenWidth = 480, mScreenHeight = 640
+09-09 03:25:57.220   582   815 I LOG_TAG : MediaServiceInit!
+09-09 03:25:57.220   582   817 I videoPlayer: Enter.
+09-09 03:25:57.220   582   817 I videoPlayer: (playAudioThread-2429): pthread_cond_wait(&gAudioCond, &gAudioLcok)
+09-09 03:25:57.220   582   816 I videoPlayer: Enter.
+09-09 03:25:57.220   582   816 I videoPlayer: (playVideoThread-3057): playback->PLAYER_STATE_IDLE
+09-09 03:25:57.220   582   816 I videoPlayer: (playVideoThread-3061): mCurVisualFlag = 0, mSetVisualFlag = 0
+09-09 03:25:57.240   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.260   582   672 W stcpconn: GetConn 0 bad step:0
+09-09 03:25:57.270   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.270   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.270   582   675 D @gpsupload: never cali time
+09-09 03:25:57.280   582   671 W common  : getaddrinfo iot.pulink.com.cn:8080 failed, retry 9
+09-09 03:25:57.280   582   677 W stcpconn: dnsCheck iot.pulink.com.cn failed, gai_strerror: Try again.
+09-09 03:25:57.280   582   677 I os      : Task dns exited!
+09-09 03:25:57.280   582   685 D modem   : suspendCheck:1243 >> sleep(1), count = 1
+09-09 03:25:57.320   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.320   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.350   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.380   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.380   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.390   582   684 E modem   : Lock mutex error for AT+CEREG?.
+09-09 03:25:57.430   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.430   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.460   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.490   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.490   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.540   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.540   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.570   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.590   582   684 E modem   : Lock mutex error for AT+CEREG?.
+09-09 03:25:57.600   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.600   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.650   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.650   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.680   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.710   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.710   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.770   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.770   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.790   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.790   582   684 E modem   : Lock mutex error for AT+CEREG?.
+09-09 03:25:57.820   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.820   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.880   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.880   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.900   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:57.930   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.930   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.990   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:57.990   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:57.990   582   684 E modem   : Lock mutex error for AT+CEREG?.
+09-09 03:25:58.010   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:58.040   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:58.040   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:58.100   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:58.100   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!
+09-09 03:25:58.120   582   661 D gsensor : invalid acceleration: x 0.000000 y 0.000000 z 0.000000
+09-09 03:25:58.150   582   802 E awPicture: fatal error! createVirChn[4] fail[0xa0108010]!
+09-09 03:25:58.150   582   802 E awYUV   : virvi start viDev 4 viCh -1 failed!

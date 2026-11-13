@@ -1,0 +1,210 @@
+V19 SD logging diagnostic
+Thu Jan  1 08:00:12 +08 1970
+waited_seconds=1
+sys.sd.in=1
+sys.sd.needformat=
+sys.sd.rw_err=
+persist.debug.log.enable=
+sys.mainsys.bootcount=
+--- /proc/mounts ---
+/dev/root /rom squashfs ro,relatime 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=249188k,nr_inodes=62297,mode=755 0 0
+/proc /proc proc rw,relatime 0 0
+tmpfs /tmp tmpfs rw,relatime,size=250024k,nr_inodes=62506 0 0
+sys /sys sysfs rw,relatime 0 0
+/dev/by-name/rootfs_data /overlay jffs2 rw,relatime 0 0
+overlayfs:/overlay / overlay rw,noatime,lowerdir=/,upperdir=/overlay/upper,workdir=/overlay/workdir 0 0
+devpts /dev/pts devpts rw,relatime,gid=5,mode=620,ptmxmode=000 0 0
+none /sys/kernel/debug debugfs rw,relatime 0 0
+/dev/mmcblk0p1 /mnt/extsd vfat rw,noatime,nodiratime,fmask=0000,dmask=0000,allow_utime=0022,codepage=936,iocharset=utf8,shortname=mixed,errors=remount-ro 0 0
+--- /proc/partitions ---
+major minor  #blocks  name
+
+  31        0       2048 mtdblock0
+  31        1        128 mtdblock1
+  31        2       3328 mtdblock2
+  31        3       9728 mtdblock3
+  31        4        768 mtdblock4
+  31        5        384 mtdblock5
+ 179        0   31205376 mmcblk0
+ 179        1   31204352 mmcblk0p1
+--- block devices ---
+ls: /dev/block/mmc*: No such file or directory
+brw-------    1 root     root      179,   0 Jan  1 08:00 /dev/mmcblk0
+brw-------    1 root     root      179,   1 Jan  1 08:00 /dev/mmcblk0p1
+--- recent kernel messages ---
+[    7.717193] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.727355] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.735495] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.743641] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+[    7.750955] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.761118] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.769260] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.777451] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.787613] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.795771] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.803966] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.814129] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.822271] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.830417] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+[    7.837688] [sc2336_mipi]retry = 0, V4L2_IDENT_SENSOR = 0
+[    7.843737] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.853899] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.862041] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.870235] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.880398] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.888539] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.896729] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.906892] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.915033] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.923199] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+[    7.930513] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.940676] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.948820] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.957018] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.967182] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    7.975325] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    7.983517] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    7.993680] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.001823] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.009975] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+[    8.017242] [sc2336_mipi]retry = 1, V4L2_IDENT_SENSOR = 0
+[    8.023294] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.033456] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.041600] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.049802] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.059965] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.068108] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.076302] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.086465] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.094607] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.102753] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+[    8.110068] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.120231] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.128373] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.136563] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.146727] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.154869] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.163059] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.173221] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.181400] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.189555] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+[    8.196822] [sc2336_mipi]retry = 2, V4L2_IDENT_SENSOR = 0
+[    8.202873] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.213035] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.221180] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.229372] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.239536] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.247679] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.255866] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.266028] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.274172] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.282320] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+[    8.289634] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.299797] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.307956] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.316148] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.326310] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.334454] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.342647] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.352810] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.360952] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.369098] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+[    8.376367] [sc2336_mipi]retry = 3, V4L2_IDENT_SENSOR = 0
+[    8.382414] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.392577] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.400719] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.408913] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.419075] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.427217] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.435401] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.445563] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.453722] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.461875] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3107
+[    8.469185] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.479348] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.487484] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.495671] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.505834] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.513976] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.522167] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: Address + Write bit transmitted,ACK not received
+[    8.532330] sunxi:i2c_sunxi_ng@twi0[ERR]: drv mode: TWI BUS error state is 0x20
+[    8.540471] sunxi:i2c_sunxi_ng@twi0[ERR]: drv-mode: xfer failed (dev addr:0x30)
+[    8.548621] [VIN_DEV_I2C]sc2336_mipi read retry 3, read addr is 0x3108
+[    8.555882] [sc2336_mipi]retry = 4, V4L2_IDENT_SENSOR = 0
+[    8.561894] [sc2336_mipi] error, chip found is not an target chip.
+[    8.569074] [VIN_ERR]registering sc2336_mipi, No such device!
+[    8.578291] sun8iw21p1-pinctrl pio: expect_func as:mipi_csi_mclk1, but muxsel(5) is func:uart0
+[    8.600532] [tp9950]V4L2_IDENT_SENSOR = 0x5028
+[   10.116200] [tp9950]read reg0x3= 0xf reg0x1= 0x8b det_size_type=0
+[   10.122991] [tp9950]sensor_type = 1 info->width=1280 info->height=720
+[   10.136984] initcall 0xbf843001 returned 0 after 2700303 usecs
+[   10.168554] calling  0xbf847001 @ 522
+[   10.172788] initcall 0xbf847001 returned 0 after 119 usecs
+[   10.220018] calling  0xbf851031 @ 524
+[   10.224164] initcall 0xbf851031 returned 0 after 36 usecs
+[   10.233131] calling  0xbf858001 @ 525
+[   10.237589] initcall 0xbf858001 returned 0 after 281 usecs
+[   10.247593] calling  0xbf867001 @ 527
+[   10.251694] initcall 0xbf867001 returned 0 after 16 usecs
+[   10.295711] calling  0xbf87d001 @ 529
+[   10.300652] initcall 0xbf87d001 returned 0 after 746 usecs
+[   10.314781] calling  0xbf885001 @ 535
+[   10.319450] initcall 0xbf885001 returned 0 after 465 usecs
+[   10.328582] calling  0xbf88c001 @ 537
+[   10.333083] [sound 1158][DAUDIO snd_sunxi_regulator_init] regulator missing or invalid
+[   10.342392] initcall 0xbf88c001 returned 0 after 9491 usecs
+[   10.351722] calling  0xbf895001 @ 539
+[   10.356678] initcall 0xbf895001 returned 0 after 848 usecs
+[   10.365612] calling  0xbf89a001 @ 541
+[   10.370768] sunxi-snd-mach soc@03000000:codec_mach: sunxi-snd-codec <-> soc@03000000:codec_plat mapping ok
+[   10.383368] sunxi-snd-mach soc@03000000:daudio0_mach: snd-soc-dummy-dai <-> 2032000.daudio0_plat mapping ok
+[   10.395516] initcall 0xbf89a001 returned 0 after 25116 usecs
+[   10.451423] calling  0xbf89f001 @ 557
+[   10.455882] [GOODIX 9XX INFO] LINE:0122-->goodix_reset:reset the tp !!!!!!
+[   10.566038] sunxi:i2c_sunxi_ng@twi2[ERR]: SLA+W has been transmitted; ACK not received
+[   10.574853] sunxi:i2c_sunxi_ng@twi2[ERR]: engine mode: TWI BUS error state is 0x20
+[   10.583299] sunxi:i2c_sunxi_ng@twi2[ERR]: engine-mode: xfer failed(dev addr:0x5d)
+[   10.591650] Goodix-TS 2-005d: read version failed: -22
+[   10.597378] Goodix-TS 2-005d: Read version failed.
+[   10.602738] Goodix-TS: probe of 2-005d failed with error -22
+[   10.609193] initcall 0xbf89f001 returned 0 after 149912 usecs
+[   10.635131] calling  0xbf8ac03d @ 565
+[   10.639362] initcall 0xbf8ac03d returned 0 after 20 usecs
+[   10.669916] calling  0xbf8b1001 @ 566
+[   10.674006] initcall 0xbf8b1001 returned 0 after 6 usecs
+[   10.690663] calling  0xbf8b9001 @ 570
+[   10.697849] mmcblk0: mmc0:0001 USD 29.8 GiB 
+[   10.706180]  mmcblk0: p1
+[   10.709853] initcall 0xbf8b9001 returned 0 after 12043 usecs
+[   10.829914] init (579): /proc/1/oom_adj is deprecated, please use /proc/1/oom_score_adj instead.
+[   11.071039] sunxi-ehci 4101000.ehci0-controller: ehci_irq: highspeed device connect
+[   11.396184] usb 1-1: new high-speed USB device number 3 using sunxi-ehci
+[   11.527387] FAT-fs (mmcblk0p1): utf8 is not a recommended IO charset for FAT filesystems, filesystem will be case sensitive!
+[   11.573217] FAT-fs (mmcblk0p1): Volume was not properly unmounted. Some data may be corrupt. Please run fsck.
+[   11.607176] usb 1-1: config 1 has an invalid interface number: 32 but max is 5
+[   11.615238] usb 1-1: config 1 has no interface number 5
+[   11.652159] cdc_ether 1-1:1.0 eth0: register 'cdc_ether' at usb-sunxi-ehci-1, CDC Ethernet Device, ac:0c:29:a3:9b:6d
+[   11.687231] option 1-1:1.2: GSM modem (1-port) converter detected
+[   11.696140] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB0
+[   11.704490] option 1-1:1.3: GSM modem (1-port) converter detected
+[   11.712012] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB1
+[   11.720615] option 1-1:1.4: GSM modem (1-port) converter detected
+[   11.737199] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB2
+[   11.757303] option 1-1:1.32: GSM modem (1-port) converter detected
+[   11.776256] usb 1-1: GSM modem (1-port) converter now attached to ttyUSB3
+--- internal wait log ---
+V19 logger started
+Thu Jan  1 08:00:10 +08 1970
+sys.sd.in=
+persist.debug.log.enable=
+--- initial mounts ---
+/dev/root /rom squashfs ro,relatime 0 0
+devtmpfs /dev devtmpfs rw,relatime,size=249188k,nr_inodes=62297,mode=755 0 0
+/proc /proc proc rw,relatime 0 0
+tmpfs /tmp tmpfs rw,relatime,size=250024k,nr_inodes=62506 0 0
+sys /sys sysfs rw,relatime 0 0
+/dev/by-name/rootfs_data /overlay jffs2 rw,relatime 0 0
+overlayfs:/overlay / overlay rw,noatime,lowerdir=/,upperdir=/overlay/upper,workdir=/overlay/workdir 0 0
+devpts /dev/pts devpts rw,relatime,gid=5,mode=620,ptmxmode=000 0 0
+none /sys/kernel/debug debugfs rw,relatime 0 0
