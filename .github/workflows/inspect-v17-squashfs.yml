@@ -427,18 +427,21 @@ jobs:
               i = lines.index("service logcatch /usr/bin/log_catch.sh")
           except ValueError:
               raise SystemExit("Could not find logcatch service declaration")
-          expected = [
+          if lines[i:i+3] != [
               "service logcatch /usr/bin/log_catch.sh",
               "    class main",
               "    disabled",
-              "on property:persist.debug.log.enable=1",
-              "    start logcatch",
-          ]
-          if lines[i:i+5] != expected:
-              raise SystemExit("Unexpected logcatch service block; refusing to patch init.rc: " + repr(lines[i:i+5]))
-          # Enable logcatch as a normal main-class service and remove its
-          # property trigger, so it cannot be blocked by the same property.
-          lines[i:i+5] = expected[:2]
+          ]:
+              raise SystemExit("Unexpected logcatch service header; refusing to patch init.rc: " + repr(lines[i:i+5]))
+          # Enable logcatch as a normal main-class service.
+          del lines[i+2]
+          try:
+              trigger = lines.index("on property:persist.debug.log.enable=1", i+2)
+          except ValueError:
+              raise SystemExit("Could not find logcatch property trigger")
+          if trigger+1 >= len(lines) or lines[trigger+1] != "    start logcatch":
+              raise SystemExit("Unexpected logcatch property trigger body")
+          del lines[trigger:trigger+2]
           rc_path.write_text("\n".join(lines) + "\n")
           print("Patched only usr/bin/log_catch.sh and etc/init.rc.")
           print("logcatch now starts with class main and waits for an actual /mnt/extsd mount.")
