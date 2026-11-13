@@ -177,34 +177,33 @@ jobs:
           print(f"CRC64 XZ streams: {len(crc64)}")
           for row in crc64:
               off, compressed, uncompressed, check = row
-              idx = int(next(p.stem.split("_")[1] for p in streams_dir.glob("stream_*.xz")
-                             if p.read_bytes()[:6] == b"\\xfd7zXZ\\x00" and
-                             int(off, 16) == int(off, 16)))
-              candidates = sorted(streams_dir.glob("stream_*.xz"))
               matches = []
-              for p in candidates:
-                  d = lzma.decompress(p.read_bytes(), format=lzma.FORMAT_XZ)
-                  if len(d) == int(uncompressed):
-                      if p.read_bytes()[7] & 0x0f == 4:
-                          matches.append((p, d))
-              if not matches:
-                  raise SystemExit("Could not identify the extracted CRC64 stream")
-              p, block = matches[0]
-              print(f"CRC64 stream file: {p.name}; rootfs offset=0x{int(off,16):x}; compressed={compressed}; uncompressed={uncompressed}")
-              found = []
-              for base, dirs, files in os.walk(root):
-                  for name in files:
-                      path = pathlib.Path(base) / name
+              for p in sorted(streams_dir.glob("stream_*.xz")):
+                  raw = p.read_bytes()
+                  if len(raw) > 7 and (raw[7] & 0x0f) == 4:
                       try:
-                          if path.is_symlink() or not path.is_file():
-                              continue
-                          with path.open("rb") as fh:
-                              data = fh.read()
-                          pos = data.find(block)
-                          if pos >= 0:
-                              found.append((str(path.relative_to(root)), pos, len(data)))
-                      except (OSError, MemoryError):
-                          pass
+                          block = lzma.decompress(raw, format=lzma.FORMAT_XZ)
+                      except lzma.LZMAError:
+                          continue
+                      matches.append((p, block))
+              print(f"CRC64 stream rootfs offset=0x{int(off):x}; compressed={compressed}; uncompressed={uncompressed}")
+              found = []
+              for p, block in matches:
+                  if len(block) != int(uncompressed):
+                      continue
+                  for base, dirs, files in os.walk(root):
+                      for name in files:
+                          path = pathlib.Path(base) / name
+                          try:
+                              if path.is_symlink() or not path.is_file():
+                                  continue
+                              with path.open("rb") as fh:
+                                  data = fh.read()
+                              pos = data.find(block)
+                              if pos >= 0:
+                                  found.append((str(path.relative_to(root)), pos, len(data)))
+                          except (OSError, MemoryError):
+                              pass
               print("Files containing the exact decoded CRC64 block:")
               for name, pos, size in found:
                   print(f"  {name}: file_offset=0x{pos:x}, file_size={size}")
