@@ -1,6 +1,9 @@
 name: Inspect V17 rebootCheck
 
 on:
+  push:
+    branches:
+      - diagnostic/v17-squashfs-check
   workflow_dispatch:
 
 jobs:
