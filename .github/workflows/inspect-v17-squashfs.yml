@@ -246,7 +246,10 @@ jobs:
               assert dictionary == 262144, "unexpected XZ dictionary size"
               assert filters == 0, "unexpected BCJ filters; candidate is intended to use no BCJ filters"
           else:
-              raise SystemExit("Rebuilt XZ filesystem is missing compressor-options metadata")
+              default_dictionary = max(u32(12), 8192)
+              print(f"No explicit compressor-options metadata; Linux SquashFS default dictionary={default_dictionary}")
+              if default_dictionary != 262144:
+                  raise SystemExit("Unexpected default XZ dictionary size")
           if len(d) > 10 * 1024 * 1024:
               raise SystemExit("Rebuilt filesystem exceeds 10 MiB rootfs partition")
           magic = b"\\xfd7zXZ\\x00"
