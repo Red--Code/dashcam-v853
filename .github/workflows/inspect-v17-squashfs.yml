@@ -42,34 +42,33 @@ jobs:
           set -euo pipefail
           IMAGE="v17_current_backup.bin"
           ROOTFS="$RUNNER_TEMP/v17-rootfs.squashfs"
-          # Known firmware map: rootfs starts at 0x560000 and ends at 0xF60000.
+          # Rootfs partition: 0x560000 through 0xF60000.
           dd if="$IMAGE" of="$ROOTFS" bs=65536 skip=86 count=160 status=progress
           echo "Rootfs candidate size:"
           stat -c '%s bytes' "$ROOTFS"
           echo "First 16 bytes:"
           od -An -tx1 -N16 "$ROOTFS"
           MAGIC="$(head -c 4 "$ROOTFS")"
-          printf 'SquashFS magic bytes: %s\n' "$(printf '%s' "$MAGIC" | od -An -tx1 | tr -d ' \n')"
           test "$MAGIC" = "hsqs"
           unsquashfs -s "$ROOTFS"
 
-      - name: Test entire SquashFS filesystem
+      - name: Fully extract and validate SquashFS
         shell: bash
         run: |
           set +e
-          unsquashfs -t "$RUNNER_TEMP/v17-rootfs.squashfs" 2>&1 | tee "$RUNNER_TEMP/squashfs-test.log"
-          STATUS=${PIPESTATUS[0]}
-          echo "unsquashfs integrity-test exit code: $STATUS"
-          exit "$STATUS"
-
-      - name: Extract and inspect mainsys
-        shell: bash
-        run: |
-          set -euo pipefail
-          DEST="$RUNNER_TEMP/mainsys-extract"
+          DEST="$RUNNER_TEMP/v17-rootfs-extracted"
           mkdir -p "$DEST"
-          unsquashfs -d "$DEST" "$RUNNER_TEMP/v17-rootfs.squashfs" usr/bin/mainsys
-          echo "Extracted mainsys metadata:"
-          stat "$DEST/usr/bin/mainsys"
-          file "$DEST/usr/bin/mainsys"
-          readelf -h "$DEST/usr/bin/mainsys" || true
+          unsquashfs -no-progress -d "$DEST" "$RUNNER_TEMP/v17-rootfs.squashfs" 2>&1 | tee "$RUNNER_TEMP/squashfs-extract.log"
+          STATUS=${PIPESTATUS[0]}
+          echo "Full extraction exit code: $STATUS"
+          echo "Relevant decompression and filesystem errors:"
+          grep -Ein 'error|failed|corrupt|decompress|invalid' "$RUNNER_TEMP/squashfs-extract.log" || true
+          if [ -e "$DEST/usr/bin/mainsys" ]; then
+            echo "mainsys was extracted:"
+            stat "$DEST/usr/bin/mainsys"
+            file "$DEST/usr/bin/mainsys"
+            readelf -h "$DEST/usr/bin/mainsys" || true
+          else
+            echo "mainsys is missing or could not be extracted."
+          fi
+          exit "$STATUS"
