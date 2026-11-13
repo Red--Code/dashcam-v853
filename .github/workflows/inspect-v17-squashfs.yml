@@ -214,6 +214,40 @@ jobs:
               if p.is_file():
                   print(f"\n--- {rel} ---")
                   print(p.read_text(errors="replace"))
+          print("\n=== Exact property and SD strings in binaries ===")
+          for rel in ("usr/bin/sysd", "usr/bin/mainsys", "usr/lib/libcarutils.so", "usr/bin/jt808"):
+              p = root / rel
+              if not p.is_file():
+                  continue
+              data = p.read_bytes()
+              print(f"\n--- {rel} ---")
+              needles = (b"sys.sd.in", b"sdAvaliable", b"sdcard", b"property_set", b"property_get",
+                         b"setprop", b"/mnt/extsd", b"mountpoint", b"vfat")
+              for needle in needles:
+                  pos = 0
+                  found = 0
+                  while True:
+                      pos = data.find(needle, pos)
+                      if pos < 0:
+                          break
+                      a, b = max(0, pos-180), min(len(data), pos+len(needle)+260)
+                      chunk = data[a:b]
+                      printable = "".join(chr(c) if 32 <= c < 127 else "." for c in chunk)
+                      print(f"offset=0x{pos:x} needle={needle.decode()} context={printable}")
+                      pos += len(needle)
+                      found += 1
+                      if found >= 6:
+                          break
+              print("Dynamic symbols mentioning property / mount / sd:")
+              import subprocess
+              for cmd in (["readelf", "-Ws", str(p)], ["objdump", "-T", str(p)]):
+                  try:
+                      q = subprocess.run(cmd, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
+                      lines = [x for x in q.stdout.splitlines() if re.search(r"property|mount|sdcard|system_property", x, re.I)]
+                      for line in lines[:30]:
+                          print(line)
+                  except Exception as e:
+                      print(f"symbol scan error: {e}")
           print("\n=== Every text reference to sys.sd.in ===")
           for base, dirs, files in os.walk(root):
               for name in files:
