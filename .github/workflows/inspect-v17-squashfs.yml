@@ -36,39 +36,60 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y squashfs-tools file binutils
 
-      - name: Extract the presumed rootfs partition
+      - name: Extract rootfs and decode superblock fields
         shell: bash
         run: |
           set -euo pipefail
           IMAGE="v17_current_backup.bin"
           ROOTFS="$RUNNER_TEMP/v17-rootfs.squashfs"
-          # Rootfs partition: 0x560000 through 0xF60000.
           dd if="$IMAGE" of="$ROOTFS" bs=65536 skip=86 count=160 status=progress
-          echo "Rootfs candidate size:"
-          stat -c '%s bytes' "$ROOTFS"
-          echo "First 16 bytes:"
-          od -An -tx1 -N16 "$ROOTFS"
-          MAGIC="$(head -c 4 "$ROOTFS")"
-          test "$MAGIC" = "hsqs"
-          unsquashfs -s "$ROOTFS"
+          echo "Rootfs bytes 0..127:"
+          od -Ax -tx1 -N128 "$ROOTFS"
+          python3 - "$ROOTFS" <<'PY'
+          import struct, sys
+          data = open(sys.argv[1], "rb").read(128)
+          u32 = lambda off: struct.unpack_from("<I", data, off)[0]
+          u16 = lambda off: struct.unpack_from("<H", data, off)[0]
+          u64 = lambda off: struct.unpack_from("<Q", data, off)[0]
+          flags = u16(26)
+          print(f"magic={data[:4]!r}")
+          print(f"inodes={u32(4)} block_size={u32(12)} fragments={u32(16)}")
+          print(f"compression_id={u16(20)} block_log={u16(22)} flags=0x{flags:04x}")
+          print(f"COMP_OPT(bit 10)={(flags >> 10) & 1}")
+          print(f"bytes_used={u64(40)}")
+          print(f"superblock_size=96")
+          header = u16(96)
+          stored_len = header & 0x7fff
+          uncompressed = bool(header & 0x8000)
+          print(f"compressor-options metadata header=0x{header:04x}, length={stored_len}, uncompressed={uncompressed}")
+          opts = data[98:98+stored_len]
+          print(f"compressor-options bytes={opts.hex()}")
+          if len(opts) >= 8:
+              dictionary_size, filter_flags = struct.unpack_from("<II", opts)
+              print(f"xz dictionary_size={dictionary_size} (0x{dictionary_size:08x})")
+              print(f"xz filter_flags=0x{filter_flags:08x}")
+              n = (dictionary_size & -dictionary_size).bit_length()-1 if dictionary_size else -1
+              valid = dictionary_size > 0 and (dictionary_size == (1 << n) or dictionary_size == ((1 << n) + (1 << (n+1))))
+              print(f"dictionary_size_valid_for_linux_squashfs={valid}")
+          else:
+              print("compressor options are shorter than the 8-byte XZ options structure")
+          PY
+          unsquashfs -s "$ROOTFS" || true
 
-      - name: Fully extract and validate SquashFS
+      - name: Fully extract and validate SquashFS as root
         shell: bash
         run: |
-          set +e
+          set -euo pipefail
           DEST="$RUNNER_TEMP/v17-rootfs-extracted"
-          mkdir -p "$DEST"
-          unsquashfs -no-progress -d "$DEST" "$RUNNER_TEMP/v17-rootfs.squashfs" 2>&1 | tee "$RUNNER_TEMP/squashfs-extract.log"
-          STATUS=${PIPESTATUS[0]}
-          echo "Full extraction exit code: $STATUS"
-          echo "Relevant decompression and filesystem errors:"
-          grep -Ein 'error|failed|corrupt|decompress|invalid' "$RUNNER_TEMP/squashfs-extract.log" || true
-          if [ -e "$DEST/usr/bin/mainsys" ]; then
-            echo "mainsys was extracted:"
-            stat "$DEST/usr/bin/mainsys"
-            file "$DEST/usr/bin/mainsys"
-            readelf -h "$DEST/usr/bin/mainsys" || true
-          else
-            echo "mainsys is missing or could not be extracted."
-          fi
-          exit "$STATUS"
+          sudo mkdir -p "$DEST"
+          sudo unsquashfs -no-progress -strict-errors -d "$DEST" "$RUNNER_TEMP/v17-rootfs.squashfs"
+          echo "Full filesystem extraction succeeded."
+          echo "mainsys metadata:"
+          sudo stat "$DEST/usr/bin/mainsys"
+          sudo file "$DEST/usr/bin/mainsys"
+          sudo readelf -h "$DEST/usr/bin/mainsys"
+          echo "mainsys interpreter and dependencies:"
+          sudo readelf -l "$DEST/usr/bin/mainsys" | grep -E 'INTERP|Requesting program interpreter' || true
+          sudo readelf -d "$DEST/usr/bin/mainsys" | grep NEEDED || true
+          echo "Configured dynamic loader:"
+          sudo ls -l "$DEST/lib/ld-musl-armhf.so.1" || true
