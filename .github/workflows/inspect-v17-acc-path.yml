@@ -22,7 +22,7 @@ jobs:
       - name: Install firmware tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y squashfs-tools xz-utils binutils
+          sudo apt-get install -y squashfs-tools xz-utils binutils binutils-arm-linux-gnueabihf
 
       - name: Verify and extract exact V17 rootfs
         shell: bash
@@ -57,31 +57,41 @@ jobs:
             echo
             echo "=== candidate binary files ==="
             find "$ROOT" -type f \( -name '*main*' -o -name '*sdcard*' -o -name '*modem*' -o -name '*power*' -o -name '*bright*' -o -name '*disp*' \) -printf '%p %s bytes\n' | sort
-            echo
-            echo "=== executable files ==="
-            find "$ROOT" -type f -perm /111 -printf '%p %s bytes\n' | sort
           } > "$OUT/inspection-summary.txt"
 
-          for name in mainsys sdcard; do
-            f="$(find "$ROOT" -type f -name "$name" -print -quit)"
-            if [ -n "$f" ]; then
-              strings -a -n 4 "$f" > "$OUT/$name.strings.txt"
-              {
-                echo "=== $name: ACC / suspend / backlight / sysfs / GPIO string matches ==="
-                grep -niE -C 3 'getAccState|postAccMsg|acccheck|sys\.acc\.on|ACC|ignition|suspendCheck|waitBeforeSuspend|shutDownSoc|backlight|brightness|currentbacklight|/sys/|gpio|switch-gpio|poweroff|power off' "$OUT/$name.strings.txt" || true
-                echo
-                echo "=== $name: ELF metadata ==="
-                readelf -h "$f" 2>&1 || true
-                readelf -Ws "$f" 2>&1 | grep -iE 'acc|gpio|property|backlight|brightness|suspend|power' || true
-              } > "$OUT/$name.relevant.txt"
-            else
-              echo "File named $name not found" > "$OUT/$name.relevant.txt"
-            fi
-          done
+          MAIN="$ROOT/usr/bin/mainsys"
+          test -s "$MAIN"
+          strings -a -n 4 "$MAIN" > "$OUT/mainsys.strings.txt"
+          arm-linux-gnueabihf-nm -anC "$MAIN" > "$OUT/mainsys.symbols.txt"
+          {
+            echo "=== relevant function symbols ==="
+            grep -iE 'acc|suspend|bright|backlight|gpio|power|onAcc' "$OUT/mainsys.symbols.txt" || true
+            echo
+            echo "=== getAccState() disassembly ==="
+            arm-linux-gnueabihf-objdump -d -C --disassemble=getAccState "$MAIN"
+            echo
+            echo "=== suspendCheck() disassembly ==="
+            arm-linux-gnueabihf-objdump -d -C --disassemble=suspendCheck "$MAIN"
+            echo
+            echo "=== onAccChanged() disassembly ==="
+            arm-linux-gnueabihf-objdump -d -C --disassemble=onAccChanged "$MAIN"
+            echo
+            echo "=== related strings with file offsets ==="
+            strings -a -t x "$MAIN" | grep -iE 'sys\.mainsys\.acc_read|sys\.acc\.on|persist\.st\.currentbacklight|currentbacklight|gpio11|gpio6|acc|suspend|backlight|brightness|shutDownSoc|power_shutdown' || true
+            echo
+            echo "=== ELF sections ==="
+            arm-linux-gnueabihf-readelf -S "$MAIN"
+          } > "$OUT/mainsys-arm-analysis.txt"
 
-          find "$ROOT/etc" "$ROOT/usr" "$ROOT/system" -type f -maxdepth 5 -print0 2>/dev/null |
-            xargs -0 grep -IinE 'sys\.acc\.on|currentbacklight|suspend.waitsec|acc_gpio|acc-gpio|ignition|backlight'             > "$OUT/text-config-matches.txt" || true
-          echo "Static inspection complete; no firmware bytes were modified."
+          {
+            echo "=== ACC / suspend / backlight / GPIO string matches ==="
+            grep -niE -C 4 'sys\.mainsys\.acc_read|sys\.acc\.on|persist\.st\.currentbacklight|currentbacklight|gpio11|gpio6|acc|suspend|backlight|brightness|shutDownSoc|power_shutdown' "$OUT/mainsys.strings.txt" || true
+            echo
+            echo "=== matching config-file lines ==="
+            grep -IinE 'sys\.acc\.on|currentbacklight|suspend.waitsec|acc_gpio|acc-gpio|ignition|backlight|sys.mainsys.acc_read' "$ROOT/etc/default.prop" "$ROOT/etc/init.rc" || true
+          } > "$OUT/mainsys.relevant.txt"
+
+          echo "Static ARM disassembly complete; no firmware bytes were modified."
 
       - name: Upload static inspection
         uses: actions/upload-artifact@v4
